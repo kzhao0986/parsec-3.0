@@ -150,6 +150,7 @@ void do_query (const char *name)
 	cass_query_t query;
 	cass_result_t result;
 	cass_result_t *candidate;
+	struct heart *heart;
 
 	{
 
@@ -217,6 +218,9 @@ void do_query (const char *name)
 	cass_dataset_release(&ds);
 
 	fprintf(fout, "%s", name);
+
+	heart = heart_create();
+	heart_init(heart, 100, 100);
 	ARRAY_BEGIN_FOREACH(result.u.list, cass_list_entry_t p)
 	{
 		char *obj = NULL;
@@ -224,7 +228,10 @@ void do_query (const char *name)
 		cass_map_id_to_dataobj(query_table->map, p.id, &obj);
 		assert(obj != NULL);
 		fprintf(fout, "\t%s:%g", obj, p.dist);
+		heartbeat(heart);
 	} ARRAY_END_FOREACH;
+	printf("Ferret has final heartrate %llu\n", heart->heartrate);
+	heart_destroy(heart);
 
 	fprintf(fout, "\n");
 
