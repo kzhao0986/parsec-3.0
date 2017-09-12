@@ -27,6 +27,7 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <cass_stat.h>
 #include <cass_timer.h>
 #include <../image/image.h>
+#include <heartbeat.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
