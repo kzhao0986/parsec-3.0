@@ -74,13 +74,27 @@ int dir_helper (char *dir, char *head)
 	struct dirent *ent = NULL;
 	int result = 0;
 	pd = opendir(dir);
+	struct heart *heart;
+
 	if (pd == NULL) goto except;
+
+	heart = heart_create();
+	heart_init(heart, 100, 100);
+
 	for (;;)
 	{
 		ent = readdir(pd);
 		if (ent == NULL) break;
-		if (scan_dir(ent->d_name, head) != 0) return -1;
+		if (scan_dir(ent->d_name, head) != 0) {
+			heart_destroy(heart);
+			return -1;
+		}
+		heartbeat(heart);
 	}
+	heart_destroy(heart);
+
+	printf("Ferret has final heartrate %llu\n", heart->heartrate);
+
 	goto final;
 
 except:
@@ -151,7 +165,6 @@ void do_query (const char *name)
 	cass_query_t query;
 	cass_result_t result;
 	cass_result_t *candidate;
-	struct heart *heart;
 
 	{
 
@@ -220,8 +233,6 @@ void do_query (const char *name)
 
 	fprintf(fout, "%s", name);
 
-	heart = heart_create();
-	heart_init(heart, 300000, 100);
 	ARRAY_BEGIN_FOREACH(result.u.list, cass_list_entry_t p)
 	{
 		char *obj = NULL;
@@ -231,8 +242,6 @@ void do_query (const char *name)
 		fprintf(fout, "\t%s:%g", obj, p.dist);
 		heartbeat(heart);
 	} ARRAY_END_FOREACH;
-	printf("Ferret has final heartrate %llu\n", heart->heartrate);
-	heart_destroy(heart);
 
 	fprintf(fout, "\n");
 
@@ -256,8 +265,6 @@ int main (int argc, char *argv[])
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_bench_begin(__parsec_ferret);
 #endif
-	/*XXX*/
-	printf("Hello!\n");
 
 	if (argc < 8)
 	{
