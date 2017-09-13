@@ -221,7 +221,7 @@ void do_query (const char *name)
 	fprintf(fout, "%s", name);
 
 	heart = heart_create();
-	heart_init(heart, 100, 100);
+	heart_init(heart, 300000, 100);
 	ARRAY_BEGIN_FOREACH(result.u.list, cass_list_entry_t p)
 	{
 		char *obj = NULL;
@@ -256,6 +256,8 @@ int main (int argc, char *argv[])
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_bench_begin(__parsec_ferret);
 #endif
+	/*XXX*/
+	printf("Hello!\n");
 
 	if (argc < 8)
 	{
