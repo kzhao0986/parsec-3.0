@@ -89,7 +89,6 @@ int dir_helper (char *dir, char *head)
 			heart_destroy(heart);
 			return -1;
 		}
-		printf("Something is happening\n");
 		heartbeat(heart);
 	}
 	heart_destroy(heart);

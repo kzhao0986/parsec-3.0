@@ -37,6 +37,8 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <hooks.h>
 #endif
 
+#include <heartbeat.h>
+
 #define DEFAULT_DEPTH	25
 #define MAXR	100
 #define IMAGE_DIM	14
@@ -66,6 +68,8 @@ cass_table_t *query_table;
 
 int vec_dist_id = 0;
 int vecset_dist_id = 0;
+
+struct heart *heart;
 
 struct load_data
 {
@@ -375,6 +379,8 @@ void *t_rank (void *dummy)
 void *t_out (void *dummy)
 {
 	struct rank_data *rank;
+	int count = 0;
+
 	while (1)
 	{
 		if(dequeue(&q_rank_out, &rank) < 0)
@@ -398,6 +404,11 @@ void *t_out (void *dummy)
 		cass_result_free(&rank->result);
 		free(rank->name);
 		free(rank);
+
+		if(count % 10 == 0) {
+			heartbeat(heart);
+		}
+		count++;
 
 		cnt_dequeue++;
 		
@@ -427,6 +438,9 @@ int main (int argc, char *argv[])
 	tpool_t *p_out;
 
 	int ret, i;
+
+	heart = heart_create();
+	heart_init(heart, 100, 1000);
 
 #ifdef PARSEC_VERSION
 #define __PARSEC_STRING(x) #x
@@ -595,6 +609,9 @@ int main (int argc, char *argv[])
 	image_cleanup();
 
 	fclose(fout);
+
+	printf("Ferret finished with heartrate %llu\n", heart->heartrate);
+	heart_destroy(heart);
 
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_bench_end();
