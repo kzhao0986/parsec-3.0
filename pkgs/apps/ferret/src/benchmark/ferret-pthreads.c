@@ -379,7 +379,6 @@ void *t_rank (void *dummy)
 void *t_out (void *dummy)
 {
 	struct rank_data *rank;
-	int count = 0;
 
 	while (1)
 	{
@@ -405,10 +404,7 @@ void *t_out (void *dummy)
 		free(rank->name);
 		free(rank);
 
-		if(count % 10 == 0) {
-			heartbeat(heart);
-		}
-		count++;
+		heartbeat(heart);
 
 		cnt_dequeue++;
 		
