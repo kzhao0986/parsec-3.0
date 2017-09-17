@@ -436,7 +436,7 @@ int main (int argc, char *argv[])
 	int ret, i;
 
 	heart = heart_create();
-	heart_init(heart, 100, 1000);
+	heart_init(heart, 10, 1000);
 
 #ifdef PARSEC_VERSION
 #define __PARSEC_STRING(x) #x
