@@ -379,6 +379,9 @@ void *t_rank (void *dummy)
 void *t_out (void *dummy)
 {
 	struct rank_data *rank;
+	struct heart *heart = heart_create();
+
+	heart_init(heart, 100, 0);
 
 	while (1)
 	{
@@ -411,6 +414,9 @@ void *t_out (void *dummy)
 		fprintf(stderr, "(%d,%d)\n", cnt_enqueue, cnt_dequeue);
 	}
 
+	printf("Task finished with heartrate %llu\n", heart->heartrate);
+	heart_destroy(heart);
+
 	assert(cnt_enqueue == cnt_dequeue);
 	return NULL;
 }
@@ -434,9 +440,6 @@ int main (int argc, char *argv[])
 	tpool_t *p_out;
 
 	int ret, i;
-
-	heart = heart_create();
-	heart_init(heart, 10, 1000);
 
 #ifdef PARSEC_VERSION
 #define __PARSEC_STRING(x) #x
@@ -607,7 +610,6 @@ int main (int argc, char *argv[])
 	fclose(fout);
 
 	printf("Ferret finished with heartrate %llu\n", heart->heartrate);
-	heart_destroy(heart);
 
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_bench_end();
