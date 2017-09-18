@@ -232,6 +232,9 @@ void *t_seg (void *dummy)
 {
 	struct seg_data *seg;
 	struct load_data *load;
+	struct heart *heart = heart_create();
+
+	heart_init(heart, 1000, 0);
 
 	while(1)
 	{
@@ -252,8 +255,10 @@ void *t_seg (void *dummy)
 		free(load);
 
 		enqueue(&q_seg_extract, seg);
+		heartbeat(heart);
 	}
-
+	heart_destroy(heart);
+	
 	queue_signal_terminate(&q_seg_extract);
 	return NULL;
 
@@ -263,6 +268,9 @@ void *t_extract (void *dummy)
 {
 	struct seg_data *seg;
 	struct extract_data *extract;
+	struct heart *heart = heart_create();
+
+	heart_init(heart, 1000, 0);
 
 	while (1)
 	{
@@ -281,8 +289,10 @@ void *t_extract (void *dummy)
 		free(seg);
 
 		enqueue(&q_extract_vec, extract);
+		heartbeat(heart);
 	}
-
+	heart_destroy(heart);
+	
 	queue_signal_terminate(&q_extract_vec);
 	return NULL;
 }
@@ -292,6 +302,10 @@ void *t_vec (void *dummy)
 	struct extract_data *extract;
 	struct vec_query_data *vec;
 	cass_query_t query;
+	struct heart *heart = heart_create();
+
+	heart_init(heart, 1000, 0);
+
 	while(1)
 	{
 		if(dequeue(&q_extract_vec, &extract) < 0)
@@ -322,7 +336,9 @@ void *t_vec (void *dummy)
 		cass_table_query(table, &query, &vec->result);
 
 		enqueue(&q_vec_rank, vec);
+		heartbeat(heart);
 	}
+	heart_destroy(heart);
 
 	queue_signal_terminate(&q_vec_rank);
 	return NULL;
@@ -334,6 +350,10 @@ void *t_rank (void *dummy)
 	struct rank_data *rank;
 	cass_result_t *candidate;
 	cass_query_t query;
+	struct heart *heart = heart_create();
+
+	heart_init(heart, 1000, 0);
+
 	while (1)
 	{
 		if(dequeue(&q_vec_rank, &vec) < 0)
@@ -370,7 +390,10 @@ void *t_rank (void *dummy)
 		free(vec->ds);
 		free(vec);
 		enqueue(&q_rank_out, rank);
+
+		heartbeat(heart);
 	}
+	heart_destroy(heart);
 
 	queue_signal_terminate(&q_rank_out);
 	return NULL;
