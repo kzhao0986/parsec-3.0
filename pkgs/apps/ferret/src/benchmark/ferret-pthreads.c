@@ -258,7 +258,7 @@ void *t_seg (void *dummy)
 		heartbeat(heart);
 	}
 	heart_destroy(heart);
-	
+
 	queue_signal_terminate(&q_seg_extract);
 	return NULL;
 
@@ -292,7 +292,7 @@ void *t_extract (void *dummy)
 		heartbeat(heart);
 	}
 	heart_destroy(heart);
-	
+
 	queue_signal_terminate(&q_extract_vec);
 	return NULL;
 }
@@ -431,6 +431,7 @@ void *t_out (void *dummy)
 		free(rank);
 
 		heartbeat(heart);
+		printf("Heartrate: %llu\n", heart->heartrate);
 
 		cnt_dequeue++;
 		
