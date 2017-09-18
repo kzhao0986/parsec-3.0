@@ -431,10 +431,10 @@ void *t_out (void *dummy)
 		free(rank);
 
 		heartbeat(heart);
-		printf("Heartrate: %llu\n", heart->heartrate);
 
 		cnt_dequeue++;
 		
+		fprintf(stderr, "Heartrate: %llu\n", heart->heartrate);
 		fprintf(stderr, "(%d,%d)\n", cnt_enqueue, cnt_dequeue);
 	}
 
