@@ -381,7 +381,7 @@ void *t_out (void *dummy)
 	struct rank_data *rank;
 	struct heart *heart = heart_create();
 
-	heart_init(heart, 100, 0);
+	heart_init(heart, 1000, 0);
 
 	while (1)
 	{
