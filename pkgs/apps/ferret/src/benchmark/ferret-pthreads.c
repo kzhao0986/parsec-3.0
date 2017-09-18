@@ -234,7 +234,7 @@ void *t_seg (void *dummy)
 	struct load_data *load;
 	struct heart *heart = heart_create();
 
-	heart_init(heart, 1000, 0);
+	heart_init(heart, 10, 0);
 
 	while(1)
 	{
@@ -270,7 +270,7 @@ void *t_extract (void *dummy)
 	struct extract_data *extract;
 	struct heart *heart = heart_create();
 
-	heart_init(heart, 1000, 0);
+	heart_init(heart, 10, 0);
 
 	while (1)
 	{
@@ -304,7 +304,7 @@ void *t_vec (void *dummy)
 	cass_query_t query;
 	struct heart *heart = heart_create();
 
-	heart_init(heart, 1000, 0);
+	heart_init(heart, 10, 0);
 
 	while(1)
 	{
@@ -352,7 +352,7 @@ void *t_rank (void *dummy)
 	cass_query_t query;
 	struct heart *heart = heart_create();
 
-	heart_init(heart, 1000, 0);
+	heart_init(heart, 10, 0);
 
 	while (1)
 	{
@@ -404,7 +404,7 @@ void *t_out (void *dummy)
 	struct rank_data *rank;
 	struct heart *heart = heart_create();
 
-	heart_init(heart, 1000, 0);
+	heart_init(heart, 10, 0);
 
 	while (1)
 	{
@@ -434,7 +434,6 @@ void *t_out (void *dummy)
 
 		cnt_dequeue++;
 		
-		fprintf(stderr, "Heartrate: %llu\n", heart->heartrate);
 		fprintf(stderr, "(%d,%d)\n", cnt_enqueue, cnt_dequeue);
 	}
 
