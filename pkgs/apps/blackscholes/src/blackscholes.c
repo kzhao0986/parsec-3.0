@@ -11,11 +11,12 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <heartbeat.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
 #endif
+
+#include <heartbeat.h>
 
 // Multi-threaded pthreads header
 #ifdef ENABLE_THREADS
