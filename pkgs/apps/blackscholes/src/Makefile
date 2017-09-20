@@ -55,12 +55,11 @@ NCO = -DNCO=2
 endif
 
 CXXFLAGS += $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC)
-LDFLAGS += -lheartbeat
 
 all: $(TARGET)
 
 $(TARGET): clean $(CSRC)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -o $(TARGET)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -lheartbeat $(LIBS) -o $(TARGET)
 
 $(M4_SRC): $(SRC)
 	$(M4) $(M4_BASE)/$(MACROS) $< > $@
