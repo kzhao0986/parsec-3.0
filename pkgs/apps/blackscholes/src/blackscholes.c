@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <heartbeat.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
@@ -46,7 +47,6 @@ using namespace tbb;
 #include <windows.h>
 #endif
 
-#include <heartbeat.h>
 
 //Precision to use for calculations
 #define fptype float
