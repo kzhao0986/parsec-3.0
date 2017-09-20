@@ -60,7 +60,6 @@ LIBS += -lheartbeat
 all: $(TARGET)
 
 $(TARGET): clean $(CSRC)
-	@echo $(LIBS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -o $(TARGET)
 
 $(M4_SRC): $(SRC)

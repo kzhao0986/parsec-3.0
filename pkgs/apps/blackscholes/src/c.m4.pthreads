@@ -24,6 +24,7 @@ define(MAIN_ENV,
 #endif
 #include <pthread.h>
 #include <time.h>
+#include <heartbeat.h>
 
 #define MAX_THREADS 128
 
