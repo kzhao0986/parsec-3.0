@@ -55,7 +55,7 @@ NCO = -DNCO=2
 endif
 
 CXXFLAGS += $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC)
-LIBS += -L/usr/local/libheartbeat.so
+LIBS += -L/usr/local/lib/libheartbeat.so
 
 all: $(TARGET)
 
