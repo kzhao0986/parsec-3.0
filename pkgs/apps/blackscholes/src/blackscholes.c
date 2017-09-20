@@ -46,6 +46,8 @@ using namespace tbb;
 #include <windows.h>
 #endif
 
+#include <heartbeat.h>
+
 //Precision to use for calculations
 #define fptype float
 
@@ -281,6 +283,9 @@ int bs_thread(void *tid_ptr) {
     int tid = *(int *)tid_ptr;
     int start = tid * (numOptions / nThreads);
     int end = start + (numOptions / nThreads);
+    struct heart *heart = heart_create();
+
+    heart_init(heart, 100, 0);
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
@@ -306,7 +311,10 @@ int bs_thread(void *tid_ptr) {
             }
 #endif
         }
+        heartbeat(heart);
     }
+    printf("Thread done with heartrate %llu\n", heart->heartrate);
+    heart_destroy(heart);
 
     return 0;
 }
