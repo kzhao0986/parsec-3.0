@@ -54,8 +54,8 @@ ifdef double
 NCO = -DNCO=2
 endif
 
-CXXFLAGS += $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC)
-LIBS += -lheartbeat
+CXXFLAGS += -lheartbeat $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC)
+# LIBS += -lheartbeat
 
 all: $(TARGET)
 
@@ -63,7 +63,7 @@ $(TARGET): clean $(CSRC)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -o $(TARGET)
 
 $(M4_SRC): $(SRC)
-	$(M4) $(M4_BASE)/$(MACROS) -lheartbeat $< > $@
+	$(M4) $(M4_BASE)/$(MACROS) $< > $@
 
 clean:
 	rm -f $(TARGET) $(M4_SRC)
