@@ -55,6 +55,7 @@ NCO = -DNCO=2
 endif
 
 CXXFLAGS += $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC)
+LDFLAGS += -lheartbeat
 
 all: $(TARGET)
 
