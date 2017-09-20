@@ -63,7 +63,7 @@ $(TARGET): clean $(CSRC)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -o $(TARGET)
 
 $(M4_SRC): $(SRC)
-	$(M4) $(M4_BASE)/$(MACROS) $< > $@
+	$(M4) $(M4_BASE)/$(MACROS) $< -lheartbeat > $@
 
 clean:
 	rm -f $(TARGET) $(M4_SRC)
