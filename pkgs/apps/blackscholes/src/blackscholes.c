@@ -288,7 +288,7 @@ int bs_thread(void *tid_ptr) {
     int end = start + (numOptions / nThreads);
     struct heart *heart = heart_create();
 
-    heart_init(heart, 200000, 0);
+    heart_init(heart, 500000, 0);
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
@@ -314,9 +314,10 @@ int bs_thread(void *tid_ptr) {
             }
 #endif
         }
+        printf("Heartbeat\n");
         heartbeat(heart);
     }
-    fprintf(stderr, "Thread done with heartrate %llu\n", heart->heartrate);
+    printf("Thread done with heartrate %llu\n", heart->heartrate);
     heart_destroy(heart);
 
     return 0;
