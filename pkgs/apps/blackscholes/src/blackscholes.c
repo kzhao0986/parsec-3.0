@@ -316,7 +316,7 @@ int bs_thread(void *tid_ptr) {
         }
         heartbeat(heart);
     }
-    printf("Thread done with heartrate %llu\n", heart->heartrate);
+    fprintf(stderr, "Thread done with heartrate %llu\n", heart->heartrate);
     heart_destroy(heart);
 
     return 0;
