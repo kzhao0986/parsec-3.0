@@ -313,8 +313,8 @@ int bs_thread(void *tid_ptr) {
                 numError ++;
             }
 #endif
+            printf("Heartbeat\n");
         }
-        printf("Heartbeat\n");
         heartbeat(heart);
     }
     printf("Thread done with heartrate %llu\n", heart->heartrate);
