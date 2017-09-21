@@ -313,7 +313,7 @@ int bs_thread(void *tid_ptr) {
                 numError ++;
             }
 #endif
-            if (i % 10 == 0) {
+            if (i % 100 == 0) {
                 heartbeat(heart);
             }
         }
