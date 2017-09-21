@@ -314,8 +314,8 @@ int bs_thread(void *tid_ptr) {
             }
 #endif
             heartbeat(heart);
+            printf("Heartrate: %llu\n", heart->heartrate);
         }
-        printf("Heartrate: %llu\n", heart->heartrate);
     }
     printf("Thread done with heartrate %llu\n", heart->heartrate);
     heart_destroy(heart);
