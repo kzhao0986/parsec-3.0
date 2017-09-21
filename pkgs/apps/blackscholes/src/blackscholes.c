@@ -16,7 +16,9 @@
 #include <hooks.h>
 #endif
 
+extern "C" {
 #include <heartbeat.h>
+}
 
 // Multi-threaded pthreads header
 #ifdef ENABLE_THREADS
