@@ -286,10 +286,9 @@ int bs_thread(void *tid_ptr) {
     int tid = *(int *)tid_ptr;
     int start = tid * (numOptions / nThreads);
     int end = start + (numOptions / nThreads);
-    struct heart *heart = heart_create();
+    struct heart *heart = heart_create(20000, 0);
 
-    heart_init(heart, 22000, 0);
-    // heart_setscheduler();
+    heart_setscheduler();
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
