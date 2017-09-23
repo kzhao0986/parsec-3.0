@@ -288,7 +288,7 @@ int bs_thread(void *tid_ptr) {
     int end = start + (numOptions / nThreads);
     struct heart *heart = heart_create();
 
-    heart_init(heart, 22000, 0);
+    heart_init(heart, 20000, 0);
     heart_setscheduler();
 
     for (j=0; j<NUM_RUNS; j++) {
