@@ -18,6 +18,7 @@
 
 extern "C" {
 #include <heartbeat.h>
+#include <deadline.h>
 }
 
 // Multi-threaded pthreads header
