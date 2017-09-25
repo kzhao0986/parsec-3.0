@@ -292,7 +292,7 @@ int bs_thread(void *tid_ptr) {
     heart_init(heart, 20000, 0);
 
     // heart_setscheduler();
-    deadline_setscheduler(10 * 1000 * 1000, 30 * 1000 * 1000);
+    deadline_setscheduler(20 * 1000 * 1000, 30 * 1000 * 1000);
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
