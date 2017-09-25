@@ -290,7 +290,9 @@ int bs_thread(void *tid_ptr) {
     struct heart *heart = heart_create();
 
     heart_init(heart, 20000, 0);
-    heart_setscheduler();
+
+    // heart_setscheduler();
+    deadline_setscheduler(10 * 1000 * 1000, 30 * 1000 * 1000);
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
