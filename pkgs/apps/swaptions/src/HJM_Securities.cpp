@@ -9,6 +9,11 @@
 #include <math.h>
 #include <iostream>
 
+extern "C" {
+#include <heartbeat.h>
+#include <deadline.h>
+}
+
 #include "nr_routines.h"
 #include "HJM.h"
 #include "HJM_Securities.h"
@@ -83,6 +88,7 @@ struct Worker {
 void * worker(void *arg){
   int tid = *((int *)arg);
   FTYPE pdSwaptionPrice[2];
+  struct heart *heart = heart_create();
 
   int beg, end, chunksize;
   if (tid < (nSwaptions % nThreads)) {
@@ -100,6 +106,14 @@ void * worker(void *arg){
   if(tid == nThreads -1 )
     end = nSwaptions;
 
+  heart_init(heart, 20000, 0);
+
+  if (getenv("SCHED_DEADLINE")) {
+      deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+  } else {
+      heartbeat_setscheduler();
+  }
+
   for(int i=beg; i < end; i++) {
      int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
                                        swaptions[i].dCompounding, swaptions[i].dMaturity, 
@@ -110,7 +124,11 @@ void * worker(void *arg){
      assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
+     heartbeat(heart);
    }
+
+   printf("Thread done with heartrate %llu\n", heart->heartrate);
+   heart_destroy(heart);
 
    return NULL;
 }

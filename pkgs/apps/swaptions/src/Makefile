@@ -19,6 +19,8 @@ OBJS= CumNormalInv.o MaxFunction.o RanUnif.o nr_routines.o icdf.o \
 	HJM_SimPath_Forward_Blocking.o HJM.o HJM_Swaption_Blocking.o  \
 	HJM_Securities.o
 
+LIBS += -lheartbeat -ldeadline
+
 all: $(EXEC)
 
 $(EXEC): $(OBJS)
