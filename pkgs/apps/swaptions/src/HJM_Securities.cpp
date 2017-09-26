@@ -330,11 +330,11 @@ int main(int argc, char *argv[])
 	__parsec_roi_end();
 #endif
 
-        for (i = 0; i < nSwaptions; i++) {
-          fprintf(stderr,"Swaption %d: [SwaptionPrice: %.10lf StdError: %.10lf] \n", 
-                   i, swaptions[i].dSimSwaptionMeanPrice, swaptions[i].dSimSwaptionStdError);
+        // for (i = 0; i < nSwaptions; i++) {
+        //   fprintf(stderr,"Swaption %d: [SwaptionPrice: %.10lf StdError: %.10lf] \n", 
+        //            i, swaptions[i].dSimSwaptionMeanPrice, swaptions[i].dSimSwaptionStdError);
 
-        }
+        // }
 
         for (i = 0; i < nSwaptions; i++) {
           free_dvector(swaptions[i].pdYield, 0, swaptions[i].iN-1);
