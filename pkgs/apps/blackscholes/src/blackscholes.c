@@ -295,7 +295,7 @@ int bs_thread(void *tid_ptr) {
     if (getenv("SCHED_DEADLINE")) {
         deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
     } else {
-        heart_setscheduler();
+        heartbeat_setscheduler();
     }
 
     for (j=0; j<NUM_RUNS; j++) {
