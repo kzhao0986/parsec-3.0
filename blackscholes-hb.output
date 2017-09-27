@@ -1,0 +1,20 @@
+Sep 27 12:14:10 odroid kernel: [ 1247.806135] Heartbeat: Task with PID 14764 registered
+Sep 27 12:14:10 odroid kernel: [ 1247.806152] Heartbeat: Heart installed
+Sep 27 12:14:10 odroid kernel: [ 1247.806173] Heartbeat: Task with PID 14765 registered
+Sep 27 12:14:10 odroid kernel: [ 1247.806187] Heartbeat: Heart installed
+Sep 27 12:14:10 odroid kernel: [ 1247.806240] Heartbeat: Task with PID 14766 registered
+Sep 27 12:14:10 odroid kernel: [ 1247.806317] Heartbeat: Heart installed
+Sep 27 12:14:10 odroid kernel: [ 1247.806440] Heartbeat: Task with PID 14767 registered
+Sep 27 12:14:10 odroid kernel: [ 1247.806510] Heartbeat: Heart installed
+Sep 27 12:14:10 odroid kernel: [ 1247.979652] Heartbeat: Migrating task from CPU 0 to CPU 6
+Sep 27 12:14:10 odroid kernel: [ 1248.044621] Heartbeat: Migrating task from CPU 1 to CPU 4
+Sep 27 12:14:10 odroid kernel: [ 1248.059650] Heartbeat: Migrating task from CPU 0 to CPU 5
+Sep 27 12:14:10 odroid kernel: [ 1248.309650] Heartbeat: Migrating task from CPU 0 to CPU 7
+Sep 27 12:15:59 odroid kernel: [ 1356.984628] Heartbeat: Heart uninstalled
+Sep 27 12:15:59 odroid kernel: [ 1356.984636] Heartbeat: Deadlines missed: 205/21859
+Sep 27 12:15:59 odroid kernel: [ 1357.100089] Heartbeat: Heart uninstalled
+Sep 27 12:15:59 odroid kernel: [ 1357.100097] Heartbeat: Deadlines missed: 465/21847
+Sep 27 12:15:59 odroid kernel: [ 1357.202151] Heartbeat: Heart uninstalled
+Sep 27 12:15:59 odroid kernel: [ 1357.202158] Heartbeat: Deadlines missed: 203/21881
+Sep 27 12:16:01 odroid kernel: [ 1359.184594] Heartbeat: Heart uninstalled
+Sep 27 12:16:01 odroid kernel: [ 1359.184602] Heartbeat: Deadlines missed: 283/22937
