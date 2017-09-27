@@ -16,5 +16,5 @@
 run_exec="bin/swaptions"
 
 # Arguments to use
-run_args="-ns 10000 -sm 10000 -nt ${NTHREADS}"
+run_args="-ns 10000 -sm 5000 -nt ${NTHREADS}"
 
