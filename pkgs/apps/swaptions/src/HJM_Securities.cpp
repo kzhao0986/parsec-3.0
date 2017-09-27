@@ -106,7 +106,7 @@ void * worker(void *arg){
   if(tid == nThreads -1 )
     end = nSwaptions;
 
-  heart_init(heart, 20, 0);
+  heart_init(heart, 30, 0);
 
   if (getenv("SCHED_DEADLINE")) {
       deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
