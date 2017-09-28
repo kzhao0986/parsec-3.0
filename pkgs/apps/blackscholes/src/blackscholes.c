@@ -290,7 +290,7 @@ int bs_thread(void *tid_ptr) {
     char *use_heartbeat;
     struct heart *heart = heart_create();
 
-    heart_init(heart, 9000, 50000);
+    heart_init(heart, 20000, 50000);
 
     if (getenv("SCHED_DEADLINE")) {
         deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
