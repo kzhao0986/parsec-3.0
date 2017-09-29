@@ -292,10 +292,10 @@ int bs_thread(void *tid_ptr) {
 
     heart_init(heart, 20000, 50000);
 
-    if (getenv("SCHED_DEADLINE")) {
-        deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
-    } else {
+    if (getenv("SCHED_HEARTBEAT")) {
         heartbeat_setscheduler();
+    } else if (getenv("SCHED_DEADLINE")) {
+        deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
     }
 
     for (j=0; j<NUM_RUNS; j++) {
