@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <stdint.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
@@ -279,6 +280,9 @@ int bs_thread(void *tid_ptr) {
 #ifdef WIN32
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
+
+static const uint64_t targets[] = { 9000, 9000, 20000, 20000 };
+
 int bs_thread(void *tid_ptr) {
 #endif
     int i, j;
@@ -290,7 +294,7 @@ int bs_thread(void *tid_ptr) {
     char *use_heartbeat;
     struct heart *heart = heart_create();
 
-    heart_init(heart, 9000, 50000);
+    heart_init(heart, targets[tid], 50000);
 
     if (getenv("SCHED_HEARTBEAT")) {
         heartbeat_setscheduler();
