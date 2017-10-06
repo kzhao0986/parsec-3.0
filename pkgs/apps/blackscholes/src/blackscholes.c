@@ -294,7 +294,7 @@ int bs_thread(void *tid_ptr) {
     char *use_heartbeat;
     struct heart *heart = heart_create();
 
-    printf("Setting target %llu\n", targets[tid]);
+    fprintf(stderr, "Setting target %llu\n", targets[tid]);
     heart_init(heart, targets[tid], 50000);
 
     if (getenv("SCHED_HEARTBEAT")) {
