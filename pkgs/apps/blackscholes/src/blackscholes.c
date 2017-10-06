@@ -290,7 +290,7 @@ int bs_thread(void *tid_ptr) {
     char *use_heartbeat;
     struct heart *heart = heart_create();
 
-    heart_init(heart, 20000, 50000);
+    heart_init(heart, 9000, 50000);
 
     if (getenv("SCHED_HEARTBEAT")) {
         heartbeat_setscheduler();
