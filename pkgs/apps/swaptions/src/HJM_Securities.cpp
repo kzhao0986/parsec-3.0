@@ -106,7 +106,7 @@ void * worker(void *arg){
   if(tid == nThreads -1 )
     end = nSwaptions;
 
-  heart_init(heart, 40, 150);
+  heart_init(heart, 60, 150);
 
   if (getenv("SCHED_HEARTBEAT")) {
       heartbeat_setscheduler();
