@@ -2,7 +2,7 @@ PREFIX = ${PARSECDIR}/pkgs/apps/ferret/inst/${PARSECPLAT}
 TARGET = ferret
 ARCH = parsec
 
-LDLIBS += $(LIBS) -lrt -lm -lcass -lgsl -lgslcblas -ljpeg -lstdc++ -lheartbeat
+LDLIBS += $(LIBS) -lrt -lm -lcass -lgsl -lgslcblas -ljpeg -lstdc++ -lheartbeat -ldeadline
 
 .PHONY:	all clean install dirs lib tools image server benchmark 
 
