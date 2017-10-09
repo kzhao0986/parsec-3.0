@@ -108,10 +108,10 @@ void * worker(void *arg){
 
   heart_init(heart, 60, 0);
 
-  if (getenv("SCHED_DEADLINE")) {
-      deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
-  } else {
+  if (getenv("SCHED_HEARTBEAT")) {
       heartbeat_setscheduler();
+  } else if (getenv("SCHED_DEADLINE")) {
+      deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
   }
 
   for(int i=beg; i < end; i++) {
