@@ -38,6 +38,7 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #endif
 
 #include <heartbeat.h>
+#include <deadline.h>
 
 #define DEFAULT_DEPTH	25
 #define MAXR	100
