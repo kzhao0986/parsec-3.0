@@ -232,9 +232,15 @@ void *t_seg (void *dummy)
 {
 	struct seg_data *seg;
 	struct load_data *load;
-	// struct heart *heart = heart_create();
+	struct heart *heart = heart_create();
 
-	// heart_init(heart, 10, 0);
+	heart_init(heart, 10, 50);
+
+	if (getenv("SCHED_HEARTBEAT")) {
+	    heartbeat_setscheduler();
+	} else if (getenv("SCHED_DEADLINE")) {
+	    deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+	}
 
 	while(1)
 	{
@@ -255,9 +261,9 @@ void *t_seg (void *dummy)
 		free(load);
 
 		enqueue(&q_seg_extract, seg);
-		// heartbeat(heart);
+		heartbeat(heart);
 	}
-	// heart_destroy(heart);
+	heart_destroy(heart);
 
 	queue_signal_terminate(&q_seg_extract);
 	return NULL;
@@ -268,9 +274,15 @@ void *t_extract (void *dummy)
 {
 	struct seg_data *seg;
 	struct extract_data *extract;
-	// struct heart *heart = heart_create();
+	struct heart *heart = heart_create();
 
-	// heart_init(heart, 10, 0);
+	heart_init(heart, 10, 50);
+
+	if (getenv("SCHED_HEARTBEAT")) {
+	    heartbeat_setscheduler();
+	} else if (getenv("SCHED_DEADLINE")) {
+	    deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+	}
 
 	while (1)
 	{
@@ -289,9 +301,9 @@ void *t_extract (void *dummy)
 		free(seg);
 
 		enqueue(&q_extract_vec, extract);
-		// heartbeat(heart);
+		heartbeat(heart);
 	}
-	// heart_destroy(heart);
+	heart_destroy(heart);
 
 	queue_signal_terminate(&q_extract_vec);
 	return NULL;
@@ -302,9 +314,15 @@ void *t_vec (void *dummy)
 	struct extract_data *extract;
 	struct vec_query_data *vec;
 	cass_query_t query;
-	// struct heart *heart = heart_create();
+	struct heart *heart = heart_create();
 
-	// heart_init(heart, 10, 0);
+	heart_init(heart, 10, 50);
+
+	if (getenv("SCHED_HEARTBEAT")) {
+	    heartbeat_setscheduler();
+	} else if (getenv("SCHED_DEADLINE")) {
+	    deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+	}
 
 	while(1)
 	{
@@ -336,9 +354,9 @@ void *t_vec (void *dummy)
 		cass_table_query(table, &query, &vec->result);
 
 		enqueue(&q_vec_rank, vec);
-		// heartbeat(heart);
+		heartbeat(heart);
 	}
-	// heart_destroy(heart);
+	heart_destroy(heart);
 
 	queue_signal_terminate(&q_vec_rank);
 	return NULL;
@@ -350,9 +368,15 @@ void *t_rank (void *dummy)
 	struct rank_data *rank;
 	cass_result_t *candidate;
 	cass_query_t query;
-	// struct heart *heart = heart_create();
+	struct heart *heart = heart_create();
 
-	// heart_init(heart, 10, 0);
+	heart_init(heart, 10, 50);
+
+	if (getenv("SCHED_HEARTBEAT")) {
+	    heartbeat_setscheduler();
+	} else if (getenv("SCHED_DEADLINE")) {
+	    deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+	}
 
 	while (1)
 	{
@@ -391,9 +415,9 @@ void *t_rank (void *dummy)
 		free(vec);
 		enqueue(&q_rank_out, rank);
 
-		// heartbeat(heart);
+		heartbeat(heart);
 	}
-	// heart_destroy(heart);
+	heart_destroy(heart);
 
 	queue_signal_terminate(&q_rank_out);
 	return NULL;
@@ -402,9 +426,15 @@ void *t_rank (void *dummy)
 void *t_out (void *dummy)
 {
 	struct rank_data *rank;
-	// struct heart *heart = heart_create();
+	struct heart *heart = heart_create();
 
-	// heart_init(heart, 10, 0);
+	heart_init(heart, 10, 50);
+
+	if (getenv("SCHED_HEARTBEAT")) {
+	    heartbeat_setscheduler();
+	} else if (getenv("SCHED_DEADLINE")) {
+	    deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+	}
 
 	while (1)
 	{
@@ -430,7 +460,7 @@ void *t_out (void *dummy)
 		free(rank->name);
 		free(rank);
 
-		// heartbeat(heart);
+		heartbeat(heart);
 
 		cnt_dequeue++;
 		
@@ -438,7 +468,7 @@ void *t_out (void *dummy)
 	}
 
 	printf("Task finished with heartrate %llu\n", heart->heartrate);
-	// heart_destroy(heart);
+	heart_destroy(heart);
 
 	assert(cnt_enqueue == cnt_dequeue);
 	return NULL;
