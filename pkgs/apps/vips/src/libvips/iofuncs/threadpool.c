@@ -539,7 +539,7 @@ vips_thread_main_loop( void *a )
 	VipsThreadpool *pool = thr->pool;
 	struct heart *heart = heart_create();
 
-	heart_init(heart, 100, 200);
+	heart_init(heart, 250, 500);
 
 	if (getenv("SCHED_HEARTBEAT")) {
 	    heartbeat_setscheduler();
