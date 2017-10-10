@@ -61,6 +61,9 @@
 #include <vips/thread.h>
 #include <vips/debug.h>
 
+#include <heartbeat.h>
+#include <deadline.h>
+
 #ifdef OS_WIN32
 #include <windows.h>
 #endif /*OS_WIN32*/
@@ -534,6 +537,15 @@ vips_thread_main_loop( void *a )
 {
         VipsThread *thr = (VipsThread *) a;
 	VipsThreadpool *pool = thr->pool;
+	struct heart *heart = heart_create();
+
+	heart_init(heart, 100, 200);
+
+	if (getenv("SCHED_HEARTBEAT")) {
+	    heartbeat_setscheduler();
+	} else if (getenv("SCHED_DEADLINE")) {
+	    deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+	}
 
 	g_assert( pool == thr->pool );
 
@@ -544,9 +556,13 @@ vips_thread_main_loop( void *a )
 		vips_thread_work_unit( thr );
 		im_semaphore_up( &pool->tick );
 
+		heartbeat(heart);
+
 		if( pool->stop || pool->error )
 			break;
-	} 
+	}
+	printf("Thread done with heartrate %llu\n", heart->heartrate);
+	heart_destroy(heart);
 
 	/* We are exiting: tell the main thread. 
 	 */
