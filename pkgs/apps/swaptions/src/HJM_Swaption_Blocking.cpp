@@ -52,7 +52,7 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
                                         //using continuous compounding convention
   } else {
     //converting quoted strike to continuously compounded strike
-    dStrikeCont = (1/dCompounding)*log(1+dStrike*dCompounding);  
+    // dStrikeCont = (1/dCompounding)*log(1+dStrike*dCompounding);  /* XXX */
   }
                                          //e.g., let k be strike quoted in semi-annual convention. Therefore, 1$ at the end of
                                          //half a year would earn = (1+k/2). For converting to continuous compounding, 
@@ -120,7 +120,7 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
   iSwapTimePoints = (int) (dTenor/ddelt + 0.5);			//Total HJM time points corresponding to the swap's tenor
   dSwapVectorYears = (FTYPE) (iSwapVectorLength*ddelt);
 
-  return 1;
+  return 1; /* XXX */
 
 
   //now we store the swap payoffs in the swap payoff vector
