@@ -120,6 +120,7 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
   iSwapTimePoints = (int) (dTenor/ddelt + 0.5);			//Total HJM time points corresponding to the swap's tenor
   dSwapVectorYears = (FTYPE) (iSwapVectorLength*ddelt);
 
+  return 1;
 
 
   //now we store the swap payoffs in the swap payoff vector
