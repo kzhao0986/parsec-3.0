@@ -114,7 +114,6 @@ void * worker(void *arg){
       deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
   }
 
-  printf("\n\n!!! tid %d has %d iterations !!!\n", tid, end - beg);
   for(int i=beg; i < end; i++) {
      int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
                                        swaptions[i].dCompounding, swaptions[i].dMaturity, 
@@ -126,6 +125,9 @@ void * worker(void *arg){
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
      heartbeat(heart);
+     if (heart->valid) {
+      printf("GOOD\n");
+     }
    }
 
    printf("Thread done with heartrate %llu\n", heart->heartrate);
