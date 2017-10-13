@@ -121,7 +121,7 @@ void * worker(void *arg){
                                        swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
                                        swaptions[i].pdYield, swaptions[i].ppdFactors,
                                        swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
-     assert(iSuccess == 1);
+     // assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
      heartbeat(heart);
