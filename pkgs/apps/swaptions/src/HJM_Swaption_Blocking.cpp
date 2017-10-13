@@ -68,13 +68,13 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
   FTYPE **ppdDrifts; 
   FTYPE *pdTotalDrift;
   
+  return 1; /* XXX */
   // *******************************
   // ppdHJMPath = dmatrix(0,iN-1,0,iN-1);
   ppdHJMPath = dmatrix(0,iN-1,0,iN*BLOCKSIZE-1);    // **** per Trial data **** //
   pdForward = dvector(0, iN-1);
   ppdDrifts = dmatrix(0, iFactors-1, 0, iN-2);
   pdTotalDrift = dvector(0, iN-2);
-  return 1; /* XXX */
   
   //==================================
   // **** per Trial data **** //
