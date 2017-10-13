@@ -124,7 +124,7 @@ void * worker(void *arg){
      // assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
-     printf("Heartbeat. %d\n", pthread_self());
+     printf("Heartbeat. %d\n", tid);
      heartbeat(heart);
    }
 
