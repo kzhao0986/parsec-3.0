@@ -74,16 +74,17 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
   pdForward = dvector(0, iN-1);
   ppdDrifts = dmatrix(0, iFactors-1, 0, iN-2);
   pdTotalDrift = dvector(0, iN-2);
-	
+  return 1; /* XXX */
+  
   //==================================
   // **** per Trial data **** //
-  FTYPE *pdDiscountingRatePath;	  //vector to store rate path along which the swaption payoff will be discounted
+  FTYPE *pdDiscountingRatePath;   //vector to store rate path along which the swaption payoff will be discounted
   FTYPE *pdPayoffDiscountFactors;  //vector to store discount factors for the rate path along which the swaption 
   //payoff will be discounted
-  FTYPE *pdSwapRatePath;			  //vector to store the rate path along which the swap payments made will be discounted	
-  FTYPE *pdSwapDiscountFactors;	  //vector to store discount factors for the rate path along which the swap
-  //payments made will be discounted	
-  FTYPE *pdSwapPayoffs;			  //vector to store swap payoffs
+  FTYPE *pdSwapRatePath;        //vector to store the rate path along which the swap payments made will be discounted 
+  FTYPE *pdSwapDiscountFactors;   //vector to store discount factors for the rate path along which the swap
+  //payments made will be discounted  
+  FTYPE *pdSwapPayoffs;       //vector to store swap payoffs
 
   
   int iSwapStartTimeIndex;
@@ -107,7 +108,7 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
   pdDiscountingRatePath = dvector(0, iN*BLOCKSIZE-1);
   // *******************************
   
-  iSwapVectorLength = (int) (iN - dMaturity/ddelt + 0.5);	//This is the length of the HJM rate path at the time index
+  iSwapVectorLength = (int) (iN - dMaturity/ddelt + 0.5); //This is the length of the HJM rate path at the time index
   //corresponding to swaption maturity.
   // *******************************
   pdSwapRatePath = dvector(0, iSwapVectorLength*BLOCKSIZE - 1);
@@ -116,11 +117,10 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
   pdSwapPayoffs = dvector(0, iSwapVectorLength - 1);
 
 
-  iSwapStartTimeIndex = (int) (dMaturity/ddelt + 0.5);	//Swap starts at swaption maturity
-  iSwapTimePoints = (int) (dTenor/ddelt + 0.5);			//Total HJM time points corresponding to the swap's tenor
+  iSwapStartTimeIndex = (int) (dMaturity/ddelt + 0.5);  //Swap starts at swaption maturity
+  iSwapTimePoints = (int) (dTenor/ddelt + 0.5);     //Total HJM time points corresponding to the swap's tenor
   dSwapVectorYears = (FTYPE) (iSwapVectorLength*ddelt);
 
-  return 1; /* XXX */
 
 
   //now we store the swap payoffs in the swap payoff vector
