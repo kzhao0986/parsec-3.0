@@ -125,8 +125,8 @@ void * worker(void *arg){
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
      heartbeat(heart);
-     if (heart->valid) {
-      printf("GOOD\n");
+     if (!heart->valid) {
+      printf("NOT GOOD\n");
      }
    }
 
