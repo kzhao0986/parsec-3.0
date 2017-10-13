@@ -124,9 +124,12 @@ void * worker(void *arg){
      // assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
+     if (!heart->valid) {
+      printf("Heart not valid before\n");
+     }
      heartbeat(heart);
      if (!heart->valid) {
-      printf("NOT GOOD\n");
+      printf("Heart not valid after\n");
      }
    }
 
