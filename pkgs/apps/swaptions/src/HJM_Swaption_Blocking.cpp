@@ -52,7 +52,7 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
                                         //using continuous compounding convention
   } else {
     //converting quoted strike to continuously compounded strike
-    // dStrikeCont = (1/dCompounding)*log(1+dStrike*dCompounding);  /* XXX */
+    dStrikeCont = (1/dCompounding)*log(1+dStrike*dCompounding);  
   }
                                          //e.g., let k be strike quoted in semi-annual convention. Therefore, 1$ at the end of
                                          //half a year would earn = (1+k/2). For converting to continuous compounding, 
@@ -68,7 +68,6 @@ int HJM_Swaption_Blocking(FTYPE *pdSwaptionPrice, //Output vector that will stor
   FTYPE **ppdDrifts; 
   FTYPE *pdTotalDrift;
   
-  return 1; /* XXX */
   // *******************************
   // ppdHJMPath = dmatrix(0,iN-1,0,iN-1);
   ppdHJMPath = dmatrix(0,iN-1,0,iN*BLOCKSIZE-1);    // **** per Trial data **** //

@@ -115,13 +115,13 @@ void * worker(void *arg){
   }
 
   for(int i=beg; i < end; i++) {
-     // int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
-     //                                   swaptions[i].dCompounding, swaptions[i].dMaturity, 
-     //                                   swaptions[i].dTenor, swaptions[i].dPaymentInterval,
-     //                                   swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
-     //                                   swaptions[i].pdYield, swaptions[i].ppdFactors,
-     //                                   swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
-     // assert(iSuccess == 1);
+     int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
+                                       swaptions[i].dCompounding, swaptions[i].dMaturity, 
+                                       swaptions[i].dTenor, swaptions[i].dPaymentInterval,
+                                       swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
+                                       swaptions[i].pdYield, swaptions[i].ppdFactors,
+                                       swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
+     assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
      heartbeat(heart);
