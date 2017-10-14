@@ -115,12 +115,12 @@ void * worker(void *arg){
   }
 
   for(int i=beg; i < end; i++) {
-     int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
-                                       swaptions[i].dCompounding, swaptions[i].dMaturity, 
-                                       swaptions[i].dTenor, swaptions[i].dPaymentInterval,
-                                       swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
-                                       swaptions[i].pdYield, swaptions[i].ppdFactors,
-                                       swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
+     // int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
+     //                                   swaptions[i].dCompounding, swaptions[i].dMaturity, 
+     //                                   swaptions[i].dTenor, swaptions[i].dPaymentInterval,
+     //                                   swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
+     //                                   swaptions[i].pdYield, swaptions[i].ppdFactors,
+     //                                   swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
      // assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
@@ -311,8 +311,7 @@ int main(int argc, char *argv[])
 	int threadIDs[nThreads];
         for (i = 0; i < nThreads; i++) {
           threadIDs[i] = i;
-          // pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]); /* XXX */
-          pthread_create(&threads[i], NULL, worker, &threadIDs[i]);
+          pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]);
         }
         for (i = 0; i < nThreads; i++) {
           pthread_join(threads[i], NULL);
