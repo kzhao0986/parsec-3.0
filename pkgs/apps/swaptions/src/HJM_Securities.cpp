@@ -124,13 +124,7 @@ void * worker(void *arg){
      // assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
-     if (!heart->valid) {
-      printf("Heart not valid before\n");
-     }
      heartbeat(heart);
-     if (!heart->valid) {
-      printf("Heart not valid after\n");
-     }
    }
 
    printf("Thread done with heartrate %llu\n", heart->heartrate);
@@ -317,7 +311,8 @@ int main(int argc, char *argv[])
 	int threadIDs[nThreads];
         for (i = 0; i < nThreads; i++) {
           threadIDs[i] = i;
-          pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]);
+          // pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]); /* XXX */
+          pthread_create(&threads[i], NULL, worker, &threadIDs[i]);
         }
         for (i = 0; i < nThreads; i++) {
           pthread_join(threads[i], NULL);
