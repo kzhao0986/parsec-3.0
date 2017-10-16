@@ -62,6 +62,8 @@ Simulate_To_Frame (const int frame_input)
 		Advance_To_Target_Time (Time_At_Frame (current_frame + 1));
 		Postprocess_Frame (++current_frame);
 
+		printf("Heartbeat\n");
+
 		if (example.write_output_files && !example.write_substeps) Write_Output_Files (current_frame);
 
 		if (example.verbose) std::cout << "TIME = " << time << std::endl;
