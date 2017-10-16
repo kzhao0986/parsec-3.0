@@ -628,8 +628,6 @@ int main (int argc, char *argv[])
 	tpool_join(p_seg, NULL);
 	tpool_join(p_load, NULL);
 
-	printf("Segfault here?\n");
-
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_roi_end();
 #endif
