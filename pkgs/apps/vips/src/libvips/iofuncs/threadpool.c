@@ -72,8 +72,6 @@
 #include <dmalloc.h>
 #endif /*WITH_DMALLOC*/
 
-#define TIME_THREAD
-
 /**
  * SECTION: threadpool
  * @short_description: pools of worker threads 
