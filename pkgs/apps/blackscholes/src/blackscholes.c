@@ -452,7 +452,7 @@ int main (int argc, char **argv)
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));
 
-    if (signal(SIGUSR1, print_iters) == SIG_ERRs) {
+    if (signal(SIGUSR1, print_iters) == SIG_ERR) {
         perror("signal");
     }
 
