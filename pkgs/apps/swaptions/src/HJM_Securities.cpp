@@ -107,7 +107,7 @@ void * worker(void *arg){
   if(tid == nThreads -1 )
     end = nSwaptions;
 
-  heart_init(heart, target[tid], 250);
+  heart_init(heart, targets[tid], 250);
   fprintf(stderr, "Setting target %llu\n", targets[tid]);
 
   if (getenv("SCHED_HEARTBEAT")) {
