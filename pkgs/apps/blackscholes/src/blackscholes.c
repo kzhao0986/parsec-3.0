@@ -281,7 +281,7 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-static const uint64_t targets[] = { 20000, 20000, 20000, 20000 };
+static const uint64_t targets[] = { 9000, 9000 };
 
 int bs_thread(void *tid_ptr) {
 #endif
@@ -291,7 +291,6 @@ int bs_thread(void *tid_ptr) {
     int tid = *(int *)tid_ptr;
     int start = tid * (numOptions / nThreads);
     int end = start + (numOptions / nThreads);
-    char *use_heartbeat;
     struct heart *heart = heart_create();
 
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
