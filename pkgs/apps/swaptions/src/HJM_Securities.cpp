@@ -84,6 +84,7 @@ struct Worker {
 
 #endif //TBB_VERSION
 
+static const uint64_t targets[] = { 100, 100, 100, 100 };
 
 void * worker(void *arg){
   int tid = *((int *)arg);
@@ -106,7 +107,8 @@ void * worker(void *arg){
   if(tid == nThreads -1 )
     end = nSwaptions;
 
-  heart_init(heart, 100, 250);
+  heart_init(heart, target[tid], 250);
+  fprintf(stderr, "Setting target %llu\n", targets[tid]);
 
   if (getenv("SCHED_HEARTBEAT")) {
       heartbeat_setscheduler();
