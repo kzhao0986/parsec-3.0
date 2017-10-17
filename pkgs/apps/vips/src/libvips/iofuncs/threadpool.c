@@ -530,6 +530,9 @@ vips_thread_work_unit( VipsThread *thr )
 }
 
 #ifdef HAVE_THREADS
+
+static const uint64_t targets[] = { 150, 150, 150, 150 };
+
 /* What runs as a thread ... loop, waiting to be told to do stuff.
  */
 static void *
@@ -538,12 +541,14 @@ vips_thread_main_loop( void *a )
         VipsThread *thr = (VipsThread *) a;
 	VipsThreadpool *pool = thr->pool;
 	struct heart *heart = heart_create();
+	uint64_t target = 150;
 
 #ifdef TIME_THREAD
-	printf("AAAAHHHH!!!\n");
+	target = targets[thr->tpos];
+	fprintf(stderr, "Setting target %llu\n", target);
 #endif
 
-	heart_init(heart, 250, 500);
+	heart_init(heart, targets[thr->tpos], 500);
 
 	if (getenv("SCHED_HEARTBEAT")) {
 	    heartbeat_setscheduler();
