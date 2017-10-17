@@ -452,7 +452,9 @@ int main (int argc, char **argv)
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));
 
-    signal(SIGUSR1, print_iters);
+    if (signal(SIGUSR1, print_iters) == SIG_ERRs) {
+        perror("signal");
+    }
 
 #ifdef ENABLE_PARSEC_HOOKS
     __parsec_roi_begin();
