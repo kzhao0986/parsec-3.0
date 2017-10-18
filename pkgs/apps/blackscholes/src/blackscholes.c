@@ -280,7 +280,7 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-static const uint64_t targets[] = { 2000, 8000 };
+static const uint64_t targets[] = { 1000, 9000 };
 
 int bs_thread(void *tid_ptr) {
 #endif
@@ -297,7 +297,7 @@ int bs_thread(void *tid_ptr) {
 
     params.schedtype = HEARTBEAT;
     params.target = targets[tid];
-    params.window = 150000;
+    params.window = 200000;
     params.runtime = 30 * 1000 * 1000;
     params.period = 30 * 1000 * 1000;
 
