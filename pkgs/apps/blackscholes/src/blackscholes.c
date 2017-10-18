@@ -12,6 +12,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
+#include <signal.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
@@ -282,6 +283,17 @@ DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
 static const uint64_t targets[] = { 11000, 9000 };
+static const int iters[] = { 0, 0 };
+
+static void print_iters(int signo)
+{
+    int i;
+
+    for (i = 0; i < 2; i++) {
+        fprintf(stderr, "%d ", iters[i]);
+    }
+    fprintf(stderr, "\n");
+}
 
 int bs_thread(void *tid_ptr) {
 #endif
@@ -327,6 +339,7 @@ int bs_thread(void *tid_ptr) {
 #endif
             if (i % 100 == 0) {
                 heartbeat(heart);
+                iters[tid]++;
             }
         }
     }
@@ -358,6 +371,11 @@ int main (int argc, char **argv)
 #ifdef ENABLE_PARSEC_HOOKS
    __parsec_bench_begin(__parsec_blackscholes);
 #endif
+
+   printf("Setting signal handler\n");
+   if (signal(SIGINT, print_iters) == SIG_ERR) {
+       perror("signal");
+   }
 
    if (argc != 4)
         {
