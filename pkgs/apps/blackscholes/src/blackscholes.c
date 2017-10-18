@@ -371,6 +371,11 @@ int main (int argc, char **argv)
    __parsec_bench_begin(__parsec_blackscholes);
 #endif
 
+   printf("Setting signal handler\n");
+   if (signal(SIGINT, print_iters) == SIG_ERR) {
+       perror("signal");
+   }
+
    if (argc != 4)
         {
                 printf("Usage:\n\t%s <nthreads> <inputFile> <outputFile>\n", argv[0]);
@@ -451,10 +456,6 @@ int main (int argc, char **argv)
     }
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));
-
-    if (signal(SIGINT, print_iters) == SIG_ERR) {
-        perror("signal");
-    }
 
 #ifdef ENABLE_PARSEC_HOOKS
     __parsec_roi_begin();
