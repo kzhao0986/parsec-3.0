@@ -6,12 +6,12 @@
 // 
 // Reference Source: Options, Futures, and Other Derivatives, 3rd Edition, Prentice 
 // Hall, John C. Hull,
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
-#include <sched.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
@@ -280,18 +280,7 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-static void run_on_cpu(int cpu)
-{
-    cpu_set_t mask;
-
-    CPU_ZERO(&mask);
-    CPU_SET(cpu, &mask);
-    if (sched_setaffinity(0, sizeof(mask), &mask) == -1) {
-        perror("sched_setaffinity");
-    }
-}
-
-static const uint64_t targets[] = { 14000, 6000 };
+static const uint64_t targets[] = { 6000, 4000 };
 
 int bs_thread(void *tid_ptr) {
 #endif
@@ -305,7 +294,6 @@ int bs_thread(void *tid_ptr) {
     struct hb_eval_params params;
 
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
-    run_on_cpu(4);
 
     params.schedtype = HEARTBEAT;
     params.target = targets[tid];
