@@ -327,7 +327,7 @@ int bs_thread(void *tid_ptr) {
             }
 #endif
             if (i % 100 == 0) {
-                hb_eval_iteration(session);
+                hb_eval_iteration(&session);
             }
         }
     }
