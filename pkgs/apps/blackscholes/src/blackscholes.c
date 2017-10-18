@@ -12,7 +12,6 @@
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
-#include <signal.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
