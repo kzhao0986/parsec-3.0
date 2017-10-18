@@ -12,15 +12,13 @@
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
-#include <signal.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
 #endif
 
 extern "C" {
-#include <heartbeat.h>
-#include <deadline.h>
+#include <heartbeat-eval.h>
 }
 
 // Multi-threaded pthreads header
@@ -283,17 +281,6 @@ DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
 static const uint64_t targets[] = { 11000, 9000 };
-static int iters[] = { 0, 0 };
-
-static void print_iters(int signo)
-{
-    int i;
-
-    for (i = 0; i < 2; i++) {
-        fprintf(stderr, "%d ", iters[i]);
-    }
-    fprintf(stderr, "\n");
-}
 
 int bs_thread(void *tid_ptr) {
 #endif
@@ -303,16 +290,18 @@ int bs_thread(void *tid_ptr) {
     int tid = *(int *)tid_ptr;
     int start = tid * (numOptions / nThreads);
     int end = start + (numOptions / nThreads);
-    struct heart *heart = heart_create();
+    struct hb_eval_session session;
+    struct hb_eval_params params;
 
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
-    heart_init(heart, targets[tid], 50000);
 
-    if (getenv("SCHED_HEARTBEAT")) {
-        heartbeat_setscheduler();
-    } else if (getenv("SCHED_DEADLINE")) {
-        deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
-    }
+    params.schedtype = HEARTBEAT;
+    params.target = targets[tid];
+    params.window = 50000;
+    params.runtime = 30 * 1000 * 1000;
+    params.period = 30 * 1000 * 1000;
+
+    hb_eval_init(&session, &params);
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
@@ -338,13 +327,11 @@ int bs_thread(void *tid_ptr) {
             }
 #endif
             if (i % 100 == 0) {
-                heartbeat(heart);
-                iters[tid]++;
+                hb_eval_iteration(session);
             }
         }
     }
-    printf("Thread done with heartrate %llu\n", heart->heartrate);
-    heart_destroy(heart);
+    hb_eval_finish(&session);
 
     return 0;
 }
@@ -371,11 +358,6 @@ int main (int argc, char **argv)
 #ifdef ENABLE_PARSEC_HOOKS
    __parsec_bench_begin(__parsec_blackscholes);
 #endif
-
-   printf("Setting signal handler\n");
-   if (signal(SIGINT, print_iters) == SIG_ERR) {
-       perror("signal");
-   }
 
    if (argc != 4)
         {
