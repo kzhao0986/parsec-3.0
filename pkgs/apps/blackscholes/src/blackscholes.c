@@ -283,7 +283,7 @@ DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
 static const uint64_t targets[] = { 11000, 9000 };
-static const int iters[] = { 0, 0 };
+static int iters[] = { 0, 0 };
 
 static void print_iters(int signo)
 {
