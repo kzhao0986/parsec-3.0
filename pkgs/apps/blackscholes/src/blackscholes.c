@@ -6,12 +6,12 @@
 // 
 // Reference Source: Options, Futures, and Other Derivatives, 3rd Edition, Prentice 
 // Hall, John C. Hull,
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
+#include <sched.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
