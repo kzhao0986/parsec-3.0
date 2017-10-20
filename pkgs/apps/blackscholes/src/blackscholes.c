@@ -280,7 +280,7 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-static const uint64_t targets[] = { 2857 , 17143 };
+static const uint64_t targets[] = { 17500 , 2500 };
 
 int bs_thread(void *tid_ptr) {
 #endif
