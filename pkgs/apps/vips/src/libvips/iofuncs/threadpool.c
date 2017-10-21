@@ -530,7 +530,7 @@ vips_thread_work_unit( VipsThread *thr )
 
 #ifdef HAVE_THREADS
 
-static const uint64_t targets[] = { 75, 75 };
+static const uint64_t targets[] = { 100, 50 };
 
 /* What runs as a thread ... loop, waiting to be told to do stuff.
  */
