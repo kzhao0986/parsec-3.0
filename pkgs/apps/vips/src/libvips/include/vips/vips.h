@@ -138,8 +138,6 @@ extern "C" {
 #include <vips/video.h>
 #include <vips/cimg_funcs.h>
 
-#define TIME_THREAD
-
 #ifdef IM_ENABLE_DEPRECATED
 #include <vips/deprecated.h>
 #endif /*IM_ENABLE_DEPRECATED*/

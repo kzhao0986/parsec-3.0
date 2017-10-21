@@ -314,6 +314,8 @@ vips_thread_state_new( VipsImage *im, void *a )
 		VIPS_TYPE_THREAD_STATE, vips_thread_state_set, im, a ) ) );
 }
 
+static int thread_counter;
+
 /* What we track for each thread in the pool.
  */
 typedef struct {
@@ -335,6 +337,8 @@ typedef struct {
 	/* Set by the thread if work or allocate return an error.
 	 */
 	gboolean error;	
+
+	int thread_nr;
 
 #ifdef TIME_THREAD
 	double *btime, *etime;
@@ -543,11 +547,8 @@ vips_thread_main_loop( void *a )
 	struct hb_eval_params params;
 	uint64_t target = 150;
 
-#ifdef TIME_THREAD
-	target = targets[thr->tpos];
-	fprintf(stderr, "tpos: %d\n", thr->tpos);
+	target = targets[thr->thread_nr];
 	fprintf(stderr, "Setting target %llu\n", target);
-#endif
 
 	params.schedtype = HEARTBEAT;
 	params.target = target;
@@ -596,6 +597,7 @@ vips_thread_new( VipsThreadpool *pool )
 	thr->thread = NULL;
 	thr->exit = 0;
 	thr->error = 0;
+	thr->thread_nr = __sync_fetch_and_add(&thread_counter, 1);
 #ifdef TIME_THREAD
 	thr->btime = NULL;
 	thr->etime = NULL;
