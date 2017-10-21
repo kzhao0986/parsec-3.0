@@ -61,8 +61,7 @@
 #include <vips/thread.h>
 #include <vips/debug.h>
 
-#include <heartbeat.h>
-#include <deadline.h>
+#include <heartbeat-eval.h>
 
 #ifdef OS_WIN32
 #include <windows.h>
@@ -531,7 +530,7 @@ vips_thread_work_unit( VipsThread *thr )
 
 #ifdef HAVE_THREADS
 
-static const uint64_t targets[] = { 150, 150, 150, 150 };
+static const uint64_t targets[] = { 75, 75 };
 
 /* What runs as a thread ... loop, waiting to be told to do stuff.
  */
@@ -540,21 +539,22 @@ vips_thread_main_loop( void *a )
 {
         VipsThread *thr = (VipsThread *) a;
 	VipsThreadpool *pool = thr->pool;
-	struct heart *heart = heart_create();
+	struct hb_eval_session session;
+	struct hb_eval_params params;
 	uint64_t target = 150;
 
 #ifdef TIME_THREAD
 	target = targets[thr->tpos];
-	fprintf(stderr, "Setting target %llu\n", target);
+	fprintf(stderr, "Setting target %llu\n", targets[tid]);
 #endif
 
-	heart_init(heart, targets[thr->tpos], 500);
+	params.schedtype = HEARTBEAT;
+	params.target = target;
+	params.window = target * 100;
+	params.runtime = 30 * 1000 * 1000;
+	params.period = 30 * 1000 * 1000;
 
-	if (getenv("SCHED_HEARTBEAT")) {
-	    heartbeat_setscheduler();
-	} else if (getenv("SCHED_DEADLINE")) {
-	    deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
-	}
+	hb_eval_init(&session, &params);
 
 	g_assert( pool == thr->pool );
 
@@ -565,14 +565,14 @@ vips_thread_main_loop( void *a )
 		vips_thread_work_unit( thr );
 		im_semaphore_up( &pool->tick );
 
-		heartbeat(heart);
+                hb_eval_iteration(&session);
 
 		if( pool->stop || pool->error )
 			break;
 	}
 	printf("Thread done with heartrate %llu\n", heart->heartrate);
-	heart_destroy(heart);
-
+	hb_eval_finish(&session);
+	
 	/* We are exiting: tell the main thread. 
 	 */
 	im_semaphore_up( &pool->finish );
