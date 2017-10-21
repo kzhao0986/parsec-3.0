@@ -545,6 +545,7 @@ vips_thread_main_loop( void *a )
 
 #ifdef TIME_THREAD
 	target = targets[thr->tpos];
+	fprintf(stderr, "tpos: %d\n", thr->tpos);
 	fprintf(stderr, "Setting target %llu\n", target);
 #endif
 
