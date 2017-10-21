@@ -545,7 +545,7 @@ vips_thread_main_loop( void *a )
 
 #ifdef TIME_THREAD
 	target = targets[thr->tpos];
-	fprintf(stderr, "Setting target %llu\n", targets[tid]);
+	fprintf(stderr, "Setting target %llu\n", target);
 #endif
 
 	params.schedtype = HEARTBEAT;
@@ -570,7 +570,7 @@ vips_thread_main_loop( void *a )
 		if( pool->stop || pool->error )
 			break;
 	}
-	printf("Thread done with heartrate %llu\n", heart->heartrate);
+
 	hb_eval_finish(&session);
 	
 	/* We are exiting: tell the main thread. 
