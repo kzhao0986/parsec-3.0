@@ -567,7 +567,9 @@ vips_thread_main_loop( void *a )
 		vips_thread_work_unit( thr );
 		im_semaphore_up( &pool->tick );
 
-                hb_eval_iteration(&session);
+                if (hb_eval_iteration(&session) == -1) {
+                	break;
+                }
 
 		if( pool->stop || pool->error )
 			break;
