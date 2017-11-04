@@ -1,0 +1,10 @@
+Nov  1 22:44:29 odroid kernel: [  824.830654] Heartbeat: Task with PID 2723 registered
+Nov  1 22:44:29 odroid kernel: [  824.830657] Heartbeat: Task with PID 2724 registered
+Nov  1 22:44:29 odroid kernel: [  824.830670] Heartbeat: Task 2724: Heart installed
+Nov  1 22:44:29 odroid kernel: [  824.830681] Heartbeat: Task 2723: Heart installed
+Nov  1 22:45:59 odroid kernel: [  914.831966] Heartbeat: Task 2724: Targets missed: 145/6026
+Nov  1 22:45:59 odroid kernel: [  914.831972] Heartbeat: Task 2724: CPU share: 30131806011/89973937490
+Nov  1 22:45:59 odroid kernel: [  914.831976] Heartbeat: Task 2724: Heart uninstalled
+Nov  1 22:45:59 odroid kernel: [  914.834018] Heartbeat: Task 2723: Targets missed: 0/11974
+Nov  1 22:45:59 odroid kernel: [  914.834023] Heartbeat: Task 2723: CPU share: 59867130645/89998919948
+Nov  1 22:45:59 odroid kernel: [  914.834027] Heartbeat: Task 2723: Heart uninstalled
