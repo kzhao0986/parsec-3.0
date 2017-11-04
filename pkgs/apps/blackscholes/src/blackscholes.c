@@ -280,7 +280,7 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-static const uint64_t targets[] = { 13333 , 6667 };
+static uint64_t targets[2];
 
 int bs_thread(void *tid_ptr) {
 #endif
@@ -337,6 +337,24 @@ int bs_thread(void *tid_ptr) {
 }
 #endif //ENABLE_TBB
 
+#define HEARTRATE_SUM 20000
+
+static void get_performance_targets(void)
+{
+    char *ratio_str;
+    int ratio;
+    uint64_t x;
+
+    if ((ratio = getenv("RATIO")) != NULL) {
+        ratio = atoi(ratio_str);
+    }
+
+    x = HEARTRATE_SUM / (ratio + 1);
+
+    targets[0] = x * ratio;
+    targets[1] = x;
+}
+
 int main (int argc, char **argv)
 {
     FILE *file;
@@ -345,6 +363,8 @@ int main (int argc, char **argv)
     fptype * buffer;
     int * buffer2;
     int rv;
+
+    get_performance_targets();
 
 #ifdef PARSEC_VERSION
 #define __PARSEC_STRING(x) #x
