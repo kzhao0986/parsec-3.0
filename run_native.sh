@@ -6,8 +6,8 @@ sync
 name=$1
 ratio=$2
 
-sudo $ratio LD_LIBRARY_PATH=/usr/local/lib ./bin/parsecmgmt \
-        -c gcc-hooks -a run -p $name -n 2 -i native
+sudo RATIO=$ratio LD_LIBRARY_PATH=/usr/local/lib ./bin/parsecmgmt \
+                  -c gcc-hooks -a run -p $name -n 2 -i native
 
 # Dump log to [test].log
 cat /var/log/syslog | grep Heartbeat > $name.log
