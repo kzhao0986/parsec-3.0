@@ -57,10 +57,10 @@ Task 4965: CPU share: 11%
 
 9 to 1
 ------------
-Task 5345: Targets missed: 0/21512
-Task 5345: CPU share: 89%
-Task 5346: Targets missed: 198/2489
-Task 5346: CPU share: 0%
+Task 6128: Targets missed: 0/21510
+Task 6128: CPU share: 89%
+Task 6129: Targets missed: 198/2491
+Task 6129: CPU share: 10%
 
 10 to 1
 ------------
@@ -68,11 +68,3 @@ Task 5734: Targets missed: 3/21732
 Task 5734: CPU share: 90%
 Task 5735: Targets missed: 195/2268
 Task 5735: CPU share: 9%
-
-9 to 1
-------------
-Task 6128: Targets missed: 0/21510
-Task 6128: CPU share: 89%
-Task 6129: Targets missed: 198/2491
-Task 6129: CPU share: 10%
-
