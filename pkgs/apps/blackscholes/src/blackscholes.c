@@ -280,7 +280,7 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-static uint64_t targets[2];
+static uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
 int bs_thread(void *tid_ptr) {
 #endif

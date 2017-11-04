@@ -534,7 +534,7 @@ vips_thread_work_unit( VipsThread *thr )
 
 #ifdef HAVE_THREADS
 
-static const uint64_t targets[] = { 100, 50 };
+static uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
 /* What runs as a thread ... loop, waiting to be told to do stuff.
  */
@@ -671,6 +671,24 @@ vips_threadpool_free( VipsThreadpool *pool )
 	return( 0 );
 }
 
+#define HEARTRATE_SUM 150
+
+static void get_performance_targets(void)
+{
+    char *ratio_str;
+    int ratio;
+    uint64_t x;
+
+    if ((ratio_str = getenv("RATIO")) != NULL) {
+        ratio = atoi(ratio_str);
+    }
+
+    x = HEARTRATE_SUM / (ratio + 1);
+
+    targets[0] = x * ratio;
+    targets[1] = x;
+}
+
 static VipsThreadpool *
 vips_threadpool_new( VipsImage *im )
 {
@@ -698,6 +716,8 @@ vips_threadpool_new( VipsImage *im )
 		(void) vips_threadpool_free( pool );
 		return( NULL );
 	}
+
+	get_performance_targets();
 
 	VIPS_DEBUG_MSG( "vips_threadpool_new: \"%s\" (%p), with %d threads\n", 
 		im->filename, pool, pool->nthr );
