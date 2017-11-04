@@ -345,7 +345,7 @@ static void get_performance_targets(void)
     int ratio;
     uint64_t x;
 
-    if ((ratio = getenv("RATIO")) != NULL) {
+    if ((ratio_str = getenv("RATIO")) != NULL) {
         ratio = atoi(ratio_str);
     }
 
