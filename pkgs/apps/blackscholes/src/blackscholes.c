@@ -337,7 +337,7 @@ int bs_thread(void *tid_ptr) {
 }
 #endif //ENABLE_TBB
 
-#define HEARTRATE_SUM 18000
+#define HEARTRATE_SUM 20000
 
 static void get_performance_targets(void)
 {
