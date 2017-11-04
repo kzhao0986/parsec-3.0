@@ -12,7 +12,7 @@ sudo RATIO=$ratio LD_LIBRARY_PATH=/usr/local/lib ./bin/parsecmgmt \
 # Dump log to [test].log
 cat /var/log/syslog | grep Heartbeat > $name.log
 # Isolate lines containing perf targets and CPU shares
-grep -E '(Targets|share)' $name.log > $name.tmp
+grep -E '(Targets|time)' $name.log > $name.tmp
 
 echo "$ratio to 1" >> $name.results
 echo "------------" >> $name.results
