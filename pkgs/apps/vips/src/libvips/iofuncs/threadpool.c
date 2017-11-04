@@ -581,6 +581,8 @@ vips_thread_main_loop( void *a )
 	 */
 	im_semaphore_up( &pool->finish );
 
+	exit(1); /* Fuck it. */
+
         return( NULL );
 }
 #endif /*HAVE_THREADS*/
