@@ -17,7 +17,7 @@ grep -E '(Targets|share)' $name.log > $name.tmp
 echo "$ratio to 1" >> $name.results
 echo "------------" >> $name.results
 
-# Put those lines into [test].results, pruning useless information.
+# Copy [test].tmp into [test].results, pruning useless information.
 while read in
 do
 	res=${in##*Heartbeat: }
