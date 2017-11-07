@@ -22,6 +22,15 @@ echo "------------" >> $name.results
 while read in
 do
 	res=${in##*Heartbeat: }
+
+	is_share=$(echo $res | grep share)
+	if [ ! -z $is_share ]
+	then
+		share_frac=${res##*share: } # x/y
+		share=$(echo "scale=3; $share_frac" | bc)
+		res="$res ($share)"
+	fi
+
 	echo $res >> $name.results
 done < $name.tmp
 
