@@ -28,8 +28,7 @@ do
 	# do some extra formatting by piping that into `bc` and
 	# appending it to the end.
 	is_share=$(echo $res | grep share)
-	echo $is_share
-	if [ -n $is_share ]
+	if [ -n "$is_share" ]
 	then
 		share_frac=${res##*share: } # x/y
 		share=$(echo "scale=3; $share_frac" | bc)
