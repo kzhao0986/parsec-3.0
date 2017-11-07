@@ -326,14 +326,14 @@ int bs_thread(void *tid_ptr) {
                 numError ++;
             }
 #endif
-            if (i % 100 == 0) {
+            if (i % 1000 == 0) {
                 if (hb_eval_iteration(&session) == -1) {
                     goto done;
                 }
             }
         }
     }
-    
+
 done:
     hb_eval_finish(&session);
 
@@ -341,7 +341,7 @@ done:
 }
 #endif //ENABLE_TBB
 
-#define HEARTRATE_SUM 20000
+#define HEARTRATE_SUM 2000
 
 static void get_performance_targets(void)
 {
