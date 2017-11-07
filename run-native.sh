@@ -9,8 +9,7 @@ ratio=$2
 echo "$name: $ratio to 1..."
 
 sudo RATIO=$ratio LD_LIBRARY_PATH=/usr/local/lib ./bin/parsecmgmt \
-     -c gcc-hooks -a run -p $name -n 2 -i native | \
-     grep iterations >> $name.tmp 
+     -c gcc-hooks -a run -p $name -n 2 -i native
 
 # Dump log to [test].log
 cat /var/log/syslog | grep Heartbeat > $name.log
