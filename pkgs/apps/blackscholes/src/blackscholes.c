@@ -328,11 +328,13 @@ int bs_thread(void *tid_ptr) {
 #endif
             if (i % 100 == 0) {
                 if (hb_eval_iteration(&session) == -1) {
-                    break;
+                    goto done;
                 }
             }
         }
     }
+    
+done:
     hb_eval_finish(&session);
 
     return 0;
