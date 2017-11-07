@@ -297,7 +297,7 @@ int bs_thread(void *tid_ptr) {
 
     params.schedtype = HEARTBEAT;
     params.target = targets[tid];
-    params.window = 2000000;
+    params.window = targets[tid] * 100;
     params.runtime = 30 * 1000 * 1000;
     params.period = 30 * 1000 * 1000;
 
@@ -333,7 +333,7 @@ int bs_thread(void *tid_ptr) {
             }
         }
     }
-
+    
 done:
     hb_eval_finish(&session);
 
