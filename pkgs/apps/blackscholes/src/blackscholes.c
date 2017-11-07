@@ -297,7 +297,7 @@ int bs_thread(void *tid_ptr) {
 
     params.schedtype = HEARTBEAT;
     params.target = targets[tid];
-    params.window = 1000000;
+    params.window = 2000000;
     params.runtime = 30 * 1000 * 1000;
     params.period = 30 * 1000 * 1000;
 
