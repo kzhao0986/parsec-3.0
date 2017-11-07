@@ -28,10 +28,10 @@ Task 6413: CPU share: 24311023677/119988876292 (.202)
 
 5 to 1
 ------------
-Task 6794: Targets missed: 2/19928
-Task 6794: CPU share: 99635303604/120001725583 (.830)
-Task 6795: Targets missed: 188/4073
-Task 6795: CPU share: 0/0 ()
+Task 3089: Targets missed: 1/19920
+Task 3089: CPU share: 99597573312/119996628583 (.830)
+Task 3090: Targets missed: 122/4081
+Task 3090: CPU share: 20399393563/120001627750 (.169)
 
 6 to 1
 ------------
@@ -42,10 +42,10 @@ Task 7194: CPU share: 17537079767/119978484167 (.146)
 
 7 to 1
 ------------
-Task 7588: Targets missed: 2/20924
-Task 7588: CPU share: 104616111511/120002012792 (.871)
-Task 7589: Targets missed: 193/3077
-Task 7589: CPU share: 0/0 ()
+Task 2693: Targets missed: 2/20918
+Task 2693: CPU share: 104587870061/119996534500 (.871)
+Task 2694: Targets missed: 86/3082
+Task 2694: CPU share: 15408662397/119966551000 (.128)
 
 8 to 1
 ------------
@@ -67,18 +67,4 @@ Task 8776: Targets missed: 195/2271
 Task 8776: CPU share: 11355991662/119948014834 (.094)
 Task 8775: Targets missed: 3/21729
 Task 8775: CPU share: 108642022796/119997998583 (.905)
-
-7 to 1
-------------
-Task 2693: Targets missed: 2/20918
-Task 2693: CPU share: 104587870061/119996534500 (.871)
-Task 2694: Targets missed: 86/3082
-Task 2694: CPU share: 15408662397/119966551000 (.128)
-
-5 to 1
-------------
-Task 3089: Targets missed: 1/19920
-Task 3089: CPU share: 99597573312/119996628583 (.830)
-Task 3090: Targets missed: 122/4081
-Task 3090: CPU share: 20399393563/120001627750 (.169)
 
