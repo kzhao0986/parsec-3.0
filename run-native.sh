@@ -13,7 +13,7 @@ sudo RATIO=$ratio LD_LIBRARY_PATH=/usr/local/lib ./bin/parsecmgmt \
 
 cat /var/log/syslog | grep Heartbeat > $name.log
 # Isolate lines containing perf targets and CPU shares
-grep -E '(Targets|share)' $name.log >> $name.tmp
+grep -E '(Targets|share)' $name.log > $name.tmp
 
 echo "$ratio to 1" >> $name.results
 echo "------------" >> $name.results
@@ -23,6 +23,10 @@ while read in
 do
 	res=${in##*Heartbeat: }
 
+	# If this line contains CPU share information, it'll contain
+	# a big ugly fraction like "xxxxxxxxx/yyyyyyyyy". So let's
+	# do some extra formatting by piping that into `bc` and
+	# appending it to the end.
 	is_share=$(echo $res | grep share)
 	if [ ! -z $is_share ]
 	then
