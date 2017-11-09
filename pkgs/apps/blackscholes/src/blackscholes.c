@@ -344,8 +344,10 @@ int bs_thread(void *tid_ptr) {
     params.period = 30 * 1000 * 1000;
 
     hb_eval_init(&session, &params);
-    deadline_setscheduler(deadline_get_runtime(tid), 30 * 1000 * 1000);
-    run_on_cpu(4);
+
+    if (param.schedtype == DEADLINE) {
+        // run_on_cpu(4);
+    }
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
