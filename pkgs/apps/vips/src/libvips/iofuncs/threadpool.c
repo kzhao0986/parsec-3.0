@@ -43,6 +43,7 @@
 #define VIPS_DEBUG_RED
 #define VIPS_DEBUG
  */
+#define _GNU_SOURCE
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -70,6 +71,9 @@
 #ifdef WITH_DMALLOC
 #include <dmalloc.h>
 #endif /*WITH_DMALLOC*/
+
+#include <sched.h>
+
 
 /**
  * SECTION: threadpool
@@ -546,6 +550,17 @@ static uint64_t deadline_get_runtime(int thread_nr)
 	return (uint64_t)(frac * period);
 }
 
+static void run_on_cpu(int cpu)
+{
+	cpu_set_t mask;
+
+	CPU_ZERO(&mask);
+	CPU_SET(cpu, &mask);
+	if (sched_setaffinity(0, sizeof(mask), &mask) == -1) {
+		perror("sched_setaffinity");
+	}
+}
+
 /* What runs as a thread ... loop, waiting to be told to do stuff.
  */
 static void *
@@ -560,6 +575,7 @@ vips_thread_main_loop( void *a )
 	target = targets[thr->thread_nr];
 	fprintf(stderr, "Setting target %llu\n", target);
 
+	run_on_cpu(4);
 	params.schedtype = DEADLINE;
 	params.target = target;
 	params.window = target * 100;
