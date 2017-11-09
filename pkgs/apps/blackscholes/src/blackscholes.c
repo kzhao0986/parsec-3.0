@@ -340,6 +340,7 @@ int bs_thread(void *tid_ptr) {
     params.target = targets[tid];
     params.window = targets[tid] * 100;
     params.runtime = deadline_get_runtime(tid);
+    fprintf(stderr, "\nruntime: %llu\n", params.runtime);
     params.period = 30 * 1000 * 1000;
 
     hb_eval_init(&session, &params);
