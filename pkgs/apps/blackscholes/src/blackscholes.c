@@ -345,7 +345,7 @@ int bs_thread(void *tid_ptr) {
 
     hb_eval_init(&session, &params);
 
-    if (param.schedtype == DEADLINE) {
+    if (params.schedtype == DEADLINE) {
         // run_on_cpu(4);
     }
 
