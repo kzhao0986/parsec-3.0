@@ -51,6 +51,7 @@ using namespace tbb;
 #endif
 
 #include <sched.h>
+#include <deadline.h>
 
 //Precision to use for calculations
 #define fptype float
