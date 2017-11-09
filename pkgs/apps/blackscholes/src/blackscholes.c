@@ -336,7 +336,6 @@ int bs_thread(void *tid_ptr) {
         params.schedtype = HEARTBEAT;
     } else if (getenv("SCHED_DEADLINE")) {
         params.schedtype = DEADLINE;
-        run_on_cpu(4);
     }
     params.target = targets[tid];
     params.window = targets[tid] * 100;
@@ -346,6 +345,7 @@ int bs_thread(void *tid_ptr) {
 
     hb_eval_init(&session, &params);
     deadline_setscheduler(deadline_get_runtime(tid), 30 * 1000 * 1000);
+    run_on_cpu(4);
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP
