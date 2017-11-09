@@ -6,6 +6,7 @@
 // 
 // Reference Source: Options, Futures, and Other Derivatives, 3rd Edition, Prentice 
 // Hall, John C. Hull,
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,6 +52,7 @@ using namespace tbb;
 #include <windows.h>
 #endif
 
+#include <sched.h>
 
 //Precision to use for calculations
 #define fptype float
@@ -280,7 +282,44 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
+#define HEARTRATE_SUM 2000
+
 static uint64_t targets[2]; /* Initialized by get_performance_targets() */
+
+static void get_performance_targets(void)
+{
+    char *ratio_str;
+    int ratio;
+    uint64_t x;
+
+    if ((ratio_str = getenv("RATIO")) != NULL) {
+        ratio = atoi(ratio_str);
+    }
+
+    x = HEARTRATE_SUM / (ratio + 1);
+
+    targets[0] = x * ratio;
+    targets[1] = x;
+}
+
+static uint64_t deadline_get_runtime(int thread_nr)
+{
+    double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
+    double period = 30 * 1000 * 1000;
+
+    return (uint64_t)(frac * period);
+}
+
+static void run_on_cpu(int cpu)
+{
+    cpu_set_t mask;
+
+    CPU_ZERO(&mask);
+    CPU_SET(cpu, &mask);
+    if (sched_setaffinity(0, sizeof(mask), &mask) == -1) {
+        perror("sched_setaffinity");
+    }
+}
 
 int bs_thread(void *tid_ptr) {
 #endif
@@ -294,11 +333,15 @@ int bs_thread(void *tid_ptr) {
     struct hb_eval_params params;
 
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
-
-    params.schedtype = HEARTBEAT;
+    if (getenv("SCHED_HEARTBEAT")) {
+        params.schedtype = HEARTBEAT;
+    } else if (getenv("SCHED_DEADLINE")) {
+        params.schedtype = DEADLINE;
+        run_on_cpu(4);
+    }
     params.target = targets[tid];
     params.window = targets[tid] * 100;
-    params.runtime = 30 * 1000 * 1000;
+    params.runtime = deadline_get_runtime(tid);
     params.period = 30 * 1000 * 1000;
 
     hb_eval_init(&session, &params);
@@ -340,24 +383,6 @@ done:
     return 0;
 }
 #endif //ENABLE_TBB
-
-#define HEARTRATE_SUM 2000
-
-static void get_performance_targets(void)
-{
-    char *ratio_str;
-    int ratio;
-    uint64_t x;
-
-    if ((ratio_str = getenv("RATIO")) != NULL) {
-        ratio = atoi(ratio_str);
-    }
-
-    x = HEARTRATE_SUM / (ratio + 1);
-
-    targets[0] = x * ratio;
-    targets[1] = x;
-}
 
 int main (int argc, char **argv)
 {

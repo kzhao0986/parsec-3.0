@@ -5,11 +5,13 @@ sync
 
 name=$1
 ratio=$2
+schedtype=$3
 
 echo "$name: $ratio to 1..."
 
-sudo RATIO=$ratio LD_LIBRARY_PATH=/usr/local/lib ./bin/parsecmgmt \
-     -c gcc-hooks -a run -p $name -n 2 -i native > /dev/null
+sudo RATIO=$ratio $schedtype LD_LIBRARY_PATH=/usr/local/lib \
+     ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 2 -i native \
+     > /dev/null
 
 cat /var/log/syslog | grep Heartbeat > $name.log
 # Isolate lines containing perf targets and CPU shares
