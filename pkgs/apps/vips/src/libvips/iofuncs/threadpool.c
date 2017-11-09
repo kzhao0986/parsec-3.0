@@ -534,6 +534,8 @@ vips_thread_work_unit( VipsThread *thr )
 
 #ifdef HAVE_THREADS
 
+#define HEARTRATE_SUM 150
+
 static uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
 static uint64_t deadline_get_runtime(int thread_nr)
@@ -683,8 +685,6 @@ vips_threadpool_free( VipsThreadpool *pool )
 
 	return( 0 );
 }
-
-#define HEARTRATE_SUM 150
 
 static void get_performance_targets(void)
 {
