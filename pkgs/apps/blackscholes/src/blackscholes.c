@@ -335,6 +335,7 @@ int bs_thread(void *tid_ptr) {
         params.schedtype = HEARTBEAT;
     } else if (getenv("SCHED_DEADLINE")) {
         params.schedtype = DEADLINE;
+        deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
         run_on_cpu(4);
     }
     params.target = targets[tid];
