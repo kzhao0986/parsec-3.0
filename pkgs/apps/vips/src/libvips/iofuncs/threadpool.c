@@ -536,6 +536,14 @@ vips_thread_work_unit( VipsThread *thr )
 
 static uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
+static uint64_t deadline_get_runtime(int thread_nr)
+{
+	double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
+	double period = 30 * 1000 * 1000;
+
+	return (uint64_t)(frac * period);
+}
+
 /* What runs as a thread ... loop, waiting to be told to do stuff.
  */
 static void *
@@ -550,10 +558,10 @@ vips_thread_main_loop( void *a )
 	target = targets[thr->thread_nr];
 	fprintf(stderr, "Setting target %llu\n", target);
 
-	params.schedtype = HEARTBEAT;
+	params.schedtype = DEADLINE;
 	params.target = target;
 	params.window = target * 100;
-	params.runtime = 30 * 1000 * 1000;
+	params.runtime = deadline_get_runtime(thr->thread_nr);
 	params.period = 30 * 1000 * 1000;
 
 	hb_eval_init(&session, &params);
