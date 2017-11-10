@@ -158,12 +158,12 @@ void * worker(void *arg){
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
      if (hb_eval_iteration(&session) == -1) {
-      // break;
+      break;
      }
    }
 
-   hb_eval_finish(&session);
    fprintf(stderr, "Finished with heartrate %llu\n", session.heart->heartrate);
+   hb_eval_finish(&session);
 
    return NULL;
 }
