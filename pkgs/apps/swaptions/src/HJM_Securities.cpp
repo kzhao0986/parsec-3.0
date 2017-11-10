@@ -83,8 +83,6 @@ struct Worker {
 
 #endif //TBB_VERSION
 
-static uint64_t targets[2];
-
 #define HEARTRATE_SUM 250
 
 static uint64_t targets[2]; /* Initialized by get_performance_targets() */
@@ -144,7 +142,6 @@ void * worker(void *arg){
   params.target = targets[tid];
   params.window = targets[tid] * 100;
   params.runtime = deadline_get_runtime(tid);
-  fprintf(stderr, "\nruntime: %llu\n", params.runtime);
   params.period = 30 * 1000 * 1000;
 
   hb_eval_init(&session, &params);
@@ -164,7 +161,6 @@ void * worker(void *arg){
      }
    }
 
-   printf("Thread done with heartrate %llu\n", heart->heartrate);
    hb_eval_finish(&session);
 
    return NULL;
