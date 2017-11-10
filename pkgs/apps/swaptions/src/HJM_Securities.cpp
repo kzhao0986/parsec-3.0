@@ -83,7 +83,7 @@ struct Worker {
 
 #endif //TBB_VERSION
 
-#define HEARTRATE_SUM 110
+#define HEARTRATE_SUM 150
 
 static uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
