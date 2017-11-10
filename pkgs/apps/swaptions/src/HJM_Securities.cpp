@@ -83,7 +83,7 @@ struct Worker {
 
 #endif //TBB_VERSION
 
-#define HEARTRATE_SUM 100
+#define HEARTRATE_SUM 110
 
 static uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
@@ -108,8 +108,7 @@ static uint64_t deadline_get_runtime(int thread_nr)
     double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
     double period = 30 * 1000 * 1000;
 
-    // return (uint64_t)(frac * period);
-    return (uint64_t)period;
+    return (uint64_t)(frac * period);
 }
 
 void * worker(void *arg){
