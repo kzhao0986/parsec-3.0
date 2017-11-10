@@ -140,7 +140,7 @@ void * worker(void *arg){
       params.schedtype = DEADLINE;
   }
   params.target = targets[tid];
-  params.window = targets[tid] * 50;
+  params.window = targets[tid] * 150;
   params.runtime = deadline_get_runtime(tid);
   params.period = 30 * 1000 * 1000;
 
