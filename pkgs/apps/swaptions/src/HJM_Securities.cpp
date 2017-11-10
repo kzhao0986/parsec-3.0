@@ -83,7 +83,7 @@ struct Worker {
 
 #endif //TBB_VERSION
 
-static const uint64_t targets[2];
+static uint64_t targets[2];
 
 #define HEARTRATE_SUM 250
 
@@ -165,7 +165,6 @@ void * worker(void *arg){
    }
 
    printf("Thread done with heartrate %llu\n", heart->heartrate);
-   heart_destroy(heart);
    hb_eval_finish(&session);
 
    return NULL;
