@@ -309,17 +309,6 @@ static uint64_t deadline_get_runtime(int thread_nr)
     return (uint64_t)(frac * period);
 }
 
-static void run_on_cpu(int cpu)
-{
-    cpu_set_t mask;
-
-    CPU_ZERO(&mask);
-    CPU_SET(cpu, &mask);
-    if (sched_setaffinity(0, sizeof(mask), &mask) == -1) {
-        perror("sched_setaffinity");
-    }
-}
-
 int bs_thread(void *tid_ptr) {
 #endif
     int i, j;
@@ -344,10 +333,6 @@ int bs_thread(void *tid_ptr) {
     params.period = 30 * 1000 * 1000;
 
     hb_eval_init(&session, &params);
-
-    if (params.schedtype == DEADLINE) {
-        // run_on_cpu(4);
-    }
 
     for (j=0; j<NUM_RUNS; j++) {
 #ifdef ENABLE_OPENMP

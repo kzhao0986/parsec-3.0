@@ -10,8 +10,7 @@
 #include <iostream>
 
 extern "C" {
-#include <heartbeat.h>
-#include <deadline.h>
+#include <heartbeat-eval.h>
 }
 
 #include "nr_routines.h"
@@ -84,12 +83,41 @@ struct Worker {
 
 #endif //TBB_VERSION
 
-static const uint64_t targets[] = { 100, 100, 100, 100 };
+static const uint64_t targets[2];
+
+#define HEARTRATE_SUM 250
+
+static uint64_t targets[2]; /* Initialized by get_performance_targets() */
+
+static void get_performance_targets(void)
+{
+    char *ratio_str;
+    int ratio;
+    uint64_t x;
+
+    if ((ratio_str = getenv("RATIO")) != NULL) {
+        ratio = atoi(ratio_str);
+    }
+
+    x = HEARTRATE_SUM / (ratio + 1);
+
+    targets[0] = x * ratio;
+    targets[1] = x;
+}
+
+static uint64_t deadline_get_runtime(int thread_nr)
+{
+    double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
+    double period = 30 * 1000 * 1000;
+
+    return (uint64_t)(frac * period);
+}
 
 void * worker(void *arg){
   int tid = *((int *)arg);
   FTYPE pdSwaptionPrice[2];
-  struct heart *heart = heart_create();
+  struct hb_eval_session session;
+  struct hb_eval_params params;
 
   int beg, end, chunksize;
   if (tid < (nSwaptions % nThreads)) {
@@ -107,14 +135,19 @@ void * worker(void *arg){
   if(tid == nThreads -1 )
     end = nSwaptions;
 
-  heart_init(heart, targets[tid], 250);
   fprintf(stderr, "Setting target %llu\n", targets[tid]);
-
   if (getenv("SCHED_HEARTBEAT")) {
-      heartbeat_setscheduler();
+      params.schedtype = HEARTBEAT;
   } else if (getenv("SCHED_DEADLINE")) {
-      deadline_setscheduler(30 * 1000 * 1000, 30 * 1000 * 1000);
+      params.schedtype = DEADLINE;
   }
+  params.target = targets[tid];
+  params.window = targets[tid] * 100;
+  params.runtime = deadline_get_runtime(tid);
+  fprintf(stderr, "\nruntime: %llu\n", params.runtime);
+  params.period = 30 * 1000 * 1000;
+
+  hb_eval_init(&session, &params);
 
   for(int i=beg; i < end; i++) {
      int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
@@ -126,11 +159,14 @@ void * worker(void *arg){
      assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
-     heartbeat(heart);
+     if (hb_eval_iteration(&session) == -1) {
+      break;
+     }
    }
 
    printf("Thread done with heartrate %llu\n", heart->heartrate);
    heart_destroy(heart);
+   hb_eval_finish(&session);
 
    return NULL;
 }
@@ -156,6 +192,8 @@ int main(int argc, char *argv[])
 	int i,j;
 	
 	FTYPE **factors=NULL;
+
+  get_performance_targets();
 
 #ifdef PARSEC_VERSION
 #define __PARSEC_STRING(x) #x
