@@ -162,6 +162,7 @@ void * worker(void *arg){
    }
 
    hb_eval_finish(&session);
+   fprintf(stderr, "Finished with heartrate %llu\n", session.heart->heartrate);
 
    return NULL;
 }
