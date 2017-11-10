@@ -575,8 +575,11 @@ vips_thread_main_loop( void *a )
 	target = targets[thr->thread_nr];
 	fprintf(stderr, "Setting target %llu\n", target);
 
-	run_on_cpu(4);
-	params.schedtype = DEADLINE;
+	if (getenv("SCHED_HEARTBEAT")) {
+	    params.schedtype = HEARTBEAT;
+	} else if (getenv("SCHED_DEADLINE")) {
+	    params.schedtype = DEADLINE;
+	}
 	params.target = target;
 	params.window = target * 100;
 	params.runtime = deadline_get_runtime(thr->thread_nr);
