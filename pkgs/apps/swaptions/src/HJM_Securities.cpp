@@ -108,7 +108,8 @@ static uint64_t deadline_get_runtime(int thread_nr)
     double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
     double period = 30 * 1000 * 1000;
 
-    return (uint64_t)(frac * period);
+    // return (uint64_t)(frac * period);
+    return (uint64_t)(period);
 }
 
 void * worker(void *arg){
