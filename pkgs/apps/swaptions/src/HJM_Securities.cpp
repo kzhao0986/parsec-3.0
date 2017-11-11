@@ -141,7 +141,7 @@ void * worker(void *arg){
   }
   params.target = targets[tid];
   // params.window = targets[tid] * 100;
-  params.window = 50000;
+  params.window = 10000;
   params.runtime = deadline_get_runtime(tid);
   params.period = 30 * 1000 * 1000;
 
