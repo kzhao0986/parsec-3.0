@@ -309,7 +309,7 @@ static uint64_t deadline_get_runtime(int thread_nr)
     return (uint64_t)(frac * period);
 }
 
-static void init_params(struct hb_eval_params *params)
+static void init_params(struct hb_eval_params *params, int tid)
 {
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
 
@@ -335,7 +335,7 @@ int bs_thread(void *tid_ptr) {
     struct hb_eval_session session;
     struct hb_eval_params params;
 
-    init_params(&params);
+    init_params(&params, tid);
     hb_eval_init(&session, &params);
 
     for (j=0; j<NUM_RUNS; j++) {

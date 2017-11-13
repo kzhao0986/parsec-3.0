@@ -111,7 +111,7 @@ static uint64_t deadline_get_runtime(int thread_nr)
     return (uint64_t)(frac * period);
 }
 
-static void init_params(struct hb_eval_params *params)
+static void init_params(struct hb_eval_params *params, int tid)
 {
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
 
@@ -148,7 +148,7 @@ void * worker(void *arg){
   if(tid == nThreads -1 )
     end = nSwaptions;
 
-  init_params(&params);
+  init_params(&params, tid);
   hb_eval_init(&session, &params);
 
   for(int i=beg; i < end; i++) {

@@ -550,9 +550,9 @@ static uint64_t deadline_get_runtime(int thread_nr)
 	return (uint64_t)(frac * period);
 }
 
-static void init_params(struct hb_eval_params *params)
+static void init_params(struct hb_eval_params *params, int thread_nr)
 {
-	uint64_t target = targets[thr->thread_nr];
+	uint64_t target = targets[thread_nr];
 
 	fprintf(stderr, "Setting target %llu\n", target);
 
@@ -563,7 +563,7 @@ static void init_params(struct hb_eval_params *params)
 	}
 	params->target = target;
 	params->window = target * 100;
-	params->runtime = deadline_get_runtime(thr->thread_nr);
+	params->runtime = deadline_get_runtime(thread_nr);
 	params->period = 30 * 1000 * 1000;
 }
 
@@ -577,7 +577,7 @@ vips_thread_main_loop( void *a )
 	struct hb_eval_session session;
 	struct hb_eval_params params;
 
-	init_params(&params);
+	init_params(&params, thr->thread_nr);
 	hb_eval_init(&session, &params);
 
 	g_assert( pool == thr->pool );
