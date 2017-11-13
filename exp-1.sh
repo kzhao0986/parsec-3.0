@@ -11,5 +11,5 @@ fi
 
 for i in {1..10}
 do
-	./run-native.sh $benchmark $i $schedtype
+	./__exp-1.sh $benchmark $i $schedtype
 done
