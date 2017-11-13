@@ -300,6 +300,20 @@ static void get_experiment_number(void)
     exp_nr = atoi(exp_nr_str);
 }
 
+static enum hb_eval_schedtype get_schedtype(void)
+{
+    enum hb_eval_schedtype schedtype;
+
+    if (getenv("SCHED_HEARTBEAT")) {
+        schedtype = HEARTBEAT;
+    } else if (getenv("SCHED_DEADLINE")) {
+        schedtype = DEADLINE;
+    } else {
+        schedtype = FAIR;
+    }
+    return schedtype;
+}
+
 static void get_performance_targets__exp1(void)
 {
     char *ratio_str;
@@ -334,7 +348,8 @@ static void get_performance_targets(void)
         get_performance_targets__exp2();
         break;
     default:
-        break;
+        fprintf(stderr, "Invalid experiment number\n");
+        exit(-1);
     }
 }
 
@@ -363,7 +378,8 @@ static uint64_t deadline_get_runtime(int thread_nr)
         runtime = deadline_get_runtime__exp2();
         break;
     default:
-        break;
+        fprintf(stderr, "Invalid experiment number\n");
+        exit(-1);
     }
     return runtime;
 }
@@ -372,11 +388,7 @@ static void init_params(struct hb_eval_params *params, int tid)
 {
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
 
-    if (getenv("SCHED_HEARTBEAT")) {
-        params->schedtype = HEARTBEAT;
-    } else if (getenv("SCHED_DEADLINE")) {
-        params->schedtype = DEADLINE;
-    }
+    params->schedtype = get_schedtype();
     params->target = targets[tid];
     params->window = targets[tid] * 100;
     params->runtime = deadline_get_runtime(tid);
@@ -444,6 +456,7 @@ int main (int argc, char **argv)
     int * buffer2;
     int rv;
 
+    get_experiment_number();
     get_performance_targets();
 
 #ifdef PARSEC_VERSION
