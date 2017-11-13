@@ -542,6 +542,22 @@ vips_thread_work_unit( VipsThread *thr )
 
 static uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
+static void get_performance_targets(void)
+{
+    char *ratio_str;
+    int ratio;
+    uint64_t x;
+
+    if ((ratio_str = getenv("RATIO")) != NULL) {
+        ratio = atoi(ratio_str);
+    }
+
+    x = HEARTRATE_SUM / (ratio + 1);
+
+    targets[0] = x * ratio;
+    targets[1] = x;
+}
+
 static uint64_t deadline_get_runtime(int thread_nr)
 {
 	double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
@@ -696,22 +712,6 @@ vips_threadpool_free( VipsThreadpool *pool )
 	im_semaphore_destroy( &pool->tick );
 
 	return( 0 );
-}
-
-static void get_performance_targets(void)
-{
-    char *ratio_str;
-    int ratio;
-    uint64_t x;
-
-    if ((ratio_str = getenv("RATIO")) != NULL) {
-        ratio = atoi(ratio_str);
-    }
-
-    x = HEARTRATE_SUM / (ratio + 1);
-
-    targets[0] = x * ratio;
-    targets[1] = x;
 }
 
 static VipsThreadpool *

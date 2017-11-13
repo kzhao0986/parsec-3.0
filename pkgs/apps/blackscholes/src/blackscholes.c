@@ -281,32 +281,91 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-#define HEARTRATE_SUM 2000
+#define LITTLE_HEARTRATE    1000
+#define BIG_HEARTRATE       2000
 
-static uint64_t targets[2]; /* Initialized by get_performance_targets() */
+static uint64_t targets[4]; /* Initialized by get_performance_targets() */
+static int exp_nr;
 
-static void get_performance_targets(void)
+static void get_experiment_number(void)
+{
+    char *exp_nr_str;
+
+    exp_nr_str = getenv("EXP_NR");
+    if (exp_nr_str == NULL) {
+        fprintf(stderr, "Error: Please specify experiment number\n");
+        exit(-1);
+    }
+
+    exp_nr = atoi(exp_nr_str);
+}
+
+static void get_performance_targets__exp1(void)
 {
     char *ratio_str;
     int ratio;
     uint64_t x;
 
-    if ((ratio_str = getenv("RATIO")) != NULL) {
-        ratio = atoi(ratio_str);
+    ratio_str = getenv("RATIO");
+    if (ratio_str == NULL) {
+        fprintf(stderr, "Error: exp1: no ratio specified\n");
+        exit(-1);
     }
 
-    x = HEARTRATE_SUM / (ratio + 1);
+    x = BIG_HEARTRATE / (ratio + 1);
 
     targets[0] = x * ratio;
     targets[1] = x;
 }
 
-static uint64_t deadline_get_runtime(int thread_nr)
+static void get_performance_targets__exp2(void)
 {
-    double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
+    targets[0] = targets[1] = LITTLE_HEARTRATE;
+    targets[2] = targets[3] = BIG_HEARTRATE;
+}
+
+static void get_performance_targets(void)
+{
+    switch (exp_nr) {
+    case 1:
+        get_performance_targets__exp1();
+        break;
+    case 2:
+        get_performance_targets__exp2();
+        break;
+    default:
+        break;
+    }
+}
+
+static uint64_t deadline_get_runtime__exp1(int thread_nr)
+{
+    double frac = (double)targets[thread_nr] / BIG_HEARTRATE;
     double period = 30 * 1000 * 1000;
 
     return (uint64_t)(frac * period);
+}
+
+static uint64_t deadline_get_runtime__exp2(void)
+{
+    return 30 * 1000 * 1000;
+}
+
+static uint64_t deadline_get_runtime(int thread_nr)
+{
+    uint64_t runtime;
+
+    switch (exp_nr) {
+    case 1:
+        runtime = deadline_get_runtime__exp1(thread_nr);
+        break;
+    case 2:
+        runtime = deadline_get_runtime__exp2();
+        break;
+    default:
+        break;
+    }
+    return runtime;
 }
 
 static void init_params(struct hb_eval_params *params, int tid)
