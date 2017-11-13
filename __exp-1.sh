@@ -9,7 +9,7 @@ schedtype=$3
 
 echo "$name: $ratio to 1..."
 
-sudo RATIO=$ratio $schedtype LD_LIBRARY_PATH=/usr/local/lib \
+sudo EXP_NR=1 RATIO=$ratio $schedtype LD_LIBRARY_PATH=/usr/local/lib \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 2 -i native \
      > /dev/null
 
