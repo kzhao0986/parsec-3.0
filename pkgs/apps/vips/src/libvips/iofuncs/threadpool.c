@@ -553,18 +553,18 @@ static uint64_t deadline_get_runtime(int thread_nr)
 static void init_params(struct hb_eval_params *params)
 {
 	uint64_t target = targets[thr->thread_nr];
-	
+
 	fprintf(stderr, "Setting target %llu\n", target);
 
 	if (getenv("SCHED_HEARTBEAT")) {
-	    params.schedtype = HEARTBEAT;
+	    params->schedtype = HEARTBEAT;
 	} else if (getenv("SCHED_DEADLINE")) {
-	    params.schedtype = DEADLINE;
+	    params->schedtype = DEADLINE;
 	}
-	params.target = target;
-	params.window = target * 100;
-	params.runtime = deadline_get_runtime(thr->thread_nr);
-	params.period = 30 * 1000 * 1000;
+	params->target = target;
+	params->window = target * 100;
+	params->runtime = deadline_get_runtime(thr->thread_nr);
+	params->period = 30 * 1000 * 1000;
 }
 
 /* What runs as a thread ... loop, waiting to be told to do stuff.
