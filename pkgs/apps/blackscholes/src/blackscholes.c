@@ -309,6 +309,21 @@ static uint64_t deadline_get_runtime(int thread_nr)
     return (uint64_t)(frac * period);
 }
 
+static void init_params(struct hb_eval_params *params)
+{
+    fprintf(stderr, "Setting target %llu\n", targets[tid]);
+    
+    if (getenv("SCHED_HEARTBEAT")) {
+        params.schedtype = HEARTBEAT;
+    } else if (getenv("SCHED_DEADLINE")) {
+        params.schedtype = DEADLINE;
+    }
+    params.target = targets[tid];
+    params.window = targets[tid] * 100;
+    params.runtime = deadline_get_runtime(tid);
+    params.period = 30 * 1000 * 1000;
+}
+
 int bs_thread(void *tid_ptr) {
 #endif
     int i, j;
@@ -320,17 +335,7 @@ int bs_thread(void *tid_ptr) {
     struct hb_eval_session session;
     struct hb_eval_params params;
 
-    fprintf(stderr, "Setting target %llu\n", targets[tid]);
-    if (getenv("SCHED_HEARTBEAT")) {
-        params.schedtype = HEARTBEAT;
-    } else if (getenv("SCHED_DEADLINE")) {
-        params.schedtype = DEADLINE;
-    }
-    params.target = targets[tid];
-    params.window = targets[tid] * 100;
-    params.runtime = deadline_get_runtime(tid);
-    params.period = 30 * 1000 * 1000;
-
+    init_params(&params);
     hb_eval_init(&session, &params);
 
     for (j=0; j<NUM_RUNS; j++) {

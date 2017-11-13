@@ -550,29 +550,10 @@ static uint64_t deadline_get_runtime(int thread_nr)
 	return (uint64_t)(frac * period);
 }
 
-static void run_on_cpu(int cpu)
+static void init_params(struct hb_eval_params *params)
 {
-	cpu_set_t mask;
-
-	CPU_ZERO(&mask);
-	CPU_SET(cpu, &mask);
-	if (sched_setaffinity(0, sizeof(mask), &mask) == -1) {
-		perror("sched_setaffinity");
-	}
-}
-
-/* What runs as a thread ... loop, waiting to be told to do stuff.
- */
-static void *
-vips_thread_main_loop( void *a )
-{
-        VipsThread *thr = (VipsThread *) a;
-	VipsThreadpool *pool = thr->pool;
-	struct hb_eval_session session;
-	struct hb_eval_params params;
-	uint64_t target = 150;
-
-	target = targets[thr->thread_nr];
+	uint64_t target = targets[thr->thread_nr];
+	
 	fprintf(stderr, "Setting target %llu\n", target);
 
 	if (getenv("SCHED_HEARTBEAT")) {
@@ -584,7 +565,19 @@ vips_thread_main_loop( void *a )
 	params.window = target * 100;
 	params.runtime = deadline_get_runtime(thr->thread_nr);
 	params.period = 30 * 1000 * 1000;
+}
 
+/* What runs as a thread ... loop, waiting to be told to do stuff.
+ */
+static void *
+vips_thread_main_loop( void *a )
+{
+        VipsThread *thr = (VipsThread *) a;
+	VipsThreadpool *pool = thr->pool;
+	struct hb_eval_session session;
+	struct hb_eval_params params;
+
+	init_params(&params);
 	hb_eval_init(&session, &params);
 
 	g_assert( pool == thr->pool );
