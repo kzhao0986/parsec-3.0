@@ -330,6 +330,9 @@ static void get_performance_targets__exp1(void)
 
     targets[0] = x * ratio;
     targets[1] = x;
+
+    fprintf(stderr, "\nFUCK\n\n");
+    
 }
 
 static void get_performance_targets__exp2(void)
@@ -340,8 +343,6 @@ static void get_performance_targets__exp2(void)
 
 static void get_performance_targets(void)
 {
-    fprintf(stderr, "\nFUCK\n\n");
-
     switch (exp_nr) {
     case 1:
         get_performance_targets__exp1();
