@@ -442,6 +442,7 @@ int bs_thread(void *tid_ptr) {
     }
 
 done:
+    fprintf(stderr, "Heartrate: %llu\n", session.heart->heartrate);
     hb_eval_finish(&session);
 
     return 0;
