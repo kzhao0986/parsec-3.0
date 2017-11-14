@@ -332,7 +332,8 @@ static void get_performance_targets__exp1(void)
     targets[1] = x;
 
     fprintf(stderr, "\nFUCK\n\n");
-    
+    fprintf(stderr, "%llu %llu\n", targets[0], targets[1]);
+
 }
 
 static void get_performance_targets__exp2(void)
