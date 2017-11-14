@@ -292,7 +292,7 @@ static void get_experiment_number(void)
 {
     char *exp_nr_str;
 
-    exp_nr_str = getenv("EXP_NR");
+    exp_nr_str = getenv("exp_nr");
     if (exp_nr_str == NULL) {
         fprintf(stderr, "Error: Please specify experiment number\n");
         exit(-1);
