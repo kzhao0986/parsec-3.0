@@ -17,7 +17,7 @@ outfile=$name-exp2
 
 cat /var/log/syslog | grep Heartbeat > $outfile.log
 # Isolate lines containing perf targets and CPU shares
-grep -E '(Targets|share)' $outfile.log > $outfile.tmp
+grep -E '(Migrating|Targets|share)' $outfile.log > $outfile.tmp
 
 echo "$ratio to 1" >> $outfile.results
 echo "------------" >> $outfile.results
