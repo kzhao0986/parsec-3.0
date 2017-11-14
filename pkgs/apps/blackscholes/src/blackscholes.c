@@ -281,7 +281,7 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-#define LITTLE_HEARTRATE    1000
+#define LITTLE_HEARTRATE    900
 #define BIG_HEARTRATE       2000
 
 static uint64_t targets[4]; /* Initialized by get_performance_targets() */
