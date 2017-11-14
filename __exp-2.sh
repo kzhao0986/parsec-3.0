@@ -19,7 +19,7 @@ cat /var/log/syslog | grep Heartbeat > $outfile.log
 # Isolate lines containing perf targets and CPU shares
 grep -E '(Migrating|Targets|share)' $outfile.log > $outfile.tmp
 
-echo "$ratio to 1" >> $outfile.results
+echo "$weights" >> $outfile.results
 echo "------------" >> $outfile.results
 
 # Copy [test].tmp into [test].results, pruning useless information.
