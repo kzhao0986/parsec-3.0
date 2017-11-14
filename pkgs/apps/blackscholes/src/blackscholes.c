@@ -281,8 +281,9 @@ int bs_thread(void *tid_ptr) {
 DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #else
 
-#define LITTLE_HEARTRATE    900
-#define BIG_HEARTRATE       2000
+/*************************** Begin Heartbeat Eval ****************************/
+
+#define BASE_HEARTRATE 2000
 
 static uint64_t targets[4]; /* Initialized by get_performance_targets() */
 static int exp_nr;
@@ -300,20 +301,6 @@ static void get_experiment_number(void)
     exp_nr = atoi(exp_nr_str);
 }
 
-static enum hb_eval_schedtype get_schedtype(void)
-{
-    enum hb_eval_schedtype schedtype;
-
-    if (getenv("SCHED_HEARTBEAT")) {
-        schedtype = HEARTBEAT;
-    } else if (getenv("SCHED_DEADLINE")) {
-        schedtype = DEADLINE;
-    } else {
-        schedtype = FAIR;
-    }
-    return schedtype;
-}
-
 static void get_performance_targets__exp1(void)
 {
     char *ratio_str;
@@ -327,7 +314,7 @@ static void get_performance_targets__exp1(void)
     }
     ratio = atoi(ratio_str);
 
-    x = BIG_HEARTRATE / (ratio + 1);
+    x = BASE_HEARTRATE / (ratio + 1);
 
     targets[0] = x * ratio;
     targets[1] = x;
@@ -335,8 +322,28 @@ static void get_performance_targets__exp1(void)
 
 static void get_performance_targets__exp2(void)
 {
-    targets[0] = targets[1] = LITTLE_HEARTRATE;
-    targets[2] = targets[3] = BIG_HEARTRATE;
+    double weights[4];
+    char *weights_str, *token;
+    int i;
+
+    weights_str = getenv("weights");
+    if (weights_str == NULL) {
+        fprintf(stderr, "Error: exp2: no weights specified\n");
+        exit(-1);
+    }
+
+    token = strtok(weights_str, " ");
+    weights[0] = atof(token);
+    i = 1;
+    while (token != NULL && i < 4) {
+        token = strtok(NULL, " ");
+        weights[i] = atof(token);
+        i++;
+    }
+
+    for (i = 0; i < 4; i++) {
+        targets[i] = (double)(BASE_HEARTRATE * weights[i]);
+    }
 }
 
 static void get_performance_targets(void)
@@ -354,9 +361,23 @@ static void get_performance_targets(void)
     }
 }
 
+static enum hb_eval_schedtype get_schedtype(void)
+{
+    enum hb_eval_schedtype schedtype;
+
+    if (getenv("SCHED_HEARTBEAT")) {
+        schedtype = HEARTBEAT;
+    } else if (getenv("SCHED_DEADLINE")) {
+        schedtype = DEADLINE;
+    } else {
+        schedtype = FAIR;
+    }
+    return schedtype;
+}
+
 static uint64_t deadline_get_runtime__exp1(int thread_nr)
 {
-    double frac = (double)targets[thread_nr] / BIG_HEARTRATE;
+    double frac = (double)targets[thread_nr] / BASE_HEARTRATE;
     double period = 30 * 1000 * 1000;
 
     return (uint64_t)(frac * period);
@@ -395,6 +416,8 @@ static void init_params(struct hb_eval_params *params, int tid)
     params->runtime = deadline_get_runtime(tid);
     params->period = 30 * 1000 * 1000;
 }
+
+/**************************** End Heartbeat Eval *****************************/
 
 int bs_thread(void *tid_ptr) {
 #endif
