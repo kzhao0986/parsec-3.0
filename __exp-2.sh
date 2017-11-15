@@ -16,7 +16,7 @@ sudo exp_nr=2 weights="$weights" $schedtype LD_LIBRARY_PATH=/usr/local/lib \
 outfile=$name-exp2
 
 cat /var/log/syslog | grep Heartbeat > $outfile.log
-# Isolate lines containing perf targets and CPU shares
+# Isolate lines containing useful information.
 grep -E '(Migrating|Targets|share)' $outfile.log > $outfile.tmp
 
 echo "$weights" >> $outfile.results

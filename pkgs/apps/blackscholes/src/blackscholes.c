@@ -286,6 +286,7 @@ DWORD WINAPI bs_thread(LPVOID tid_ptr){
 #define BASE_HEARTRATE 2000
 
 static uint64_t targets[4]; /* Initialized by get_performance_targets() */
+static double weights[4];
 static int exp_nr;
 
 static void get_experiment_number(void)
@@ -322,7 +323,6 @@ static void get_performance_targets__exp1(void)
 
 static void get_performance_targets__exp2(void)
 {
-    double weights[4];
     char *weights_str, *token;
     int i;
 
@@ -383,9 +383,11 @@ static uint64_t deadline_get_runtime__exp1(int thread_nr)
     return (uint64_t)(frac * period);
 }
 
-static uint64_t deadline_get_runtime__exp2(void)
+static uint64_t deadline_get_runtime__exp2(int thread_nr)
 {
-    return 30 * 1000 * 1000;
+    double period = 30 * 1000 * 1000;
+
+    return (uint64_t)(weights[thread_nr] * period);
 }
 
 static uint64_t deadline_get_runtime(int thread_nr)
@@ -397,7 +399,7 @@ static uint64_t deadline_get_runtime(int thread_nr)
         runtime = deadline_get_runtime__exp1(thread_nr);
         break;
     case 2:
-        runtime = deadline_get_runtime__exp2();
+        runtime = deadline_get_runtime__exp2(thread_nr);
         break;
     default:
         fprintf(stderr, "Invalid experiment number\n");
