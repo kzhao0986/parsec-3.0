@@ -18,7 +18,7 @@
 
 extern "C" {
 #include <heartbeat-eval.h>
-#include <energymon-default.h>
+#include <energymon.h>
 }
 
 // Multi-threaded pthreads header
