@@ -54,7 +54,7 @@ ifdef double
 NCO = -DNCO=2
 endif
 
-CXXFLAGS += $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC)
+CXXFLAGS += $(MT) $(NCO) $(FUNC) $(ERR) $(CSRC) -I/usr/local/include/energymon
 LIBS += -lheartbeat-eval -ldeadline $(pkg-config energymon-default --libs --static)
 
 all: $(TARGET)
