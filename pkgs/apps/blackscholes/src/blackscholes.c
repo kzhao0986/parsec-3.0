@@ -602,12 +602,27 @@ int main (int argc, char **argv)
 #else
     int *tids;
     tids = (int *) malloc (nThreads * sizeof(int));
+    energymon em;
+    uint64_t start_uj, end_uj;
+
+    // get the energymon instance and initialize
+    energymon_get_default(&em);
+    em.finit(&em);
+
+    // profile application function
+    start_uj = em.fread(&em);
 
     for(i=0; i<nThreads; i++) {
         tids[i]=i;
         CREATE_WITH_ARG(bs_thread, &tids[i]);
     }
     WAIT_FOR_END(nThreads);
+
+    end_uj = em.fread(&em);
+    printf("Total energy for do_work() in microjoules: %"PRIu64"\n", end_uj - start_uj);
+
+    // destroy the instance
+    em.ffinish(&em);
     free(tids);
 #endif //WIN32
 #else //ENABLE_THREADS
