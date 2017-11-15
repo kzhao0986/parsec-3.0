@@ -606,7 +606,7 @@ int main (int argc, char **argv)
     uint64_t start_uj, end_uj;
 
     // get the energymon instance and initialize
-    energymon_get_default(&em);
+    // energymon_get_default(&em);
     em.finit(&em);
 
     // profile application function
