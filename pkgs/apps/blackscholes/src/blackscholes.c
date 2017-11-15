@@ -619,7 +619,7 @@ int main (int argc, char **argv)
     WAIT_FOR_END(nThreads);
 
     end_uj = em.fread(&em);
-    printf("Total energy for do_work() in microjoules: %"PRIu64"\n", end_uj - start_uj);
+    printf("Total energy for blackscholes in microjoules: %"PRIu64"\n", end_uj - start_uj);
 
     // destroy the instance
     em.ffinish(&em);
