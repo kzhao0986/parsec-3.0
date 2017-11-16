@@ -6,7 +6,9 @@ sync
 name=$1
 weights=$2
 schedtype=$3
-outfile=$name-exp2
+suffix=$4
+
+outfile=$name-$suffix
 
 echo "$name: $weights"
 echo "$weights" >> $outfile.results

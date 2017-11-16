@@ -1,7 +1,6 @@
 #!/bin/bash
 
 benchmark=$1
-schedtype=$2
 
 if [ -z $benchmark ] || [ -z $schedtype ]
 then
@@ -21,5 +20,9 @@ arraylength=${#weights[@]}
 # use for loop to read all values and indexes
 for (( i=0; i<${arraylength}; i++ ))
 do
-	./__exp-2.sh $benchmark "${weights[$i]}" $schedtype
+	echo "SCHED_DEADLINE"
+	./__exp-2.sh SCHED_DEADLINE=1 "${weights[$i]}" $schedtype "exp2"
+	
+	echo "SCHED_HEARTBEAT"
+	./__exp-2.sh SCHED_HEARTBEAT=1 "${weights[$i]}" $schedtype "exp2"
 done
