@@ -6,21 +6,19 @@ sync
 name=$1
 weights=$2
 schedtype=$3
+outfile=$name-exp2
 
 echo "$name: $weights"
+echo "$weights" >> $outfile.results
+echo "------------" >> $outfile.results
 
 sudo exp_nr=2 weights="$weights" $schedtype LD_LIBRARY_PATH=/usr/local/lib \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 4 -i native \
-     #> /dev/null
-
-outfile=$name-exp2
+     | grep "energy" >> $outfile.results
 
 cat /var/log/syslog | grep Heartbeat > $outfile.log
 # Isolate lines containing useful information.
 grep -E '(Migrating|Targets|share)' $outfile.log > $outfile.tmp
-
-echo "$weights" >> $outfile.results
-echo "------------" >> $outfile.results
 
 # Copy [test].tmp into [test].results, pruning useless information.
 while read in
