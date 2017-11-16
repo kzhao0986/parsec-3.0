@@ -25,6 +25,4 @@ do
 
 	echo "SCHED_HEARTBEAT"
 	./__exp-2.sh blackscholes "${weights[$i]}" SCHED_HEARTBEAT=1 "hb-exp2"
-
-	break
 done
