@@ -2,7 +2,7 @@
 
 benchmark=$1
 
-if [ -z $benchmark ] || [ -z $schedtype ]
+if [ -z $benchmark ]
 then
 	echo "Error: Must specify benchmark and scheduler"
 	exit 1
