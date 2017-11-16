@@ -25,4 +25,6 @@ do
 
 	echo "SCHED_HEARTBEAT"
 	./__exp-2.sh SCHED_HEARTBEAT=1 "${weights[$i]}" $schedtype "hb-exp2"
+
+	break
 done
