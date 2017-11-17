@@ -461,7 +461,7 @@ int bs_thread(void *tid_ptr) {
 #endif
             if (i % 1000 == 0) {
                 if (hb_eval_iteration(&session) == -1) {
-                    // goto done;
+                    goto done;
                 }
             }
         }
