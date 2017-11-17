@@ -379,7 +379,7 @@ static enum hb_eval_schedtype get_schedtype(void)
 static uint64_t deadline_get_runtime__exp1(int thread_nr)
 {
     double frac = (double)targets[thread_nr] / BASE_HEARTRATE;
-    double period = 30 * 1000 * 100;
+    double period = 30 * 1000 * 1000;
 
     return (uint64_t)(frac * period);
 }
