@@ -9,8 +9,8 @@ schedtype=$3
 
 echo "$name: $ratio to 1..."
 
-sudo EXP_NR=1 RATIO=$ratio $schedtype LD_LIBRARY_PATH=/usr/local/lib \
-     ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 1 -i native \
+sudo exp_nr=1 RATIO=$ratio $schedtype LD_LIBRARY_PATH=/usr/local/lib \
+     ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 2 -i native \
      #> /dev/null
 
 cat /var/log/syslog | grep Heartbeat > $name.log
