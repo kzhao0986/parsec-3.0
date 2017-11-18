@@ -14,7 +14,7 @@ echo "$name: $weights"
 echo "$weights" >> $outfile.results
 echo "------------" >> $outfile.results
 
-sudo exp_nr=2 weights="$weights" $schedtype LD_LIBRARY_PATH=/usr/local/lib \
+sudo exp_nr=2 weights="$weights" $schedtype \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 4 -i native \
      | grep "energy" >> $outfile.results
 
