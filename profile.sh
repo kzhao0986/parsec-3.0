@@ -1,7 +1,7 @@
 #!/bin/bash
 
 name=$1
-w1="0.5 0.5 0.5 0.5"
+w1="0.4 0.4 0.4 0.4"
 w2="1 1 1 1"
 
 echo "Little Core"
