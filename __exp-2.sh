@@ -8,6 +8,13 @@ weights=$2
 schedtype=$3
 suffix=$4
 
+mkdir -p $name
+outfile=$name/$name-$suffix
+
+echo "$name: $weights"
+echo "$weights" >> $outfile.results
+echo "------------" >> $outfile.results
+
 cpuset_dir=/sys/fs/cgroup/cpuset
 
 # Restrict the deadline scheduler to only use big cores. This way, we can
@@ -20,16 +27,18 @@ then
 	cd - > /dev/null
 fi
 
-mkdir -p $name
-outfile=$name/$name-$suffix
-
-echo "$name: $weights"
-echo "$weights" >> $outfile.results
-echo "------------" >> $outfile.results
-
 sudo exp_nr=2 weights="$weights" $schedtype \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 4 -i native \
      > $outfile.log
+
+# Re-attach our shell back to the default cpuset
+if [ $schedtype == "SCHED_DEADLINE=1" ]
+then
+	cd $cpuset_dir
+	echo $$ > tasks
+	echo 1 > cpuset.sched_load_balance
+	cd - > /dev/null
+fi
 
 cat /var/log/syslog | grep Heartbeat >> $outfile.log
 # Isolate lines containing useful information.
@@ -58,12 +67,3 @@ done < $outfile.tmp
 echo "" >> $outfile.results
 
 rm $outfile.tmp
-
-# Re-attach our shell back to the default cpuset
-if [ $schedtype == "SCHED_DEADLINE=1" ]
-then
-	cd $cpuset_dir
-	echo $$ > tasks
-	echo 1 > cpuset.sched_load_balance
-	cd - > /dev/null
-fi
