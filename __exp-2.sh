@@ -8,6 +8,8 @@ weights=$2
 schedtype=$3
 suffix=$4
 
+echo $schedtype
+
 # Restrict the deadline scheduler to only use big cores. This way, we can
 # measure energy consumption given that targets can be met.
 if [ $schedtype == "SCHED_DEADLINE=1" ]
