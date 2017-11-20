@@ -8,11 +8,16 @@ weights=$2
 schedtype=$3
 suffix=$4
 
+cpuset_dir=/sys/fs/cgroup/cpuset
+
 # Restrict the deadline scheduler to only use big cores. This way, we can
 # measure energy consumption given that targets can be met.
 if [ $schedtype == "SCHED_DEADLINE=1" ]
 then
-	echo $$ > /sys/fs/cgroup/cpuset/dl-cpuset/tasks
+	cd $cpuset_dir
+	echo 0 > cpuset.sched_load_balance
+	echo $$ > dl-cpuset/tasks
+	cd -
 fi
 
 mkdir -p $name
@@ -57,5 +62,8 @@ rm $outfile.tmp
 # Re-attach our shell back to the default cpuset
 if [ $schedtype == "SCHED_DEADLINE=1" ]
 then
-	echo $$ > /sys/fs/cgroup/cpuset/tasks
+	cd $cpuset_dir
+	echo $$ > tasks
+	echo 1 > cpuset.sched_load_balance
+	cd -
 fi
