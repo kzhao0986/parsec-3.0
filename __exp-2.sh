@@ -29,11 +29,11 @@ echo "------------" >> $outfile.results
 
 sudo exp_nr=2 weights="$weights" $schedtype \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 4 -i native \
-     #| grep "energy" >> $outfile.results
+     > $outfile.log
 
-cat /var/log/syslog | grep Heartbeat > $outfile.log
+cat /var/log/syslog | grep Heartbeat >> $outfile.log
 # Isolate lines containing useful information.
-grep -E '(Migrating|Targets|share)' $outfile.log > $outfile.tmp
+grep -E '(Migrating|Targets|share|energy)' $outfile.log > $outfile.tmp
 
 # Copy [test].tmp into [test].results, pruning useless information.
 while read in
