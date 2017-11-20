@@ -5,6 +5,8 @@ filename=$name.profile
 w1="0.4 0.4 0.4 0.4"
 w2="1 1 1 1"
 
+mkdir -p $name
+
 echo "Little Core" >> $filename
 echo "------------" >> $filename
 sudo exp_nr=2 weights="$w1" SCHED_HEARTBEAT=1 \
