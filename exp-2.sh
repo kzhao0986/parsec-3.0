@@ -14,7 +14,7 @@ fi
 #                     "0.5 1 1 1" \
 #                     "1 1 1 1")
 
-declare -a weights=("0.5 0.5 0.5 0.5")
+declare -a weights=("0.5 0.5 0.5 1")
 
 # get length of an array
 arraylength=${#weights[@]}
