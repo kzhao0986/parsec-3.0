@@ -25,6 +25,6 @@ echo "Big Core" >> $filename
 echo "------------" >> $filename
 sudo exp_nr=2 weights="$w2" SCHED_HEARTBEAT=1 \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 4 -i native \
-     | grep "energy" >> filename
+     | grep "energy" >> $filename
 
 mv $filename $name
