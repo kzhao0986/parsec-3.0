@@ -7,6 +7,7 @@ name=$1
 ratio=$2
 schedtype=$3
 
+mkdir -p $name
 echo "$name: $ratio to 1..."
 
 sudo exp_nr=1 RATIO=$ratio $schedtype \
@@ -43,3 +44,5 @@ done < $name.tmp
 echo "" >> $name.results
 
 rm $name.tmp
+
+mv $name* $name

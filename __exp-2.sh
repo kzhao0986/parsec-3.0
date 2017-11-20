@@ -8,6 +8,7 @@ weights=$2
 schedtype=$3
 suffix=$4
 
+mkdir -p $name
 outfile=$name-$suffix
 
 echo "$name: $weights"
@@ -45,3 +46,5 @@ done < $outfile.tmp
 echo "" >> $outfile.results
 
 rm $outfile.tmp
+
+mv $name* $name
