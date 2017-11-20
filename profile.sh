@@ -5,6 +5,12 @@ filename=$name.profile
 w1="0.4 0.4 0.4 0.4"
 w2="1 1 1 1"
 
+if [ -z $name ]
+then
+	echo "Error: Please specify benchmark name"
+	exit 1
+fi
+
 mkdir -p $name
 
 echo "Little Core" >> $filename
