@@ -58,3 +58,15 @@ Task 25020: CPU share: 108496860836/108496944544 (.999)
 Task 25021: Targets missed: 0/21815
 Task 25021: CPU share: 0/0 ()
 
+0.5 0.5 0.5 0.5
+------------
+Total energy (microjoules): 8525877733
+Task 3702: Targets missed: 0/25921
+Task 3702: CPU share: 103634048630/207250871708 (.500)
+Task 3705: Targets missed: 0/26271
+Task 3705: CPU share: 103794676995/207575569540 (.500)
+Task 3704: Targets missed: 0/26269
+Task 3704: CPU share: 103919516324/207820595664 (.500)
+Task 3703: Targets missed: 0/26101
+Task 3703: CPU share: 104021302969/208030802496 (.500)
+

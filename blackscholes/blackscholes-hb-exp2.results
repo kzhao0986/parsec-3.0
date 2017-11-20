@@ -75,3 +75,17 @@ Task 24585: CPU share: 107883621588/107883621588 (1.000)
 Task 24586: Targets missed: 594/21785
 Task 24586: CPU share: 108543519377/108603595627 (.999)
 
+0.5 0.5 0.5 0.5
+------------
+Total energy (microjoules): 6366208975
+Task 3184: Migrating from CPU 0 to CPU 6
+Task 3185: Migrating from CPU 2 to CPU 4
+Task 3185: Targets missed: 14/20600
+Task 3185: CPU share: 102927600399/102927600399 (1.000)
+Task 3184: Targets missed: 8/20641
+Task 3184: CPU share: 103177602981/103177608397 (.999)
+Task 3183: Targets missed: 625/49463
+Task 3183: CPU share: 247309243639/247309243639 (1.000)
+Task 3186: Targets missed: 1297/49552
+Task 3186: CPU share: 247754404637/247779238929 (.999)
+
