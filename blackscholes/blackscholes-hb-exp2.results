@@ -1,148 +1,77 @@
 0.5 0.5 0.5 0.5
 ------------
-Total energy (microjoules): 10470383205
-Task 4810: Migrating from CPU 1 to CPU 3
-Task 4812: Targets missed: 602/49477
-Task 4812: CPU share: 247352174639/247352252764 (.999)
-Task 4811: Targets missed: 730/49513
-Task 4811: CPU share: 247532987556/247537273222 (.999)
-Task 4810: Targets missed: 932/49544
-Task 4810: CPU share: 247680805684/247682944263 (.999)
-Task 4809: Targets missed: 1060/49634
-Task 4809: CPU share: 248137183262/248137261470 (.999)
+Total energy (microjoules): 61301974769
+Task 21020: Migrating from CPU 1 to CPU 3
+Task 21020: Migrating from CPU 3 to CPU 6
+Task 21020: Targets missed: 14/20564
+Task 21020: CPU share: 102743037525/102743042817 (.999)
+Task 21019: Targets missed: 685/49421
+Task 21019: CPU share: 247101059015/247106061849 (.999)
+Task 21022: Targets missed: 541/49428
+Task 21022: CPU share: 247136016682/247136022182 (.999)
+Task 21021: Targets missed: 937/49591
+Task 21021: CPU share: 247951072554/247951072554 (1.000)
 
 0.5 0.5 0.5 1
 ------------
-Total energy (microjoules): 12876964776
-Task 5748: Migrating from CPU 3 to CPU 6
-Task 5748: Targets missed: 56/20897
-Task 5748: CPU share: 104383640268/104383640268 (1.000)
-Task 5746: Targets missed: 635/49498
-Task 5746: CPU share: 247474320513/247474320513 (1.000)
-Task 5747: Targets missed: 594/49515
-Task 5747: CPU share: 247460286430/247460286430 (1.000)
-Task 5745: Targets missed: 729/49560
-Task 5745: CPU share: 247784275637/247784275637 (1.000)
+Total energy (microjoules): 66710432532
+Task 21921: Migrating from CPU 0 to CPU 3
+Task 21923: Migrating from CPU 2 to CPU 4
+Task 21923: Targets missed: 75/20510
+Task 21923: CPU share: 102440474567/102440480359 (.999)
+Task 21921: Targets missed: 664/49486
+Task 21921: CPU share: 247320349555/247320354889 (.999)
+Task 21922: Targets missed: 781/49504
+Task 21922: CPU share: 247506560638/247506560638 (1.000)
+Task 21920: Targets missed: 2999/49536
+Task 21920: CPU share: 247670422470/247767276470 (.999)
 
 0.5 0.5 1 1
 ------------
-Total energy (microjoules): 17529338000
-Task 6766: Migrating from CPU 1 to CPU 5
-Task 6767: Migrating from CPU 3 to CPU 6
-Task 6766: Targets missed: 192/20927
-Task 6766: CPU share: 104363774977/104363780810 (.999)
-Task 6767: Targets missed: 435/20970
-Task 6767: CPU share: 104238776019/104238781936 (.999)
-Task 6765: Targets missed: 554/49451
-Task 6765: CPU share: 247220524015/247220528765 (.999)
-Task 6764: Targets missed: 698/49526
-Task 6764: CPU share: 247595679888/247595679888 (1.000)
+Total energy (microjoules): 77841196681
+Task 22805: Migrating from CPU 1 to CPU 3
+Task 22806: Migrating from CPU 1 to CPU 4
+Task 22807: Migrating from CPU 2 to CPU 5
+Task 22807: Targets missed: 183/20617
+Task 22807: CPU share: 102826999774/102826999774 (1.000)
+Task 22806: Targets missed: 90/20616
+Task 22806: CPU share: 102956999940/102957005399 (.999)
+Task 22805: Targets missed: 600/49489
+Task 22805: CPU share: 247436297389/247436302847 (.999)
+Task 22804: Targets missed: 673/49519
+Task 22804: CPU share: 247590126139/247590126139 (1.000)
 
 0.5 1 1 1
 ------------
-Total energy (microjoules): 19385519608
-Task 7670: Migrating from CPU 0 to CPU 3
-Task 7671: Migrating from CPU 0 to CPU 4
-Task 7672: Migrating from CPU 1 to CPU 5
-Task 7673: Migrating from CPU 2 to CPU 6
-Task 7671: Targets missed: 84/21062
-Task 7671: CPU share: 105185500348/105185500348 (1.000)
-Task 7672: Targets missed: 295/21132
-Task 7672: CPU share: 105250484348/105250484348 (1.000)
-Task 7673: Targets missed: 374/21140
-Task 7673: CPU share: 105175491432/105175491432 (1.000)
-Task 7670: Targets missed: 624/49384
-Task 7670: CPU share: 246896458682/246896488932 (.999)
+Total energy (microjoules): 73727845245
+Task 23715: Migrating from CPU 0 to CPU 3
+Task 23714: Migrating from CPU 0 to CPU 4
+Task 23716: Migrating from CPU 2 to CPU 7
+Task 23715: Migrating from CPU 3 to CPU 4
+Task 23714: Migrating from CPU 4 to CPU 6
+Task 23715: Targets missed: 207/20785
+Task 23715: CPU share: 103634956313/103634956313 (1.000)
+Task 23716: Targets missed: 182/20791
+Task 23716: CPU share: 103699934812/103699940187 (.999)
+Task 23714: Targets missed: 59/20895
+Task 23714: CPU share: 104184971185/104184978227 (.999)
+Task 23713: Targets missed: 547/49435
+Task 23713: CPU share: 247173432347/247173432347 (1.000)
 
 1 1 1 1
 ------------
-Total energy (microjoules): 24186236749
-Task 8763: Migrating from CPU 0 to CPU 5
-Task 8764: Migrating from CPU 1 to CPU 6
-Task 8765: Migrating from CPU 2 to CPU 4
-Task 8766: Migrating from CPU 3 to CPU 5
-Task 8763: Migrating from CPU 5 to CPU 7
-Task 8763: Targets missed: 186/21612
-Task 8763: CPU share: 107753551212/107753680755 (.999)
-Task 8764: Targets missed: 60/21664
-Task 8764: CPU share: 108233635837/108233641253 (.999)
-Task 8765: Targets missed: 89/21731
-Task 8765: CPU share: 108528269710/108528613127 (.999)
-Task 8766: Targets missed: 252/21840
-Task 8766: CPU share: 108938107751/108983553542 (.999)
-
-0.5 0.5 0.5 0.5
-------------
-Total energy (microjoules): 30526259673
-Task 9506: Migrating from CPU 1 to CPU 3
-Task 9507: Targets missed: 599/49450
-Task 9507: CPU share: 247229227181/247229232181 (.999)
-Task 9504: Targets missed: 604/49450
-Task 9504: CPU share: 247231100389/247234471098 (.999)
-Task 9506: Targets missed: 761/49470
-Task 9506: CPU share: 247326160473/247326189640 (.999)
-Task 9505: Targets missed: 1207/49670
-Task 9505: CPU share: 248329214677/248329295386 (.999)
-
-0.5 0.5 0.5 1
-------------
-Total energy (microjoules): 38455089609
-Task 10365: Migrating from CPU 0 to CPU 3
-Task 10363: Migrating from CPU 1 to CPU 2
-Task 10363: Migrating from CPU 2 to CPU 4
-Task 10365: Migrating from CPU 3 to CPU 5
-Task 10363: Targets missed: 31/20853
-Task 10363: CPU share: 104173541936/104173541936 (1.000)
-Task 10365: Targets missed: 150/20913
-Task 10365: CPU share: 104353505477/104353505477 (1.000)
-Task 10364: Targets missed: 772/49445
-Task 10364: CPU share: 247196653597/247201654306 (.999)
-Task 10362: Targets missed: 801/49498
-Task 10362: CPU share: 247461629347/247466663804 (.999)
-
-0.5 0.5 1 1
-------------
-Total energy (microjoules): 38859576578
-Task 11241: Migrating from CPU 0 to CPU 4
-Task 11242: Migrating from CPU 2 to CPU 5
-Task 11241: Targets missed: 124/20748
-Task 11241: CPU share: 103567268104/103567268104 (1.000)
-Task 11242: Targets missed: 317/20789
-Task 11242: CPU share: 103497268646/103497268646 (1.000)
-Task 11239: Targets missed: 657/49464
-Task 11239: CPU share: 247289204806/247289204806 (1.000)
-Task 11240: Targets missed: 4620/49588
-Task 11240: CPU share: 247909445219/248069099594 (.999)
-
-0.5 1 1 1
-------------
-Total energy (microjoules): 41218231060
-Task 12142: Migrating from CPU 1 to CPU 4
-Task 12143: Migrating from CPU 2 to CPU 5
-Task 12144: Migrating from CPU 3 to CPU 7
-Task 12142: Targets missed: 185/20797
-Task 12142: CPU share: 103741792521/103741792521 (1.000)
-Task 12143: Targets missed: 370/20823
-Task 12143: CPU share: 103611780646/103611786604 (.999)
-Task 12144: Targets missed: 534/20827
-Task 12144: CPU share: 103386734397/103386734397 (1.000)
-Task 12141: Targets missed: 671/49527
-Task 12141: CPU share: 247645359137/247645359137 (1.000)
-
-1 1 1 1
-------------
-Total energy (microjoules): 26130152995
-Task 13207: Migrating from CPU 0 to CPU 5
-Task 13210: Migrating from CPU 1 to CPU 6
-Task 13209: Migrating from CPU 1 to CPU 5
-Task 13208: Migrating from CPU 2 to CPU 4
-Task 13209: Migrating from CPU 5 to CPU 7
-Task 13210: Targets missed: 233/21816
-Task 13210: CPU share: 108944012043/108944012043 (1.000)
-Task 13208: Targets missed: 290/21852
-Task 13208: CPU share: 108859015210/108859015210 (1.000)
-Task 13209: Targets missed: 902/21828
-Task 13209: CPU share: 108309071671/108309071671 (1.000)
-Task 13207: Targets missed: 779/22050
-Task 13207: CPU share: 110208805237/110873797369 (.994)
+Total energy (microjoules): 65871016239
+Task 24588: Migrating from CPU 0 to CPU 4
+Task 24587: Migrating from CPU 0 to CPU 5
+Task 24585: Migrating from CPU 1 to CPU 6
+Task 24586: Migrating from CPU 1 to CPU 4
+Task 24588: Migrating from CPU 4 to CPU 7
+Task 24588: Targets missed: 177/21550
+Task 24588: CPU share: 107123621841/107123623799 (.999)
+Task 24587: Targets missed: 203/21599
+Task 24587: CPU share: 107808606713/107808606713 (1.000)
+Task 24585: Targets missed: 425/21627
+Task 24585: CPU share: 107883621588/107883621588 (1.000)
+Task 24586: Targets missed: 594/21785
+Task 24586: CPU share: 108543519377/108603595627 (.999)
 
