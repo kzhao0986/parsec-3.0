@@ -17,7 +17,7 @@ then
 	cd $cpuset_dir
 	echo 0 > cpuset.sched_load_balance
 	echo $$ > dl-cpuset/tasks
-	cd -
+	cd - > /dev/null
 fi
 
 mkdir -p $name
@@ -65,5 +65,5 @@ then
 	cd $cpuset_dir
 	echo $$ > tasks
 	echo 1 > cpuset.sched_load_balance
-	cd -
+	cd - > /dev/null
 fi
