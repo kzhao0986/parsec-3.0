@@ -1,91 +1,72 @@
 0.5 0.5 0.5 0.5
 ------------
-Total energy (microjoules): 61301974769
-Task 21020: Migrating from CPU 1 to CPU 3
-Task 21020: Migrating from CPU 3 to CPU 6
-Task 21020: Targets missed: 14/20564
-Task 21020: CPU share: 102743037525/102743042817 (.999)
-Task 21019: Targets missed: 685/49421
-Task 21019: CPU share: 247101059015/247106061849 (.999)
-Task 21022: Targets missed: 541/49428
-Task 21022: CPU share: 247136016682/247136022182 (.999)
-Task 21021: Targets missed: 937/49591
-Task 21021: CPU share: 247951072554/247951072554 (1.000)
+Total energy (microjoules): 23840608601
+Task 7972: Targets missed: 682/49469
+Task 7972: CPU share: 247343770514/247343788556 (.999)
+Task 7971: Targets missed: 673/49499
+Task 7971: CPU share: 247493895223/247493895223 (1.000)
+Task 7970: Targets missed: 744/49566
+Task 7970: CPU share: 247828833346/247828838263 (.999)
+Task 7969: Targets missed: 836/49583
+Task 7969: CPU share: 247913892804/247913892804 (1.000)
 
 0.5 0.5 0.5 1
 ------------
-Total energy (microjoules): 66710432532
-Task 21921: Migrating from CPU 0 to CPU 3
-Task 21923: Migrating from CPU 2 to CPU 4
-Task 21923: Targets missed: 75/20510
-Task 21923: CPU share: 102440474567/102440480359 (.999)
-Task 21921: Targets missed: 664/49486
-Task 21921: CPU share: 247320349555/247320354889 (.999)
-Task 21922: Targets missed: 781/49504
-Task 21922: CPU share: 247506560638/247506560638 (1.000)
-Task 21920: Targets missed: 2999/49536
-Task 21920: CPU share: 247670422470/247767276470 (.999)
+Total energy (microjoules): 25011779154
+Task 8833: Migrating from CPU 3 to CPU 7
+Task 8833: Targets missed: 6/20572
+Task 8833: CPU share: 102849421858/102849427066 (.999)
+Task 8830: Targets missed: 484/49431
+Task 8830: CPU share: 247153594139/247153594139 (1.000)
+Task 8832: Targets missed: 599/49487
+Task 8832: CPU share: 247433488055/247433488055 (1.000)
+Task 8831: Targets missed: 750/49588
+Task 8831: CPU share: 247938496761/247938496761 (1.000)
 
 0.5 0.5 1 1
 ------------
-Total energy (microjoules): 77841196681
-Task 22805: Migrating from CPU 1 to CPU 3
-Task 22806: Migrating from CPU 1 to CPU 4
-Task 22807: Migrating from CPU 2 to CPU 5
-Task 22807: Targets missed: 183/20617
-Task 22807: CPU share: 102826999774/102826999774 (1.000)
-Task 22806: Targets missed: 90/20616
-Task 22806: CPU share: 102956999940/102957005399 (.999)
-Task 22805: Targets missed: 600/49489
-Task 22805: CPU share: 247436297389/247436302847 (.999)
-Task 22804: Targets missed: 673/49519
-Task 22804: CPU share: 247590126139/247590126139 (1.000)
+Total energy (microjoules): 29966293701
+Task 9706: Migrating from CPU 2 to CPU 3
+Task 9705: Migrating from CPU 2 to CPU 6
+Task 9706: Migrating from CPU 3 to CPU 7
+Task 9706: Targets missed: 348/20606
+Task 9706: CPU share: 102529315942/102529322650 (.999)
+Task 9705: Targets missed: 308/20654
+Task 9705: CPU share: 102844292399/102844292399 (1.000)
+Task 9704: Targets missed: 569/49467
+Task 9704: CPU share: 247332191890/247332191890 (1.000)
+Task 9703: Targets missed: 853/49596
+Task 9703: CPU share: 247977109554/247977109554 (1.000)
 
 0.5 1 1 1
 ------------
-Total energy (microjoules): 73727845245
-Task 23715: Migrating from CPU 0 to CPU 3
-Task 23714: Migrating from CPU 0 to CPU 4
-Task 23716: Migrating from CPU 2 to CPU 7
-Task 23715: Migrating from CPU 3 to CPU 4
-Task 23714: Migrating from CPU 4 to CPU 6
-Task 23715: Targets missed: 207/20785
-Task 23715: CPU share: 103634956313/103634956313 (1.000)
-Task 23716: Targets missed: 182/20791
-Task 23716: CPU share: 103699934812/103699940187 (.999)
-Task 23714: Targets missed: 59/20895
-Task 23714: CPU share: 104184971185/104184978227 (.999)
-Task 23713: Targets missed: 547/49435
-Task 23713: CPU share: 247173432347/247173432347 (1.000)
+Total energy (microjoules): 32874735489
+Task 10545: Migrating from CPU 0 to CPU 5
+Task 10544: Migrating from CPU 1 to CPU 4
+Task 10546: Migrating from CPU 2 to CPU 6
+Task 10545: Targets missed: 160/20631
+Task 10545: CPU share: 103064271565/103064277065 (.999)
+Task 10546: Targets missed: 307/20658
+Task 10546: CPU share: 102859282191/102859282191 (1.000)
+Task 10544: Targets missed: 169/20704
+Task 10544: CPU share: 103289293106/103289293106 (1.000)
+Task 10543: Targets missed: 2577/49533
+Task 10543: CPU share: 247664583428/247754632804 (.999)
 
 1 1 1 1
 ------------
-Total energy (microjoules): 65871016239
-Task 24588: Migrating from CPU 0 to CPU 4
-Task 24587: Migrating from CPU 0 to CPU 5
-Task 24585: Migrating from CPU 1 to CPU 6
-Task 24586: Migrating from CPU 1 to CPU 4
-Task 24588: Migrating from CPU 4 to CPU 7
-Task 24588: Targets missed: 177/21550
-Task 24588: CPU share: 107123621841/107123623799 (.999)
-Task 24587: Targets missed: 203/21599
-Task 24587: CPU share: 107808606713/107808606713 (1.000)
-Task 24585: Targets missed: 425/21627
-Task 24585: CPU share: 107883621588/107883621588 (1.000)
-Task 24586: Targets missed: 594/21785
-Task 24586: CPU share: 108543519377/108603595627 (.999)
-
-0.5 0.5 0.5 0.5
-------------
-Total energy (microjoules): 6366208975
-Task 3184: Migrating from CPU 0 to CPU 6
-Task 3185: Migrating from CPU 2 to CPU 4
-Task 3185: Targets missed: 14/20600
-Task 3185: CPU share: 102927600399/102927600399 (1.000)
-Task 3184: Targets missed: 8/20641
-Task 3184: CPU share: 103177602981/103177608397 (.999)
-Task 3183: Targets missed: 625/49463
-Task 3183: CPU share: 247309243639/247309243639 (1.000)
-Task 3186: Targets missed: 1297/49552
-Task 3186: CPU share: 247754404637/247779238929 (.999)
+Total energy (microjoules): 37104297001
+Task 11395: Migrating from CPU 0 to CPU 6
+Task 11396: Migrating from CPU 1 to CPU 6
+Task 11395: Migrating from CPU 6 to CPU 4
+Task 11397: Migrating from CPU 1 to CPU 5
+Task 11394: Migrating from CPU 2 to CPU 7
+Task 11395: Targets missed: 127/21693
+Task 11395: CPU share: 108209323921/108209323921 (1.000)
+Task 11397: Targets missed: 343/21749
+Task 11397: CPU share: 108439318628/108439318628 (1.000)
+Task 11394: Targets missed: 511/21777
+Task 11394: CPU share: 108169314713/108169320504 (.999)
+Task 11396: Targets missed: 229/21775
+Task 11396: CPU share: 108744351127/108744351127 (1.000)
 

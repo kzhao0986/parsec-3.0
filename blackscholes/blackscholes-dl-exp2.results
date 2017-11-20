@@ -1,72 +1,60 @@
 0.5 0.5 0.5 0.5
 ------------
-Total energy (microjoules): 69765355943
-Task 21447: Targets missed: 0/23199
-Task 21447: CPU share: 103139378255/206261876754 (.500)
-Task 21448: Targets missed: 0/22995
-Task 21448: CPU share: 103328451138/206666845627 (.499)
-Task 21446: Targets missed: 0/23094
-Task 21446: CPU share: 103720932419/207447054791 (.499)
-Task 21449: Targets missed: 0/23205
-Task 21449: CPU share: 103959854920/207906898290 (.500)
+Total energy (microjoules): 24640018650
+Task 8403: Targets missed: 0/22463
+Task 8403: CPU share: 103352837042/206688329295 (.500)
+Task 8405: Targets missed: 0/22159
+Task 8405: CPU share: 103581949153/207153507001 (.500)
+Task 8404: Targets missed: 0/21967
+Task 8404: CPU share: 103660401029/207308633667 (.500)
+Task 8402: Targets missed: 0/22263
+Task 8402: CPU share: 103672240246/207333451126 (.500)
 
 0.5 0.5 0.5 1
 ------------
-Total energy (microjoules): 65727062825
-Task 22375: Targets missed: 0/20667
-Task 22375: CPU share: 103331974438/103331974438 (1.000)
-Task 22372: Targets missed: 0/23745
-Task 22372: CPU share: 103140541211/206264262921 (.500)
-Task 22373: Targets missed: 0/23791
-Task 22373: CPU share: 103166730938/206318958671 (.500)
-Task 22374: Targets missed: 0/23837
-Task 22374: CPU share: 103526972233/207039197876 (.500)
+Total energy (microjoules): 28324442278
+Task 9282: Targets missed: 0/20685
+Task 9282: CPU share: 103424119855/103424119855 (1.000)
+Task 9280: Targets missed: 0/22810
+Task 9280: CPU share: 103652485074/207288234541 (.500)
+Task 9281: Targets missed: 0/23135
+Task 9281: CPU share: 104103133378/208203050580 (.500)
+Task 9279: Targets missed: 0/22995
+Task 9279: CPU share: 104146472245/208283267663 (.500)
 
 0.5 0.5 1 1
 ------------
-Total energy (microjoules): 74579478838
-Task 23276: Targets missed: 0/20937
-Task 23276: CPU share: 104685802808/104685802808 (1.000)
-Task 23275: Targets missed: 0/20992
-Task 23275: CPU share: 104960677933/104960728516 (.999)
-Task 23273: Targets missed: 0/23744
-Task 23273: CPU share: 103858633890/207698846540 (.500)
-Task 23274: Targets missed: 0/26339
-Task 23274: CPU share: 104293678854/208573754120 (.500)
+Total energy (microjoules): 31427337729
+Task 10125: Targets missed: 0/20671
+Task 10125: CPU share: 103352113439/103352113439 (1.000)
+Task 10124: Targets missed: 0/20678
+Task 10124: CPU share: 103387331396/103387360855 (.999)
+Task 10122: Targets missed: 0/25179
+Task 10122: CPU share: 103949955393/207886766664 (.500)
+Task 10123: Targets missed: 0/25398
+Task 10123: CPU share: 104455986858/208901705577 (.500)
 
 0.5 1 1 1
 ------------
-Total energy (microjoules): 72914174118
-Task 24170: Targets missed: 0/21036
-Task 24170: CPU share: 105178124765/105178190264 (.999)
-Task 24169: Targets missed: 0/21052
-Task 24169: CPU share: 105258176681/105258299264 (.999)
-Task 24168: Targets missed: 0/21059
-Task 24168: CPU share: 105293353887/105293451305 (.999)
-Task 24167: Targets missed: 0/23540
-Task 24167: CPU share: 104792947501/209582190198 (.500)
+Total energy (microjoules): 35705325893
+Task 10972: Targets missed: 0/21240
+Task 10972: CPU share: 106198792595/106198792595 (1.000)
+Task 10973: Targets missed: 0/21284
+Task 10973: CPU share: 106418850052/106418907094 (.999)
+Task 10974: Targets missed: 0/21294
+Task 10974: CPU share: 106468681761/106468759511 (.999)
+Task 10971: Targets missed: 0/22845
+Task 10971: CPU share: 105189725067/210363370989 (.500)
 
 1 1 1 1
 ------------
-Total energy (microjoules): 154539829615
-Task 25019: Targets missed: 0/21641
-Task 25019: CPU share: 108201784337/108201784337 (1.000)
-Task 25022: Targets missed: 0/21649
-Task 25022: CPU share: 108241768462/108241777545 (.999)
-Task 25020: Targets missed: 0/21700
-Task 25020: CPU share: 108496860836/108496944544 (.999)
-Task 25021: Targets missed: 0/21815
-Task 25021: CPU share: 0/0 ()
-
-0.5 0.5 0.5 0.5
-------------
-Total energy (microjoules): 8525877733
-Task 3702: Targets missed: 0/25921
-Task 3702: CPU share: 103634048630/207250871708 (.500)
-Task 3705: Targets missed: 0/26271
-Task 3705: CPU share: 103794676995/207575569540 (.500)
-Task 3704: Targets missed: 0/26269
-Task 3704: CPU share: 103919516324/207820595664 (.500)
-Task 3703: Targets missed: 0/26101
-Task 3703: CPU share: 104021302969/208030802496 (.500)
+Total energy (microjoules): 37148475358
+Task 11827: Targets missed: 3/21656
+Task 11827: CPU share: 108280355629/108284421379 (.999)
+Task 11828: Targets missed: 0/21680
+Task 11828: CPU share: 108397642463/108398083879 (.999)
+Task 11829: Targets missed: 0/21693
+Task 11829: CPU share: 108464182295/108464199628 (.999)
+Task 11830: Targets missed: 0/21924
+Task 11830: CPU share: 0/0 ()
 
