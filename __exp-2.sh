@@ -12,7 +12,7 @@ suffix=$4
 # measure energy consumption given that targets can be met.
 if [ $schedtype == "SCHED_DEADLINE=1" ]
 then
-	sudo echo $$ > /sys/fs/cgroup/cpuset/dl-cpuset/tasks
+	echo $$ > /sys/fs/cgroup/cpuset/dl-cpuset/tasks
 fi
 
 mkdir -p $name
@@ -54,7 +54,8 @@ echo "" >> $outfile.results
 
 rm $outfile.tmp
 
+# Re-attach our shell back to the default cpuset
 if [ $schedtype == "SCHED_DEADLINE=1" ]
 then
-	sudo echo "" > /sys/fs/cgroup/cpuset/dl-cpuset/tasks
+	echo $$ > /sys/fs/cgroup/cpuset/tasks
 fi
