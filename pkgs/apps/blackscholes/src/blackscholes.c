@@ -379,14 +379,14 @@ static enum hb_eval_schedtype get_schedtype(void)
 static uint64_t deadline_get_runtime__exp1(int thread_nr)
 {
     double frac = (double)targets[thread_nr] / BASE_HEARTRATE;
-    double period = 30 * 1000 * 1000;
+    double period = 25 * 1000 * 1000;
 
     return (uint64_t)(frac * period);
 }
 
 static uint64_t deadline_get_runtime__exp2(int thread_nr)
 {
-    double period = 30 * 1000 * 1000;
+    double period = 25 * 1000 * 1000;
 
     return (uint64_t)(weights[thread_nr] * period);
 }
@@ -417,7 +417,7 @@ static void init_params(struct hb_eval_params *params, int tid)
     params->target = targets[tid];
     params->window = targets[tid] * 100;
     params->runtime = deadline_get_runtime(tid);
-    params->period = 30 * 1000 * 1000;
+    params->period = 25 * 1000 * 1000;
 }
 
 /**************************** End Heartbeat Eval *****************************/
