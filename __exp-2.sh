@@ -8,8 +8,15 @@ weights=$2
 schedtype=$3
 suffix=$4
 
+# Restrict the deadline scheduler to only use big cores. This way, we can
+# measure energy consumption given that targets can be met.
+if [ $schedtype == "SCHED_DEADLINE=1" ]
+then
+	sudo echo $$ > /sys/fs/cgroup/cpuset/dl-cpuset/tasks
+fi
+
 mkdir -p $name
-outfile=$name-$suffix
+outfile=$name/$name-$suffix
 
 echo "$name: $weights"
 echo "$weights" >> $outfile.results
@@ -47,4 +54,7 @@ echo "" >> $outfile.results
 
 rm $outfile.tmp
 
-mv $name* $name
+if [ $schedtype == "SCHED_DEADLINE=1" ]
+then
+	sudo echo "" > /sys/fs/cgroup/cpuset/dl-cpuset/tasks
+fi
