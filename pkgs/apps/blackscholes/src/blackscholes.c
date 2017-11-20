@@ -609,14 +609,10 @@ int main (int argc, char **argv)
     energymon_get_default(&em);
     if (em.finit(&em) == -1) {
         perror("energymon init");
-        exit(-1);
     }
 
     // profile application function
-    if ((start_uj = em.fread(&em)) == 0) {
-        perror("energymon fread");
-        exit(-1);
-    }
+    start_uj = em.fread(&em);
 
     for(i=0; i<nThreads; i++) {
         tids[i]=i;
@@ -624,14 +620,13 @@ int main (int argc, char **argv)
     }
     WAIT_FOR_END(nThreads);
 
-    if ((end_uj = em.fread(&em)) == 0) {
-        perror("energymon fread");
-        exit(-1);
-    }
+    end_uj = em.fread(&em);
     printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
 
     // destroy the instance
-    em.ffinish(&em);
+    if (em.ffinish(&em) == -1) {
+        perror("energymon finish");
+    }
     free(tids);
 #endif //WIN32
 #else //ENABLE_THREADS
