@@ -24,7 +24,7 @@ echo "------------" >> $outfile.results
 
 sudo exp_nr=2 weights="$weights" $schedtype \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 4 -i native \
-     | grep "energy" >> $outfile.results
+     #| grep "energy" >> $outfile.results
 
 cat /var/log/syslog | grep Heartbeat > $outfile.log
 # Isolate lines containing useful information.
