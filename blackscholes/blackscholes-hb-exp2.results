@@ -1,72 +1,81 @@
 0.5 0.5 0.5 0.5
 ------------
-Total energy (microjoules): 23840608601
-Task 7972: Targets missed: 682/49469
-Task 7972: CPU share: 247343770514/247343788556 (.999)
-Task 7971: Targets missed: 673/49499
-Task 7971: CPU share: 247493895223/247493895223 (1.000)
-Task 7970: Targets missed: 744/49566
-Task 7970: CPU share: 247828833346/247828838263 (.999)
-Task 7969: Targets missed: 836/49583
-Task 7969: CPU share: 247913892804/247913892804 (1.000)
+[PARSEC] Running 'time /home/odroid/parsec-3.0/pkgs/apps/blackscholes/inst/arm-linux.gcc-hooks/bin/blackscholes 4 in_10M.txt prices.txt':
+Total energy (microjoules): 5205603747
+[HOOKS] Total time spent in ROI: 248.265s
+Task 3227: Targets missed: 537/49446
+Task 3227: CPU share: 247226126975/247227090056 (.999)
+Task 3226: Targets missed: 731/49538
+Task 3226: CPU share: 247687087346/247687087346 (1.000)
+Task 3228: Targets missed: 649/49570
+Task 3228: CPU share: 247846011850/247846982679 (.999)
+Task 3229: Targets missed: 912/49637
+Task 3229: CPU share: 248178989216/248181953886 (.999)
 
 0.5 0.5 0.5 1
 ------------
-Total energy (microjoules): 25011779154
-Task 8833: Migrating from CPU 3 to CPU 7
-Task 8833: Targets missed: 6/20572
-Task 8833: CPU share: 102849421858/102849427066 (.999)
-Task 8830: Targets missed: 484/49431
-Task 8830: CPU share: 247153594139/247153594139 (1.000)
-Task 8832: Targets missed: 599/49487
-Task 8832: CPU share: 247433488055/247433488055 (1.000)
-Task 8831: Targets missed: 750/49588
-Task 8831: CPU share: 247938496761/247938496761 (1.000)
+[PARSEC] Running 'time /home/odroid/parsec-3.0/pkgs/apps/blackscholes/inst/arm-linux.gcc-hooks/bin/blackscholes 4 in_10M.txt prices.txt':
+Total energy (microjoules): 9197172366
+[HOOKS] Total time spent in ROI: 248.000s
+Task 4175: Migrating from CPU 1 to CPU 5
+Task 4175: Targets missed: 348/20623
+Task 4175: CPU share: 102614337108/102614337108 (1.000)
+Task 4172: Targets missed: 538/49445
+Task 4172: CPU share: 247223641473/247223647307 (.999)
+Task 4174: Targets missed: 575/49483
+Task 4174: CPU share: 247413678931/247413686348 (.999)
+Task 4173: Targets missed: 1010/49589
+Task 4173: CPU share: 247943744138/247943744138 (1.000)
 
 0.5 0.5 1 1
 ------------
-Total energy (microjoules): 29966293701
-Task 9706: Migrating from CPU 2 to CPU 3
-Task 9705: Migrating from CPU 2 to CPU 6
-Task 9706: Migrating from CPU 3 to CPU 7
-Task 9706: Targets missed: 348/20606
-Task 9706: CPU share: 102529315942/102529322650 (.999)
-Task 9705: Targets missed: 308/20654
-Task 9705: CPU share: 102844292399/102844292399 (1.000)
-Task 9704: Targets missed: 569/49467
-Task 9704: CPU share: 247332191890/247332191890 (1.000)
-Task 9703: Targets missed: 853/49596
-Task 9703: CPU share: 247977109554/247977109554 (1.000)
+[PARSEC] Running 'time /home/odroid/parsec-3.0/pkgs/apps/blackscholes/inst/arm-linux.gcc-hooks/bin/blackscholes 4 in_10M.txt prices.txt':
+Total energy (microjoules): 12783250308
+[HOOKS] Total time spent in ROI: 247.850s
+Task 5073: Migrating from CPU 1 to CPU 7
+Task 5071: Migrating from CPU 0 to CPU 1
+Task 5074: Migrating from CPU 2 to CPU 6
+Task 5073: Targets missed: 2/20560
+Task 5073: CPU share: 102794430815/102794430815 (1.000)
+Task 5074: Targets missed: 196/20755
+Task 5074: CPU share: 103504447688/103504447688 (1.000)
+Task 5071: Targets missed: 536/49419
+Task 5071: CPU share: 247078836349/247078841724 (.999)
+Task 5072: Targets missed: 1313/49551
+Task 5072: CPU share: 247752991638/247768028929 (.999)
 
 0.5 1 1 1
 ------------
-Total energy (microjoules): 32874735489
-Task 10545: Migrating from CPU 0 to CPU 5
-Task 10544: Migrating from CPU 1 to CPU 4
-Task 10546: Migrating from CPU 2 to CPU 6
-Task 10545: Targets missed: 160/20631
-Task 10545: CPU share: 103064271565/103064277065 (.999)
-Task 10546: Targets missed: 307/20658
-Task 10546: CPU share: 102859282191/102859282191 (1.000)
-Task 10544: Targets missed: 169/20704
-Task 10544: CPU share: 103289293106/103289293106 (1.000)
-Task 10543: Targets missed: 2577/49533
-Task 10543: CPU share: 247664583428/247754632804 (.999)
+[PARSEC] Running 'time /home/odroid/parsec-3.0/pkgs/apps/blackscholes/inst/arm-linux.gcc-hooks/bin/blackscholes 4 in_10M.txt prices.txt':
+Total energy (microjoules): 10196366715
+[HOOKS] Total time spent in ROI: 248.406s
+Task 5938: Migrating from CPU 0 to CPU 6
+Task 5939: Migrating from CPU 1 to CPU 4
+Task 5940: Migrating from CPU 2 to CPU 5
+Task 5940: Targets missed: 180/20639
+Task 5940: CPU share: 102944293399/102944293399 (1.000)
+Task 5939: Targets missed: 151/20648
+Task 5939: CPU share: 103029287316/103029287316 (1.000)
+Task 5938: Targets missed: 43/20734
+Task 5938: CPU share: 103644280646/103644280646 (1.000)
+Task 5937: Targets missed: 1229/49520
+Task 5937: CPU share: 247598878432/247623876472 (.999)
 
 1 1 1 1
 ------------
-Total energy (microjoules): 37104297001
-Task 11395: Migrating from CPU 0 to CPU 6
-Task 11396: Migrating from CPU 1 to CPU 6
-Task 11395: Migrating from CPU 6 to CPU 4
-Task 11397: Migrating from CPU 1 to CPU 5
-Task 11394: Migrating from CPU 2 to CPU 7
-Task 11395: Targets missed: 127/21693
-Task 11395: CPU share: 108209323921/108209323921 (1.000)
-Task 11397: Targets missed: 343/21749
-Task 11397: CPU share: 108439318628/108439318628 (1.000)
-Task 11394: Targets missed: 511/21777
-Task 11394: CPU share: 108169314713/108169320504 (.999)
-Task 11396: Targets missed: 229/21775
-Task 11396: CPU share: 108744351127/108744351127 (1.000)
+[PARSEC] Running 'time /home/odroid/parsec-3.0/pkgs/apps/blackscholes/inst/arm-linux.gcc-hooks/bin/blackscholes 4 in_10M.txt prices.txt':
+Total energy (microjoules): 19503176759
+[HOOKS] Total time spent in ROI: 107.707s
+Task 6804: Migrating from CPU 1 to CPU 4
+Task 6805: Migrating from CPU 2 to CPU 5
+Task 6802: Migrating from CPU 0 to CPU 6
+Task 6803: Migrating from CPU 0 to CPU 7
+Task 6803: Targets missed: 425/21432
+Task 6803: CPU share: 106903846090/106904084758 (.999)
+Task 6804: Targets missed: 150/21496
+Task 6804: CPU share: 107269030257/107269073590 (.999)
+Task 6802: Targets missed: 427/21471
+Task 6802: CPU share: 107104046425/107104099091 (.999)
+Task 6805: Targets missed: 337/21530
+Task 6805: CPU share: 107178918631/107179079382 (.999)
 
