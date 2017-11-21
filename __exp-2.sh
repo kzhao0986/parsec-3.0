@@ -42,7 +42,8 @@ fi
 
 cat /var/log/syslog | grep Heartbeat >> $outfile.log
 # Isolate lines containing useful information.
-grep -E '(Migrating|Targets|share|energy|time)' $outfile.log > $outfile.tmp
+grep -E '(Migrating|Targets|share|energy|time spent)' $outfile.log > \
+$outfile.tmp
 
 # Copy [test].tmp into [test].results, pruning useless information.
 while read in
