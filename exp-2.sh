@@ -24,9 +24,12 @@ for (( i=0; i<${arraylength}; i++ ))
 do
 	weight="${weights[$i]}"
 
-	echo "SCHED_HEARTBEAT"
-	./__exp-2.sh blackscholes "$weight" SCHED_HEARTBEAT=1 "hb-exp2"
+	# echo "SCHED_HEARTBEAT"
+	# ./__exp-2.sh blackscholes "$weight" SCHED_HEARTBEAT=1 "hb-exp2"
 
-	echo "SCHED_DEADLINE"
-	./__exp-2.sh blackscholes "$weight" SCHED_DEADLINE=1 "dl-exp2"
+	# echo "SCHED_DEADLINE"
+	# ./__exp-2.sh blackscholes "$weight" SCHED_DEADLINE=1 "dl-exp2"
+	
+	echo "SCHED_FAIR"
+	./__exp-2.sh blackscholes "$weight" SCHED_FAIR=1 "fair-exp2"
 done
