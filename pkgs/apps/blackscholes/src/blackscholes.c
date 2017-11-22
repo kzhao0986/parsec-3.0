@@ -11,6 +11,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
+#include <errno.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
@@ -615,7 +616,7 @@ int main (int argc, char **argv)
     }
 
     // profile application function
-    start_uj = em.fread(&em)
+    start_uj = em.fread(&em);
     if (start_uj == 0 && errno) {
         perror("energymon fread");
     }
