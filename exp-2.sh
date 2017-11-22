@@ -17,7 +17,7 @@ fi
 # blackscholes
 # declare -a weights=("0.42 0.42 0.42 0.42")
 # swaptions
-declare -a weights=("0.36 0.36 0.36 0.36")
+declare -a weights=("0.37 0.37 0.37 0.37")
 
 # get length of an array
 arraylength=${#weights[@]}
