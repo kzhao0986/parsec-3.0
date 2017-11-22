@@ -622,6 +622,8 @@ int main (int argc, char **argv)
     WAIT_FOR_END(nThreads);
 
     end_uj = em.fread(&em);
+    printf("start_uj: %"PRIu64"\n", start_uj);
+    printf("end_uj: %"PRIu64"\n", end_uj);
     printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
 
     // destroy the instance
