@@ -76,3 +76,16 @@ Task 6489: CPU share: 53739593462/53739593462 (1.000)
 Task 6486: Targets missed: 0/11714
 Task 6486: CPU share: 52843409183/105679736013 (.500)
 
+0.5 1 1 1
+------------
+Total energy (microjoules): 0
+[HOOKS] Total time spent in ROI: 105.200s
+Task 7359: Targets missed: 0/10572
+Task 7359: CPU share: 52858913715/52858918757 (.999)
+Task 7360: Targets missed: 0/10577
+Task 7360: CPU share: 52883828799/52883828799 (1.000)
+Task 7358: Targets missed: 0/10594
+Task 7358: CPU share: 52967489257/52967527257 (.999)
+Task 7357: Targets missed: 0/12595
+Task 7357: CPU share: 52546883412/105082381391 (.500)
+
