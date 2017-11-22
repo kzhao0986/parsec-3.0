@@ -14,7 +14,10 @@ fi
 #                     "0.42 1 1 1" \
 #                     "1 1 1 1")
 
-declare -a weights=("0.4 0.4 0.4 0.4")
+# blackscholes
+# declare -a weights=("0.42 0.42 0.42 0.42")
+# swaptions
+declare -a weights=("0.38 0.38 0.38 0.38")
 
 # get length of an array
 arraylength=${#weights[@]}
