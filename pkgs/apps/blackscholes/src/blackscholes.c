@@ -607,7 +607,6 @@ int main (int argc, char **argv)
     energymon em;
     uint64_t start_uj, end_uj;
 
-    // get the energymon instance and initialize
     if (energymon_get_default(&em)) {
         perror("energymon_get_default");
     }
@@ -615,7 +614,6 @@ int main (int argc, char **argv)
         perror("energymon init");
     }
 
-    // profile application function
     start_uj = em.fread(&em);
     if (start_uj == 0 && errno) {
         perror("energymon fread");

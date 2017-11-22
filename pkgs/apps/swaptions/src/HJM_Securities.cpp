@@ -12,6 +12,7 @@
 extern "C" {
 #include <heartbeat-eval.h>
 }
+#include <energymon-default.h>
 
 #include "nr_routines.h"
 #include "HJM.h"
@@ -448,13 +449,40 @@ int main(int argc, char *argv[])
 #else
 	
 	int threadIDs[nThreads];
-        for (i = 0; i < nThreads; i++) {
-          threadIDs[i] = i;
-          pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]);
-        }
-        for (i = 0; i < nThreads; i++) {
-          pthread_join(threads[i], NULL);
-        }
+  energymon em;
+  uint64_t start_uj, end_uj;
+
+  if (energymon_get_default(&em)) {
+      perror("energymon_get_default");
+  }
+  if (em.finit(&em)) {
+      perror("energymon init");
+  }
+
+  start_uj = em.fread(&em);
+  if (start_uj == 0 && errno) {
+      perror("energymon fread");
+  }
+
+  for (i = 0; i < nThreads; i++) {
+    threadIDs[i] = i;
+    pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]);
+  }
+  for (i = 0; i < nThreads; i++) {
+    pthread_join(threads[i], NULL);
+  }
+
+  end_uj = em.fread(&em);
+  if (end_uj == 0 && errno) {
+      perror("energymon fread");
+  }
+  printf("start_uj: %"PRIu64"\n", start_uj);
+  printf("end_uj: %"PRIu64"\n", end_uj);
+  printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
+
+  if (em.ffinish(&em)) {
+      perror("energymon finish");
+  }
 
 	free(threads);
 
