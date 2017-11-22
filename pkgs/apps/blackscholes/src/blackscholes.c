@@ -11,6 +11,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
+#include <errno.h>
 
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
@@ -607,13 +608,18 @@ int main (int argc, char **argv)
     uint64_t start_uj, end_uj;
 
     // get the energymon instance and initialize
-    energymon_get_default(&em);
-    if (em.finit(&em) == -1) {
+    if (energymon_get_default(&em)) {
+        perror("energymon_get_default");
+    }
+    if (em.finit(&em)) {
         perror("energymon init");
     }
 
     // profile application function
     start_uj = em.fread(&em);
+    if (start_uj == 0 && errno) {
+        perror("energymon fread");
+    }
 
     for(i=0; i<nThreads; i++) {
         tids[i]=i;
@@ -622,12 +628,15 @@ int main (int argc, char **argv)
     WAIT_FOR_END(nThreads);
 
     end_uj = em.fread(&em);
+    if (end_uj == 0 && errno) {
+        perror("energymon fread");
+    }
     printf("start_uj: %"PRIu64"\n", start_uj);
-    printf("start_uj: %"PRIu64"\n", start_uj);
+    printf("end_uj: %"PRIu64"\n", end_uj);
     printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
 
     // destroy the instance
-    if (em.ffinish(&em) == -1) {
+    if (em.ffinish(&em)) {
         perror("energymon finish");
     }
     free(tids);
