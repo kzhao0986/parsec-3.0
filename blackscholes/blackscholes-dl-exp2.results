@@ -39,16 +39,16 @@ Task 3878: CPU share: 52675776523/105336907014 (.500)
 
 0.5 1 1 1
 ------------
-Total energy (microjoules): 0
-[HOOKS] Total time spent in ROI: 105.825s
-Task 4725: Targets missed: 0/10680
-Task 4725: CPU share: 53399552421/53399552421 (1.000)
-Task 4724: Targets missed: 0/10684
-Task 4724: CPU share: 53419545254/53424052504 (.999)
-Task 4723: Targets missed: 0/10762
-Task 4723: CPU share: 53809028337/53809087795 (.999)
-Task 4722: Targets missed: 0/11353
-Task 4722: CPU share: 52858416544/105703850263 (.500)
+Total energy (microjoules): 810000001
+[HOOKS] Total time spent in ROI: 106.436s
+Task 8253: Targets missed: 0/10742
+Task 8253: CPU share: 53707391419/53707391419 (1.000)
+Task 8252: Targets missed: 0/10766
+Task 8252: CPU share: 53827378545/53827378545 (1.000)
+Task 8251: Targets missed: 0/10825
+Task 8251: CPU share: 54124970752/54125017085 (.999)
+Task 8250: Targets missed: 0/13867
+Task 8250: CPU share: 53169389792/106339685219 (.499)
 
 1 1 1 1
 ------------
@@ -62,43 +62,3 @@ Task 5588: Targets missed: 0/10853
 Task 5588: CPU share: 54264288959/54264338792 (.999)
 Task 5589: Targets missed: 0/10864
 Task 5589: CPU share: 0/0 ()
-
-0.5 1 1 1
-------------
-Total energy (microjoules): 806400000
-[HOOKS] Total time spent in ROI: 105.778s
-Task 6488: Targets missed: 0/10735
-Task 6488: CPU share: 53674609878/53674609878 (1.000)
-Task 6487: Targets missed: 0/10737
-Task 6487: CPU share: 53684849920/53684869587 (.999)
-Task 6489: Targets missed: 0/10748
-Task 6489: CPU share: 53739593462/53739593462 (1.000)
-Task 6486: Targets missed: 0/11714
-Task 6486: CPU share: 52843409183/105679736013 (.500)
-
-0.5 1 1 1
-------------
-Total energy (microjoules): 0
-[HOOKS] Total time spent in ROI: 105.200s
-Task 7359: Targets missed: 0/10572
-Task 7359: CPU share: 52858913715/52858918757 (.999)
-Task 7360: Targets missed: 0/10577
-Task 7360: CPU share: 52883828799/52883828799 (1.000)
-Task 7358: Targets missed: 0/10594
-Task 7358: CPU share: 52967489257/52967527257 (.999)
-Task 7357: Targets missed: 0/12595
-Task 7357: CPU share: 52546883412/105082381391 (.500)
-
-0.5 1 1 1
-------------
-Total energy (microjoules): 810000001
-[HOOKS] Total time spent in ROI: 106.436s
-Task 8253: Targets missed: 0/10742
-Task 8253: CPU share: 53707391419/53707391419 (1.000)
-Task 8252: Targets missed: 0/10766
-Task 8252: CPU share: 53827378545/53827378545 (1.000)
-Task 8251: Targets missed: 0/10825
-Task 8251: CPU share: 54124970752/54125017085 (.999)
-Task 8250: Targets missed: 0/13867
-Task 8250: CPU share: 53169389792/106339685219 (.499)
-
