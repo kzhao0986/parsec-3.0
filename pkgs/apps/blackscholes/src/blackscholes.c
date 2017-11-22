@@ -611,7 +611,7 @@ int main (int argc, char **argv)
     if (energymon_get_default(&em)) {
         perror("energymon_get_default");
     }
-    if (em.finit(&em) == -1) {
+    if (em.finit(&em)) {
         perror("energymon init");
     }
 
@@ -635,7 +635,7 @@ int main (int argc, char **argv)
     printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
 
     // destroy the instance
-    if (em.ffinish(&em) == -1) {
+    if (em.ffinish(&em)) {
         perror("energymon finish");
     }
     free(tids);
