@@ -620,6 +620,10 @@ int main (int argc, char **argv)
     if (start_uj == 0 && errno) {
         perror("energymon fread");
     }
+    start_uj = em.fread(&em);
+    if (start_uj == 0 && errno) {
+        perror("energymon fread");
+    }
 
     for(i=0; i<nThreads; i++) {
         tids[i]=i;
@@ -633,7 +637,6 @@ int main (int argc, char **argv)
     }
     printf("start_uj: %"PRIu64"\n", start_uj);
     printf("end_uj: %"PRIu64"\n", end_uj);
-    printf("another: %"PRIu64"\n", em.fread(&em));
     printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
 
     // destroy the instance
