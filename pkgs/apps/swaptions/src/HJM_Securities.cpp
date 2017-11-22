@@ -83,48 +83,145 @@ struct Worker {
 
 #endif //TBB_VERSION
 
-#define HEARTRATE_SUM 300
+/*************************** Begin Heartbeat Eval ****************************/
 
-static uint64_t targets[2]; /* Initialized by get_performance_targets() */
+#define BASE_HEARTRATE 300
 
-static void get_performance_targets(void)
+static uint64_t targets[4]; /* Initialized by get_performance_targets() */
+static double weights[4];
+static int exp_nr;
+
+static void get_experiment_number(void)
+{
+    char *exp_nr_str;
+
+    exp_nr_str = getenv("exp_nr");
+    if (exp_nr_str == NULL) {
+        fprintf(stderr, "Error: Please specify experiment number\n");
+        exit(-1);
+    }
+
+    exp_nr = atoi(exp_nr_str);
+}
+
+static void get_performance_targets__exp1(void)
 {
     char *ratio_str;
     int ratio;
     uint64_t x;
 
-    if ((ratio_str = getenv("RATIO")) != NULL) {
-        ratio = atoi(ratio_str);
+    ratio_str = getenv("RATIO");
+    if (ratio_str == NULL) {
+        fprintf(stderr, "Error: exp1: no ratio specified\n");
+        exit(-1);
     }
+    ratio = atoi(ratio_str);
 
-    x = HEARTRATE_SUM / (ratio + 1);
+    x = BASE_HEARTRATE / (ratio + 1);
 
     targets[0] = x * ratio;
     targets[1] = x;
 }
 
-static uint64_t deadline_get_runtime(int thread_nr)
+static void get_performance_targets__exp2(void)
 {
-    double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
-    double period = 30 * 1000 * 1000;
+    char *weights_str, *token;
+    int i;
+
+    weights_str = getenv("weights");
+    if (weights_str == NULL) {
+        fprintf(stderr, "Error: exp2: no weights specified\n");
+        exit(-1);
+    }
+
+    token = strtok(weights_str, " ");
+    weights[0] = atof(token);
+    i = 1;
+    while (token != NULL && i < 4) {
+        token = strtok(NULL, " ");
+        weights[i] = atof(token);
+        i++;
+    }
+
+    for (i = 0; i < 4; i++) {
+        targets[i] = (double)(BASE_HEARTRATE * weights[i]);
+    }
+}
+
+static void get_performance_targets(void)
+{
+    switch (exp_nr) {
+    case 1:
+        get_performance_targets__exp1();
+        break;
+    case 2:
+        get_performance_targets__exp2();
+        break;
+    default:
+        fprintf(stderr, "Invalid experiment number\n");
+        exit(-1);
+    }
+}
+
+static enum hb_eval_schedtype get_schedtype(void)
+{
+    enum hb_eval_schedtype schedtype;
+
+    if (getenv("SCHED_HEARTBEAT")) {
+        schedtype = HEARTBEAT;
+    } else if (getenv("SCHED_DEADLINE")) {
+        schedtype = DEADLINE;
+    } else {
+        schedtype = FAIR;
+    }
+    return schedtype;
+}
+
+static uint64_t deadline_get_runtime__exp1(int thread_nr)
+{
+    double frac = (double)targets[thread_nr] / BASE_HEARTRATE;
+    double period = 25 * 1000 * 1000;
 
     return (uint64_t)(frac * period);
+}
+
+static uint64_t deadline_get_runtime__exp2(int thread_nr)
+{
+    double period = 25 * 1000 * 1000;
+
+    return (uint64_t)(weights[thread_nr] * period);
+}
+
+static uint64_t deadline_get_runtime(int thread_nr)
+{
+    uint64_t runtime;
+
+    switch (exp_nr) {
+    case 1:
+        runtime = deadline_get_runtime__exp1(thread_nr);
+        break;
+    case 2:
+        runtime = deadline_get_runtime__exp2(thread_nr);
+        break;
+    default:
+        fprintf(stderr, "Invalid experiment number\n");
+        exit(-1);
+    }
+    return runtime;
 }
 
 static void init_params(struct hb_eval_params *params, int tid)
 {
     fprintf(stderr, "Setting target %llu\n", targets[tid]);
 
-    if (getenv("SCHED_HEARTBEAT")) {
-        params->schedtype = HEARTBEAT;
-    } else if (getenv("SCHED_DEADLINE")) {
-        params->schedtype = DEADLINE;
-    }
+    params->schedtype = get_schedtype();
     params->target = targets[tid];
     params->window = targets[tid] * 100;
     params->runtime = deadline_get_runtime(tid);
-    params->period = 30 * 1000 * 1000;
+    params->period = 25 * 1000 * 1000;
 }
+
+/**************************** End Heartbeat Eval *****************************/
 
 void * worker(void *arg){
   int tid = *((int *)arg);
@@ -162,7 +259,7 @@ void * worker(void *arg){
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
      if (hb_eval_iteration(&session) == -1) {
-      break;
+      // break;
      }
    }
 
@@ -194,6 +291,7 @@ int main(int argc, char *argv[])
 	
 	FTYPE **factors=NULL;
 
+  get_experiment_number();
   get_performance_targets();
 
 #ifdef PARSEC_VERSION
