@@ -8,13 +8,11 @@ then
 	exit 1
 fi
 
-# declare -a weights=("0.5 0.5 0.5 0.5" \
-#                     "0.5 0.5 0.5 1" \
-#                     "0.5 0.5 1 1" \
-#                     "0.5 1 1 1" \
-#                     "1 1 1 1")
-
-declare -a weights=("0.42 0.42 0.42 0.42")
+declare -a weights=("0.42 0.42 0.42 0.42" \
+                    "0.42 0.42 0.42 1" \
+                    "0.42 0.42 1 1" \
+                    "0.42 1 1 1" \
+                    "1 1 1 0.999")
 
 # get length of an array
 arraylength=${#weights[@]}
