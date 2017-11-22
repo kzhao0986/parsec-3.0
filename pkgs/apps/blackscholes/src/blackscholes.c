@@ -620,10 +620,6 @@ int main (int argc, char **argv)
     if (start_uj == 0 && errno) {
         perror("energymon fread");
     }
-    start_uj = em.fread(&em);
-    if (start_uj == 0 && errno) {
-        perror("energymon fread");
-    }
 
     for(i=0; i<nThreads; i++) {
         tids[i]=i;
