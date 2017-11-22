@@ -633,6 +633,7 @@ int main (int argc, char **argv)
     }
     printf("start_uj: %"PRIu64"\n", start_uj);
     printf("end_uj: %"PRIu64"\n", end_uj);
+    printf("another: %"PRIu64"\n", em.fread(&em));
     printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
 
     // destroy the instance
