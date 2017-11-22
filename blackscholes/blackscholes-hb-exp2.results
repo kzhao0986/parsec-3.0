@@ -111,3 +111,20 @@ Task 7770: CPU share: 51534628428/51534628428 (1.000)
 Task 7767: Targets missed: 740/24730
 Task 7767: CPU share: 123649203569/123660838944 (.999)
 
+0.5 1 1 1
+------------
+Total energy (microjoules): 813600000
+[HOOKS] Total time spent in ROI: 123.599s
+Task 8664: Migrating from CPU 0 to CPU 3
+Task 8665: Migrating from CPU 0 to CPU 6
+Task 8666: Migrating from CPU 1 to CPU 4
+Task 8667: Migrating from CPU 2 to CPU 7
+Task 8666: Targets missed: 360/10506
+Task 8666: CPU share: 52019628010/52019634343 (.999)
+Task 8665: Targets missed: 188/10507
+Task 8665: CPU share: 52274626509/52274626509 (1.000)
+Task 8667: Targets missed: 517/10534
+Task 8667: CPU share: 51919622927/51919622927 (1.000)
+Task 8664: Targets missed: 592/24701
+Task 8664: CPU share: 123499267904/123499286320 (.999)
+
