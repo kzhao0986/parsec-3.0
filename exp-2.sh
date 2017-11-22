@@ -25,8 +25,8 @@ do
 	weight="${weights[$i]}"
 
 	echo "SCHED_DEADLINE"
-	./__exp-2.sh blackscholes "$weight" SCHED_DEADLINE=1 "dl-exp2"
+	./__exp-2.sh $benchmark "$weight" SCHED_DEADLINE=1 "dl-exp2"
 
 	echo "SCHED_HEARTBEAT"
-	./__exp-2.sh blackscholes "$weight" SCHED_HEARTBEAT=1 "hb-exp2"
+	./__exp-2.sh $benchmark "$weight" SCHED_HEARTBEAT=1 "hb-exp2"
 done
