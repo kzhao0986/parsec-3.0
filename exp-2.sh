@@ -11,13 +11,13 @@ fi
 # blackscholes
 # declare -a weights=("0.42 0.42 0.42 0.42")
 # swaptions
-# declare -a weights=("0.37 0.37 0.37 0.37")
+declare -a weights=("0.37 0.37 0.37 0.37")
 
-declare -a weights=("0.37 0.37 0.37 0.37" \
-                    "0.37 0.37 0.37 1" \
-                    "0.37 0.37 1 1" \
-                    "0.37 1 1 1" \
-                    "1 1 1 1")
+# declare -a weights=("0.37 0.37 0.37 0.37" \
+#                     "0.37 0.37 0.37 1" \
+#                     "0.37 0.37 1 1" \
+#                     "0.37 1 1 1" \
+#                     "1 1 1 1")
 
 # get length of an array
 arraylength=${#weights[@]}
