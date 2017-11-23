@@ -81,6 +81,7 @@
 
 #include <vips/vips.h>
 #include <energymon-default.h>
+#include <errno.h>
 
 #ifdef OS_WIN32
 #define strcasecmp(a,b) _stricmp(a,b)
