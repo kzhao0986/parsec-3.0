@@ -85,6 +85,7 @@ extern "C" {
 #include <glib/gstdio.h>
 #include <gmodule.h>
 #include <glib-object.h>
+#include <inttypes.h>
 
 /* If we're being parsed by SWIG, remove gcc attributes.
  */
