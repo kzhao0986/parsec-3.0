@@ -63,3 +63,16 @@ Task 17027: CPU share: 46640896723/46715998279 (.998)
 Task 17030: Targets missed: 0/9287
 Task 17030: CPU share: 0/0 ()
 
+0.37 0.37 0.37 1
+------------
+Total energy (microjoules): 882000000
+[HOOKS] Total time spent in ROI: 113.885s
+Task 20757: Targets missed: 3250/8486
+Task 20757: CPU share: 42481544809/51139627513 (.830)
+Task 20756: Targets missed: 0/9910
+Task 20756: CPU share: 41904785719/113458771984 (.369)
+Task 20754: Targets missed: 0/9949
+Task 20754: CPU share: 41943749738/113638838191 (.369)
+Task 20755: Targets missed: 0/9907
+Task 20755: CPU share: 41969760897/113783890899 (.368)
+
