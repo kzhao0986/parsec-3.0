@@ -538,6 +538,10 @@ vips_thread_work_unit( VipsThread *thr )
 
 #ifdef HAVE_THREADS
 
+uint64_t targets[2]; /* Initialized by get_performance_targets() */
+double weights[4];
+int exp_nr;
+
 static enum hb_eval_schedtype get_schedtype(void)
 {
     enum hb_eval_schedtype schedtype;

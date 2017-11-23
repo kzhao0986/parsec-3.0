@@ -893,10 +893,6 @@ print_cppdefs( char *name )
 		error_exit( "unknown package \"%s\"", name ); 
 }
 
-uint64_t targets[2]; /* Initialized by get_performance_targets() */
-double weights[4];
-int exp_nr;
-
 static void get_experiment_number(void)
 {
     char *exp_nr_str;
