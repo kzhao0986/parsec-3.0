@@ -891,6 +891,82 @@ print_cppdefs( char *name )
 		error_exit( "unknown package \"%s\"", name ); 
 }
 
+uint64_t targets[2]; /* Initialized by get_performance_targets() */
+static double weights[4];
+static int exp_nr;
+
+static void get_experiment_number(void)
+{
+    char *exp_nr_str;
+
+    exp_nr_str = getenv("exp_nr");
+    if (exp_nr_str == NULL) {
+        fprintf(stderr, "Error: Please specify experiment number\n");
+        exit(-1);
+    }
+
+    exp_nr = atoi(exp_nr_str);
+}
+
+static void get_performance_targets__exp1(void)
+{
+    char *ratio_str;
+    int ratio;
+    uint64_t x;
+
+    ratio_str = getenv("RATIO");
+    if (ratio_str == NULL) {
+        fprintf(stderr, "Error: exp1: no ratio specified\n");
+        exit(-1);
+    }
+    ratio = atoi(ratio_str);
+
+    x = BASE_HEARTRATE / (ratio + 1);
+
+    targets[0] = x * ratio;
+    targets[1] = x;
+}
+
+static void get_performance_targets__exp2(void)
+{
+    char *weights_str, *token;
+    int i;
+
+    weights_str = getenv("weights");
+    if (weights_str == NULL) {
+        fprintf(stderr, "Error: exp2: no weights specified\n");
+        exit(-1);
+    }
+
+    token = strtok(weights_str, " ");
+    weights[0] = atof(token);
+    i = 1;
+    while (token != NULL && i < 4) {
+        token = strtok(NULL, " ");
+        weights[i] = atof(token);
+        i++;
+    }
+
+    for (i = 0; i < 4; i++) {
+        targets[i] = (double)(BASE_HEARTRATE * weights[i]);
+    }
+}
+
+static void get_performance_targets(void)
+{
+    switch (exp_nr) {
+    case 1:
+        get_performance_targets__exp1();
+        break;
+    case 2:
+        get_performance_targets__exp2();
+        break;
+    default:
+        fprintf(stderr, "Invalid experiment number\n");
+        exit(-1);
+    }
+}
+
 /* VIPS universal main program. 
  */
 int
@@ -900,6 +976,9 @@ main( int argc, char **argv )
 	GError *error = NULL;
 	im_function *fn;
 	int i, j;
+
+	get_experiment_number();
+	get_performance_targets();
 
 	if( im_init_world( argv[0] ) )
 	        error_exit( NULL );
@@ -1010,14 +1089,12 @@ main( int argc, char **argv )
 		if( !(fn = im_find_function( argv[1] )) )
 			error_exit( NULL );
 
-		fprintf(stderr, "Ugh damn...\n");
 		if( im_run_command( argv[1], argc - 2, argv + 2 ) ) {
 			if( argc == 2 ) 
 				usage( fn );
 			else
 				error_exit( NULL );
 		}
-		fprintf(stderr, "Jk things are fine\n");
 	}
 
 	im_close_plugins();
