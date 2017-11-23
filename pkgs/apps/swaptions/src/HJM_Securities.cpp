@@ -87,7 +87,7 @@ struct Worker {
 
 /*************************** Begin Heartbeat Eval ****************************/
 
-#define BASE_HEARTRATE 300
+#define BASE_HEARTRATE 290
 
 static uint64_t targets[4]; /* Initialized by get_performance_targets() */
 static double weights[4];
