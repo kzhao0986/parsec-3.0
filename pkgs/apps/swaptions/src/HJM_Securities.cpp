@@ -13,6 +13,7 @@ extern "C" {
 #include <heartbeat-eval.h>
 }
 #include <energymon-default.h>
+#include <errno.h>
 
 #include "nr_routines.h"
 #include "HJM.h"
