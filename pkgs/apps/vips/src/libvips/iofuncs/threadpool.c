@@ -538,31 +538,62 @@ vips_thread_work_unit( VipsThread *thr )
 
 #ifdef HAVE_THREADS
 
-#define HEARTRATE_SUM 150
+static enum hb_eval_schedtype get_schedtype(void)
+{
+    enum hb_eval_schedtype schedtype;
+
+    if (getenv("SCHED_HEARTBEAT")) {
+        schedtype = HEARTBEAT;
+    } else if (getenv("SCHED_DEADLINE")) {
+        schedtype = DEADLINE;
+    } else {
+        schedtype = FAIR;
+    }
+    return schedtype;
+}
+
+static uint64_t deadline_get_runtime__exp1(int thread_nr)
+{
+    double frac = (double)targets[thread_nr] / BASE_HEARTRATE;
+    double period = 25 * 1000 * 1000;
+
+    return (uint64_t)(frac * period);
+}
+
+static uint64_t deadline_get_runtime__exp2(int thread_nr)
+{
+    double period = 25 * 1000 * 1000;
+
+    return (uint64_t)(weights[thread_nr] * period);
+}
 
 static uint64_t deadline_get_runtime(int thread_nr)
 {
-	double frac = (double)targets[thread_nr] / HEARTRATE_SUM;
-	double period = 30 * 1000 * 1000;
+    uint64_t runtime;
 
-	return (uint64_t)(frac * period);
+    switch (exp_nr) {
+    case 1:
+        runtime = deadline_get_runtime__exp1(thread_nr);
+        break;
+    case 2:
+        runtime = deadline_get_runtime__exp2(thread_nr);
+        break;
+    default:
+        fprintf(stderr, "Invalid experiment number\n");
+        exit(-1);
+    }
+    return runtime;
 }
 
-static void init_params(struct hb_eval_params *params, int thread_nr)
+static void init_params(struct hb_eval_params *params, int tid)
 {
-	uint64_t target = targets[thread_nr];
+    fprintf(stderr, "Setting target %llu\n", targets[tid]);
 
-	fprintf(stderr, "Setting target %llu\n", target);
-
-	if (getenv("SCHED_HEARTBEAT")) {
-	    params->schedtype = HEARTBEAT;
-	} else if (getenv("SCHED_DEADLINE")) {
-	    params->schedtype = DEADLINE;
-	}
-	params->target = target;
-	params->window = target * 100;
-	params->runtime = deadline_get_runtime(thread_nr);
-	params->period = 30 * 1000 * 1000;
+    params->schedtype = get_schedtype();
+    params->target = targets[tid];
+    params->window = targets[tid] * 100;
+    params->runtime = deadline_get_runtime(tid);
+    params->period = 25 * 1000 * 1000;
 }
 
 /* What runs as a thread ... loop, waiting to be told to do stuff.

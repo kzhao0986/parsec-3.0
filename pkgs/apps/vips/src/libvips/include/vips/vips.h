@@ -147,6 +147,8 @@ extern "C" {
 }
 #endif /*__cplusplus*/
 
+#define BASE_HEARTRATE 150
+
 extern uint64_t targets[2]; /* Initialized by get_performance_targets() */
 
 #endif /*IM_VIPS_H*/
