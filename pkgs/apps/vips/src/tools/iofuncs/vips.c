@@ -80,6 +80,7 @@
 #include <locale.h>
 
 #include <vips/vips.h>
+#include <energymon-default.h>
 
 #ifdef OS_WIN32
 #define strcasecmp(a,b) _stricmp(a,b)
@@ -974,6 +975,8 @@ main( int argc, char **argv )
 	GError *error = NULL;
 	im_function *fn;
 	int i, j;
+	energymon em;
+	uint64_t start_uj, end_uj;
 
 	get_experiment_number();
 	get_performance_targets();
@@ -1087,11 +1090,35 @@ main( int argc, char **argv )
 		if( !(fn = im_find_function( argv[1] )) )
 			error_exit( NULL );
 
+		if (energymon_get_default(&em)) {
+		    perror("energymon_get_default");
+		}
+		if (em.finit(&em)) {
+		    perror("energymon init");
+		}
+
+		start_uj = em.fread(&em);
+		if (start_uj == 0 && errno) {
+		    perror("energymon fread");
+		}
+
 		if( im_run_command( argv[1], argc - 2, argv + 2 ) ) {
 			if( argc == 2 ) 
 				usage( fn );
 			else
 				error_exit( NULL );
+		}
+
+		end_uj = em.fread(&em);
+		if (end_uj == 0 && errno) {
+		    perror("energymon fread");
+		}
+		printf("start_uj: %"PRIu64"\n", start_uj);
+		printf("end_uj: %"PRIu64"\n", end_uj);
+		printf("Total energy (microjoules): %"PRIu64"\n", end_uj - start_uj);
+
+		if (em.ffinish(&em)) {
+		    perror("energymon finish");
 		}
 	}
 
