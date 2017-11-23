@@ -932,7 +932,7 @@ static void get_performance_targets__exp1(void)
 static void get_performance_targets__exp2(void)
 {
     char *weights_str, *token;
-    int i;
+    volatile int i;
 
     weights_str = getenv("weights");
     if (weights_str == NULL) {
