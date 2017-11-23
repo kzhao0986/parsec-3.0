@@ -629,6 +629,9 @@ vips_thread_main_loop( void *a )
 		if( pool->stop || pool->error )
 			break;
 	}
+	
+	fprintf(stderr, "Finished with heartrate %llu\n", 
+	                session.heart->heartrate);
 
 	hb_eval_finish(&session);
 	
