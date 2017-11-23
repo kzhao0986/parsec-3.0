@@ -1,0 +1,75 @@
+0.37 0.37 0.37 0.37
+------------
+real 4m22.198s
+Task 18571: Migrating from CPU 2 to CPU 3
+Task 18570: Targets missed: 53/44311
+Task 18570: CPU share: 0/0 ()
+Task 18569: Targets missed: 0/44285
+Task 18569: CPU share: 0/0 ()
+Task 18571: Targets missed: 0/44390
+Task 18571: CPU share: 26710458/26710458 (1.000)
+Task 18568: Targets missed: 0/44381
+Task 18568: CPU share: 0/0 ()
+
+0.37 0.37 0.37 1
+------------
+real 3m14.004s
+Task 19411: Migrating from CPU 1 to CPU 5
+Task 19408: Migrating from CPU 0 to CPU 1
+Task 19411: Targets missed: 9/31862
+Task 19411: CPU share: 724902039/724908164 (.999)
+Task 19409: Targets missed: 0/31894
+Task 19409: CPU share: 19017500/19017500 (1.000)
+Task 19410: Targets missed: 0/32009
+Task 19410: CPU share: 0/0 ()
+Task 19408: Targets missed: 16/32010
+Task 19408: CPU share: 0/0 ()
+
+0.37 0.37 1 1
+------------
+real 2m43.837s
+Task 20243: Migrating from CPU 0 to CPU 3
+Task 20244: Migrating from CPU 0 to CPU 5
+Task 20242: Migrating from CPU 1 to CPU 0
+Task 20245: Migrating from CPU 1 to CPU 6
+Task 20244: Targets missed: 53/25551
+Task 20244: CPU share: 577236539/577236539 (1.000)
+Task 20245: Targets missed: 311/25455
+Task 20245: CPU share: 577225290/577225290 (1.000)
+Task 20243: Targets missed: 0/25680
+Task 20243: CPU share: 5961125/5961125 (1.000)
+Task 20242: Targets missed: 18/25547
+Task 20242: CPU share: 0/0 ()
+
+0.37 1 1 1
+------------
+real 2m21.554s
+Task 21080: Migrating from CPU 0 to CPU 4
+Task 21081: Migrating from CPU 0 to CPU 5
+Task 21079: Migrating from CPU 2 to CPU 4
+Task 21080: Migrating from CPU 4 to CPU 6
+Task 21081: Targets missed: 281/21901
+Task 21081: CPU share: 152460833/152460833 (1.000)
+Task 21078: Targets missed: 0/22125
+Task 21078: CPU share: 496388123/496388123 (1.000)
+Task 21079: Targets missed: 495/22046
+Task 21079: CPU share: 20136917/20136917 (1.000)
+Task 21080: Targets missed: 362/21843
+Task 21080: CPU share: 0/0 ()
+
+1 1 1 1
+------------
+real 2m22.129s
+Task 21910: Migrating from CPU 1 to CPU 6
+Task 21909: Migrating from CPU 0 to CPU 5
+Task 21912: Migrating from CPU 0 to CPU 7
+Task 21911: Migrating from CPU 0 to CPU 4
+Task 21911: Targets missed: 19848/19848
+Task 21911: CPU share: 0/0 ()
+Task 21910: Targets missed: 19453/19814
+Task 21910: CPU share: 5759708/5759708 (1.000)
+Task 21912: Targets missed: 19767/19767
+Task 21912: CPU share: 12903500/12903500 (1.000)
+Task 21909: Targets missed: 19435/19755
+Task 21909: CPU share: 14350625/14350625 (1.000)
+

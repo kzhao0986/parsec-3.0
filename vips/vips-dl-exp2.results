@@ -1,0 +1,60 @@
+0.37 0.37 0.37 0.37
+------------
+real 4m40.508s
+Task 18153: Targets missed: 0/23256
+Task 18153: CPU share: 94888656925/279250236683 (.339)
+Task 18152: Targets missed: 0/23218
+Task 18152: CPU share: 94830883268/279250333225 (.339)
+Task 18151: Targets missed: 0/23241
+Task 18151: CPU share: 95168209312/279250241641 (.340)
+Task 18150: Targets missed: 0/23217
+Task 18150: CPU share: 95039986101/279255334808 (.340)
+
+0.37 0.37 0.37 1
+------------
+real 3m23.205s
+Task 18995: Targets missed: 0/16391
+Task 18995: CPU share: 66709865806/201844723896 (.330)
+Task 18996: Targets missed: 0/16515
+Task 18996: CPU share: 66922398191/201840782313 (.331)
+Task 18994: Targets missed: 0/16435
+Task 18994: CPU share: 66815639179/201840780647 (.331)
+Task 18997: Targets missed: 0/34327
+Task 18997: CPU share: 172142617294/201840682021 (.852)
+
+0.37 0.37 1 1
+------------
+real 2m50.512s
+Task 19831: Targets missed: 0/27146
+Task 19831: CPU share: 136260021008/169253904520 (.805)
+Task 19830: Targets missed: 0/27137
+Task 19830: CPU share: 136290866752/169253443437 (.805)
+Task 19828: Targets missed: 0/13104
+Task 19828: CPU share: 53817296984/169253994937 (.317)
+Task 19829: Targets missed: 0/13063
+Task 19829: CPU share: 53653140453/169253939728 (.316)
+
+0.37 1 1 1
+------------
+real 2m27.334s
+Task 20668: Targets missed: 0/22591
+Task 20668: CPU share: 113554935431/146064826943 (.777)
+Task 20669: Targets missed: 0/22546
+Task 20669: CPU share: 113357133439/146064815859 (.776)
+Task 20667: Targets missed: 0/22554
+Task 20667: CPU share: 113362576983/146070005317 (.776)
+Task 20666: Targets missed: 0/11091
+Task 20666: CPU share: 45427144062/146064812192 (.311)
+
+1 1 1 1
+------------
+real 2m13.609s
+Task 21502: Targets missed: 15551/19640
+Task 21502: CPU share: 0/0 ()
+Task 21499: Targets missed: 545/19946
+Task 21499: CPU share: 100336236202/132383130369 (.757)
+Task 21501: Targets missed: 1824/19965
+Task 21501: CPU share: 100248764164/132382892994 (.757)
+Task 21500: Targets missed: 414/20001
+Task 21500: CPU share: 100511635888/132381466619 (.759)
+
