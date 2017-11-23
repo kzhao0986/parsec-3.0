@@ -143,7 +143,7 @@ extern "C" {
 #include <vips/deprecated.h>
 #endif /*IM_ENABLE_DEPRECATED*/
 
-#define BASE_HEARTRATE 150
+#define BASE_HEARTRATE 140
 
 extern uint64_t targets[4]; /* Initialized by get_performance_targets() */
 extern double weights[4];
