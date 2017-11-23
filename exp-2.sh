@@ -11,7 +11,9 @@ fi
 # blackscholes
 # declare -a weights=("0.42 0.42 0.42 0.42")
 # swaptions
-declare -a weights=("0.37 0.37 0.37 0.37")
+# declare -a weights=("0.37 0.37 0.37 0.37")
+# vips
+declare -a weights=("0.4 0.4 0.4 0.4")
 
 # declare -a weights=("0.37 0.37 0.37 0.37" \
 #                     "0.37 0.37 0.37 1" \
