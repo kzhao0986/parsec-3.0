@@ -143,14 +143,14 @@ extern "C" {
 #include <vips/deprecated.h>
 #endif /*IM_ENABLE_DEPRECATED*/
 
-#ifdef __cplusplus
-}
-#endif /*__cplusplus*/
-
 #define BASE_HEARTRATE 150
 
 extern uint64_t targets[2]; /* Initialized by get_performance_targets() */
 extern double weights[4];
 extern int exp_nr;
+
+#ifdef __cplusplus
+}
+#endif /*__cplusplus*/
 
 #endif /*IM_VIPS_H*/
