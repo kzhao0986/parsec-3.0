@@ -993,7 +993,6 @@ main( int argc, char **argv )
 
 		/* Execute it!
 		 */
-		fprintf(stderr, "Ugh damn...\n");
 		if( im_run_command( name, argc - 1, argv + 1 ) ) {
 			/* If there are no arguments and the operation failed,
 			 * show usage. There are no-arg operations, so we have
@@ -1004,7 +1003,6 @@ main( int argc, char **argv )
 			else
 				error_exit( NULL );
 		}
-		fprintf(stderr, "Jk things are fine\n");
 	}
 	else if( argc > 1 ) {
 		/* Nope ... run the first arg instead.
@@ -1012,12 +1010,14 @@ main( int argc, char **argv )
 		if( !(fn = im_find_function( argv[1] )) )
 			error_exit( NULL );
 
+		fprintf(stderr, "Ugh damn...\n");
 		if( im_run_command( argv[1], argc - 2, argv + 2 ) ) {
 			if( argc == 2 ) 
 				usage( fn );
 			else
 				error_exit( NULL );
 		}
+		fprintf(stderr, "Jk things are fine\n");
 	}
 
 	im_close_plugins();
