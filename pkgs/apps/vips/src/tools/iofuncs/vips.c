@@ -993,6 +993,7 @@ main( int argc, char **argv )
 
 		/* Execute it!
 		 */
+		fprintf(stderr, "Ugh damn...\n");
 		if( im_run_command( name, argc - 1, argv + 1 ) ) {
 			/* If there are no arguments and the operation failed,
 			 * show usage. There are no-arg operations, so we have
@@ -1003,6 +1004,7 @@ main( int argc, char **argv )
 			else
 				error_exit( NULL );
 		}
+		fprintf(stderr, "Jk things are fine\n");
 	}
 	else if( argc > 1 ) {
 		/* Nope ... run the first arg instead.

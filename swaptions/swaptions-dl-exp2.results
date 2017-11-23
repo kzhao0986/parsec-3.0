@@ -13,16 +13,16 @@ Task 13709: CPU share: 41996513570/114043194814 (.368)
 
 0.37 0.37 0.37 1
 ------------
-Total energy (microjoules): 889200000
-[HOOKS] Total time spent in ROI: 114.005s
-Task 14543: Targets missed: 8109/8463
-Task 14543: CPU share: 42478580095/50883665389 (.834)
-Task 14540: Targets missed: 0/10546
-Task 14540: CPU share: 41982455568/113711838816 (.369)
-Task 14541: Targets missed: 0/10474
-Task 14541: CPU share: 42033679548/113884086066 (.369)
-Task 14542: Targets missed: 0/10527
-Task 14542: CPU share: 42042073188/113908421315 (.369)
+Total energy (microjoules): 882000000
+[HOOKS] Total time spent in ROI: 113.885s
+Task 20757: Targets missed: 3250/8486
+Task 20757: CPU share: 42481544809/51139627513 (.830)
+Task 20756: Targets missed: 0/9910
+Task 20756: CPU share: 41904785719/113458771984 (.369)
+Task 20754: Targets missed: 0/9949
+Task 20754: CPU share: 41943749738/113638838191 (.369)
+Task 20755: Targets missed: 0/9907
+Task 20755: CPU share: 41969760897/113783890899 (.368)
 
 0.37 0.37 1 1
 ------------
@@ -62,17 +62,3 @@ Task 17027: Targets missed: 0/9325
 Task 17027: CPU share: 46640896723/46715998279 (.998)
 Task 17030: Targets missed: 0/9287
 Task 17030: CPU share: 0/0 ()
-
-0.37 0.37 0.37 1
-------------
-Total energy (microjoules): 882000000
-[HOOKS] Total time spent in ROI: 113.885s
-Task 20757: Targets missed: 3250/8486
-Task 20757: CPU share: 42481544809/51139627513 (.830)
-Task 20756: Targets missed: 0/9910
-Task 20756: CPU share: 41904785719/113458771984 (.369)
-Task 20754: Targets missed: 0/9949
-Task 20754: CPU share: 41943749738/113638838191 (.369)
-Task 20755: Targets missed: 0/9907
-Task 20755: CPU share: 41969760897/113783890899 (.368)
-

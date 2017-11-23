@@ -14,18 +14,18 @@ Task 14113: CPU share: 1290901662/1290901662 (1.000)
 
 0.37 0.37 0.37 1
 ------------
-Total energy (microjoules): 705600000
-[HOOKS] Total time spent in ROI: 113.646s
-Task 14947: Migrating from CPU 0 to CPU 4
-Task 14949: Migrating from CPU 2 to CPU 5
-Task 14947: Targets missed: 1/8550
-Task 14947: CPU share: 211606665/211606665 (1.000)
-Task 14949: Targets missed: 175/8585
-Task 14949: CPU share: 102724083/102724083 (1.000)
-Task 14948: Targets missed: 0/22685
-Task 14948: CPU share: 3186320821/3186320821 (1.000)
-Task 14946: Targets missed: 5/22692
-Task 14946: CPU share: 3201344197/3201344197 (1.000)
+Total energy (microjoules): 608400000
+[HOOKS] Total time spent in ROI: 113.804s
+Task 20186: Migrating from CPU 0 to CPU 3
+Task 20188: Migrating from CPU 2 to CPU 6
+Task 20188: Targets missed: 50/8274
+Task 20188: CPU share: 44133917/44133917 (1.000)
+Task 20185: Targets missed: 3/22705
+Task 20185: CPU share: 8240107219/8240107219 (1.000)
+Task 20187: Targets missed: 0/22714
+Task 20187: CPU share: 33620916/33620916 (1.000)
+Task 20186: Targets missed: 3/22716
+Task 20186: CPU share: 88683083/88683083 (1.000)
 
 0.37 0.37 1 1
 ------------
@@ -75,69 +75,3 @@ Task 17445: Targets missed: 113/9204
 Task 17445: CPU share: 416865332/416865332 (1.000)
 Task 17446: Targets missed: 183/9233
 Task 17446: CPU share: 475862831/475862831 (1.000)
-
-0.37 0.37 0.37 1
-------------
-Total energy (microjoules): 709200000
-[HOOKS] Total time spent in ROI: 113.694s
-Task 17914: Migrating from CPU 0 to CPU 7
-Task 17915: Migrating from CPU 2 to CPU 5
-Task 17915: Targets missed: 54/8448
-Task 17915: CPU share: 36578708/36578708 (1.000)
-Task 17914: Targets missed: 0/8458
-Task 17914: CPU share: 59940375/59943250 (.999)
-Task 17913: Targets missed: 0/22686
-Task 17913: CPU share: 188626916/188626916 (1.000)
-Task 17912: Targets missed: 5/22698
-Task 17912: CPU share: 263602208/263602208 (1.000)
-
-0.37 0.37 0.37 1
-------------
-Total energy (microjoules): 0
-[HOOKS] Total time spent in ROI: 114.286s
-Task 18335: Migrating from CPU 1 to CPU 4
-Task 18337: Migrating from CPU 2 to CPU 4
-Task 18335: Migrating from CPU 4 to CPU 5
-Task 18335: Targets missed: 27/8262
-Task 18335: CPU share: 104710625/104710625 (1.000)
-Task 18337: Targets missed: 543/8335
-Task 18337: CPU share: 127474624/127474624 (1.000)
-Task 18334: Targets missed: 0/22647
-Task 18334: CPU share: 4491755525/4491755525 (1.000)
-Task 18336: Targets missed: 106/22655
-Task 18336: CPU share: 4636704691/4636704691 (1.000)
-
-0.37 0.37 0.37 1
-------------
-Total energy (microjoules): 745200000
-[HOOKS] Total time spent in ROI: 114.198s
-Task 18768: Migrating from CPU 0 to CPU 4
-Task 18769: Migrating from CPU 0 to CPU 4
-Task 18769: Migrating from CPU 4 to CPU 5
-Task 18771: Migrating from CPU 2 to CPU 4
-Task 18768: Migrating from CPU 4 to CPU 5
-Task 18769: Migrating from CPU 5 to CPU 6
-Task 18771: Targets missed: 503/8691
-Task 18771: CPU share: 22683542/22683542 (1.000)
-Task 18768: Targets missed: 0/8636
-Task 18768: CPU share: 46129584/46129584 (1.000)
-Task 18769: Targets missed: 58/8660
-Task 18769: CPU share: 16737250/16737250 (1.000)
-Task 18770: Targets missed: 0/22660
-Task 18770: CPU share: 68931427278/68931427278 (1.000)
-
-0.37 0.37 0.37 1
-------------
-Total energy (microjoules): 608400000
-[HOOKS] Total time spent in ROI: 113.804s
-Task 20186: Migrating from CPU 0 to CPU 3
-Task 20188: Migrating from CPU 2 to CPU 6
-Task 20188: Targets missed: 50/8274
-Task 20188: CPU share: 44133917/44133917 (1.000)
-Task 20185: Targets missed: 3/22705
-Task 20185: CPU share: 8240107219/8240107219 (1.000)
-Task 20187: Targets missed: 0/22714
-Task 20187: CPU share: 33620916/33620916 (1.000)
-Task 20186: Targets missed: 3/22716
-Task 20186: CPU share: 88683083/88683083 (1.000)
-
