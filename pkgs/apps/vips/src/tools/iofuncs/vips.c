@@ -894,8 +894,8 @@ print_cppdefs( char *name )
 }
 
 uint64_t targets[2]; /* Initialized by get_performance_targets() */
-static double weights[4];
-static int exp_nr;
+double weights[4];
+int exp_nr;
 
 static void get_experiment_number(void)
 {

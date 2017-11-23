@@ -150,5 +150,7 @@ extern "C" {
 #define BASE_HEARTRATE 150
 
 extern uint64_t targets[2]; /* Initialized by get_performance_targets() */
+extern double weights[4];
+extern int exp_nr;
 
 #endif /*IM_VIPS_H*/
