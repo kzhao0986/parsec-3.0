@@ -15,13 +15,13 @@ fi
 # vips
 # declare -a weights=("0.405 0.405 0.405 0.405")
 
-# declare -a weights=("0.405 0.405 0.405 0.405" \
-#                     "0.405 0.405 0.405 1" \
-#                     "0.405 0.405 1 1" \
-#                     "0.405 1 1 1" \
-#                     "1 1 1 1")
+declare -a weights=("0.405 0.405 0.405 0.405" \
+                    "0.405 0.405 0.405 1" \
+                    "0.405 0.405 1 1" \
+                    "0.405 1 1 1" \
+                    "1 1 1 1")
 
-declare -a weights=("1 1 1 1")
+# declare -a weights=("1 1 1 1")
 
 # get length of an array
 arraylength=${#weights[@]}
