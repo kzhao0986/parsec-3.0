@@ -15,13 +15,11 @@ fi
 # vips
 # declare -a weights=("0.405 0.405 0.405 0.405")
 
-# declare -a weights=("0.405 0.405 0.405 0.405" \
-#                     "0.405 0.405 0.405 1" \
-#                     "0.405 0.405 1 1" \
-#                     "0.405 1 1 1" \
-#                     "1 1 1 1")
-
-declare -a weights=("0.405 0.405 1 1")
+declare -a weights=("0.405 0.405 0.405 0.405" \
+                    "0.405 0.405 0.405 1" \
+                    "0.405 0.405 1 1" \
+                    "0.405 1 1 1" \
+                    "1 1 1 1")
 
 # get length of an array
 arraylength=${#weights[@]}
@@ -34,6 +32,6 @@ do
 	echo "SCHED_DEADLINE"
 	./__exp-2.sh $benchmark "$weight" SCHED_DEADLINE=1 "dl-exp2"
 
-	# echo "SCHED_HEARTBEAT"
-	# ./__exp-2.sh $benchmark "$weight" SCHED_HEARTBEAT=1 "hb-exp2"
+	echo "SCHED_HEARTBEAT"
+	./__exp-2.sh $benchmark "$weight" SCHED_HEARTBEAT=1 "hb-exp2"
 done
