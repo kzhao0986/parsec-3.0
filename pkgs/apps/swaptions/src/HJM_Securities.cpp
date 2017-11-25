@@ -218,7 +218,7 @@ static void init_params(struct hb_eval_params *params, int tid)
 
     params->schedtype = get_schedtype();
     params->target = targets[tid];
-    params->window = targets[tid] * 100;
+    params->window = targets[tid] * 20;
     params->runtime = deadline_get_runtime(tid);
     params->period = 25 * 1000 * 1000;
 }
