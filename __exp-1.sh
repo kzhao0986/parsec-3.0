@@ -6,20 +6,23 @@ sync
 name=$1
 ratio=$2
 schedtype=$3
+suffix=$4
 
 mkdir -p $name
+outfile=$name/$name-$suffix
+
 echo "$name: $ratio to 1..."
 
 sudo exp_nr=1 RATIO=$ratio $schedtype \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 2 -i native \
      > /dev/null
 
-cat /var/log/syslog | grep Heartbeat > $name.log
+cat /var/log/syslog | grep Heartbeat > $outfile.log
 # Isolate lines containing perf targets and CPU shares
-grep -E '(Targets|share)' $name.log > $name.tmp
+grep -E '(Targets|share)' $outfile.log > $outfile.tmp
 
-echo "$ratio to 1" >> $name.results
-echo "------------" >> $name.results
+echo "$ratio to 1" >> $outfile.results
+echo "------------" >> $outfile.results
 
 # Copy [test].tmp into [test].results, pruning useless information.
 while read in
@@ -38,11 +41,9 @@ do
 		res="$res ($share)"
 	fi
 
-	echo $res >> $name.results
-done < $name.tmp
+	echo $res >> $outfile.results
+done < $outfile.tmp
 
-echo "" >> $name.results
+echo "" >> $outfile.results
 
-rm $name.tmp
-
-mv $name* $name
+rm $outfile.tmp
