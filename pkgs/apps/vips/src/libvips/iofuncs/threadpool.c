@@ -595,7 +595,7 @@ static void init_params(struct hb_eval_params *params, int tid)
 
     params->schedtype = get_schedtype();
     params->target = targets[tid];
-    params->window = targets[tid] * 100;
+    params->window = targets[tid] * 20;
     params->runtime = deadline_get_runtime(tid);
     params->period = 25 * 1000 * 1000;
 }
@@ -623,13 +623,13 @@ vips_thread_main_loop( void *a )
 		im_semaphore_up( &pool->tick );
 
                 if (hb_eval_iteration(&session) == -1) {
-                	// break;
+                	break;
                 }
 
 		if( pool->stop || pool->error )
 			break;
 	}
-	
+
 	fprintf(stderr, "Finished with heartrate %llu\n", 
 	                session.heart->heartrate);
 
@@ -639,8 +639,8 @@ vips_thread_main_loop( void *a )
 	 */
 	im_semaphore_up( &pool->finish );
 
-	// sleep(1);
-	// exit(1); /* Fuck it. */
+	sleep(1);
+	exit(1); /* Fuck it. */
 
         return( NULL );
 }
