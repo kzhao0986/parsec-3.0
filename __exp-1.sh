@@ -15,11 +15,11 @@ echo "$name: $ratio to 1..."
 
 sudo exp_nr=1 RATIO=$ratio $schedtype \
      ./bin/parsecmgmt -c gcc-hooks -a run -p $name -n 2 -i native \
-     > /dev/null
+     > $outfile.log
 
-cat /var/log/syslog | grep Heartbeat > $outfile.log
+cat /var/log/syslog | grep Heartbeat >> $outfile.log
 # Isolate lines containing perf targets and CPU shares
-grep -E '(Targets|share)' $outfile.log > $outfile.tmp
+grep -E '(Targets|share|Iterations)' $outfile.log > $outfile.tmp
 
 echo "$ratio to 1" >> $outfile.results
 echo "------------" >> $outfile.results

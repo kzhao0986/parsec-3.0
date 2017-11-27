@@ -463,7 +463,9 @@ int bs_thread(void *tid_ptr) {
 #endif
             if (i % 1000 == 0) {
                 if (hb_eval_iteration(&session) == -1) {
-                    // goto done;
+                    printf("Task %d: Iterations Completed: %d\n", 
+                           session.tid, session.iterations);
+                    goto done;
                 }
             }
         }
