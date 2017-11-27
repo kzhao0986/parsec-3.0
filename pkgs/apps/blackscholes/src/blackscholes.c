@@ -286,7 +286,7 @@ DWORD WINAPI bs_thread(LPVOID tid_ptr){
 
 /*************************** Begin Heartbeat Eval ****************************/
 
-#define BASE_HEARTRATE 2000
+#define BASE_HEARTRATE 2200
 
 static uint64_t targets[4]; /* Initialized by get_performance_targets() */
 static double weights[4];
