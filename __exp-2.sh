@@ -52,8 +52,7 @@ do
 
 	# If this line contains CPU share information, it'll contain
 	# a big ugly fraction like "xxxxxxxxx/yyyyyyyyy". So let's
-	# do some extra formatting by piping that into `bc` and
-	# appending it to the end.
+	# do some extra formatting.
 	is_share=$(echo $res | grep share)
 	if [ -n "$is_share" ]
 	then

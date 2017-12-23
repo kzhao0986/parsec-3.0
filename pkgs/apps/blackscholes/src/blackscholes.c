@@ -286,7 +286,7 @@ DWORD WINAPI bs_thread(LPVOID tid_ptr){
 
 /*************************** Begin Heartbeat Eval ****************************/
 
-#define BASE_HEARTRATE 2200
+#define BASE_HEARTRATE 2000
 
 static uint64_t targets[4]; /* Initialized by get_performance_targets() */
 static double weights[4];
@@ -463,9 +463,7 @@ int bs_thread(void *tid_ptr) {
 #endif
             if (i % 1000 == 0) {
                 if (hb_eval_iteration(&session) == -1) {
-                    printf("Task %d: Iterations Completed: %d\n", 
-                           session.tid, session.iterations);
-                    goto done;
+                    // goto done;
                 }
             }
         }

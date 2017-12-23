@@ -261,7 +261,7 @@ void * worker(void *arg){
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
      if (hb_eval_iteration(&session) == -1) {
-      break;
+      // break;
      }
    }
 
