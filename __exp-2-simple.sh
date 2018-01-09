@@ -4,6 +4,8 @@ name=$1
 weights=$2
 schedtype=$3
 
+cpuset_dir=/sys/fs/cgroup/cpuset
+
 if [ $schedtype == "SCHED_DEADLINE=1" ]
 then
 	cd $cpuset_dir
